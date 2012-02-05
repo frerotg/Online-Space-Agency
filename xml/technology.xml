@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<technologys>
+    <technology id="1">
+        <cout niveau="1">
+            <pierre>100</pierre>
+            <metal>100</metal>
+            <oxygene>0</oxygene>
+            <carburant>100</carburant>
+            <argent>1000</argent>
+            <time>300</time>
+        </cout>
+        <cout niveau="2">
+            <pierre>300</pierre>
+            <metal>100</metal>
+            <oxygene>0</oxygene>
+            <carburant>150</carburant>
+            <argent>5000</argent>
+            <time>600</time>
+        </cout>
+        <cout niveau="3">
+            <pierre>1000</pierre>
+            <metal>200</metal>
+            <oxygene>0</oxygene>
+            <carburant>400</carburant>
+            <argent>12000</argent>
+            <time>1200</time>
+        </cout>
+    </technology>
+</technologys>

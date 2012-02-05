@@ -1,0 +1,1 @@
+<p>Bravo tu est inscrit !</p>

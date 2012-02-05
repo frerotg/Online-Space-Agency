@@ -1,0 +1,15 @@
+.connection-btn {
+	margin-left:  150px;
+}
+.register-btn {
+	margin-left:  150px;
+}
+
+.error{
+background: #FAE5E3;
+padding: 10px 0;
+margin: -10px 0 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
