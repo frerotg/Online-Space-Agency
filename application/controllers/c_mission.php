@@ -198,7 +198,7 @@ class c_mission extends CI_Controller {
             $mission['spationaute'] = $this->m_mission->getPersonnel($info[0]->spationaute);
             $mission['spationaute2'] = $this->m_mission->getPersonnel($info[0]->spationaute2);
             
-            $mission['actions'] = $this->m_mission->getAction($info[0]->spationaute2);
+            //$mission['actions'] = $this->m_mission->getAction($info[0]->spationaute2);
             
             $data['content'] = $this->load->view('template/content/mission_viewStatus4_content',$mission ,TRUE);
             break;

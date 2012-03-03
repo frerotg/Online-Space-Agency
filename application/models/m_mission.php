@@ -141,17 +141,6 @@ class m_mission extends CI_Model {
         $result = $query->result();
         return $result;
     }
-    
-    function getPersonnel($id_personnel){
-        $this->db->select('*');
-        $this->db->from('personnel_list');
-        $this->db->join('personnel_type', 'personnel_list.id_type_personnel = personnel_type.id_type_personnel');
-        $this->db->where('personnel_list.id_personnel', $id_personnel);
-        $query = $this->db->get();
-        
-        $result = $query->result();
-        return $result;
-    }
 }
 
 ?>
