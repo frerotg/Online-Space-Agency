@@ -54,10 +54,10 @@ class m_equipment extends CI_Model {
         
         $this->db->select('*');
         $this->db->from('user_technology');
-        $this->db->join('technology_list', 'user_technology.id_technology = technology_list.id');
+        $this->db->join('technology_list', 'user_technology.id_technology = technology_list.id_technology');
         $this->db->where('id_user', $id);
-        $this->db->where('type', $type_id);
-        $this->db->order_by("id", "asc"); 
+        $this->db->where('id_type_technology', $type_id);
+        $this->db->order_by("technology_list.id_technology", "asc"); 
         $query = $this->db->get();
         
         $result = $query->result();

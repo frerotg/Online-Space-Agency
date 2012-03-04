@@ -73,7 +73,7 @@ class c_equipment extends CI_Controller {
         }
         
         foreach ($list['users_technologys'] as $technology){
-            if($technology->level>= 1){
+            if($technology->level_technology>= 1){
                 $list['list_technology'][] = $technology->id;
             }
         }
