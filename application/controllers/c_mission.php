@@ -17,6 +17,8 @@ class c_mission extends CI_Controller {
             if($this->session->userdata('is_connect')){
                 
                 $this->load->model('m_user');
+                $this->load->helper('date');
+                
                 $user_id = $this->session->userdata('id');
                 $resources['resource'] = $this->m_user->getResources($user_id);
                 $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
@@ -32,14 +34,24 @@ class c_mission extends CI_Controller {
                     elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
                         $this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
                     }
-                    elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
+                    elseif( (($mission->date_start_end) == 0) AND (($mission->date_end_start) == 0) ){
+                    	if($mission->id_space_action == 0){
+                        	$this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
+                        }
+                        else{
+                        	if($mission->date_start_space_action != 0 AND $mission->date_end_space_action > now()){
+                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 5);
+                        	}
+                        	else if($mission->date_start_space_action != 0 AND $mission->date_end_space_action <= now()){
+                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 6);
+                        	}
+                        }
                     }
                     elseif( (($mission->date_end_start) <= now()) AND (($mission->date_end_end) >= now()) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 6);
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 7);
                     }
                     elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 7);
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
                     }
                 }
             }
@@ -78,7 +90,7 @@ class c_mission extends CI_Controller {
         
         $this->load->model('m_mission');
         
-        $foo['zones'] = $this->m_mission->listZone();
+        $foo['zones'] = $this->m_mission->listZone('all');
         $foo['objects'] = $this->m_mission->listObject($user_id);
         $foo['coques'] = $this->m_mission->listEquipment(2, $user_id);
         $foo['lances'] = $this->m_mission->listEquipment(1, $user_id);
@@ -172,12 +184,14 @@ class c_mission extends CI_Controller {
     
     function viewMission(){
         $this->load->model('m_mission');
+        $this->load->helper('date');
+        
         $user_id = $this->session->userdata('id');
         $id = $this->uri->segment(3);
         
         $info = $this->m_mission->infoMission($user_id, $id);
         
-        switch ($info[0]->id_status) {
+        switch ($info->id_status) {
         case 1:
             $data['content'] = $this->load->view('template/content/mission_viewStatus1_content','',TRUE);
             break;
@@ -188,28 +202,59 @@ class c_mission extends CI_Controller {
             $data['content'] = $this->load->view('template/content/mission_viewStatus3_content','',TRUE);
             break;
         case 4:
-
-            $mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info[0]->id_space_object);
-            $mission['coque'] = $this->m_mission->getEquipment($info[0]->coque);
-            $mission['lance'] = $this->m_mission->getEquipment($info[0]->lance);
-            $mission['module'] = $this->m_mission->getEquipment($info[0]->module);
-            $mission['combinaison'] = $this->m_mission->getEquipment($info[0]->combinaison);
-            $mission['pilote'] = $this->m_mission->getPersonnel($info[0]->pilote);
-            $mission['spationaute'] = $this->m_mission->getPersonnel($info[0]->spationaute);
-            $mission['spationaute2'] = $this->m_mission->getPersonnel($info[0]->spationaute2);
-            
-            //$mission['actions'] = $this->m_mission->getAction($info[0]->spationaute2);
+        	$mission['info'] = $info;
+            $mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info->id_space_object);            
+            $mission['coque'] = $this->m_mission->getEquipment($info->coque);
+            $mission['lance'] = $this->m_mission->getEquipment($info->lance);
+            $mission['module'] = $this->m_mission->getEquipment($info->module);
+            $mission['combinaison'] = $this->m_mission->getEquipment($info->combinaison);
+            $mission['pilote'] = $this->m_mission->getPersonnel($info->pilote);
+            $mission['spationaute'] = $this->m_mission->getPersonnel($info->spationaute);
+            $mission['spationaute2'] = $this->m_mission->getPersonnel($info->spationaute2);
+            $mission['actions'] = $this->m_mission->getAction('all');
+            $mission['events'] = $this->m_mission->getEvents($user_id);
             
             $data['content'] = $this->load->view('template/content/mission_viewStatus4_content',$mission ,TRUE);
             break;
         case 5:
-            $data['content'] = $this->load->view('template/content/mission_viewStatus5_content','',TRUE);
+        	$mission['info'] = $info;
+        	$mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info->id_space_object);            
+            $mission['coque'] = $this->m_mission->getEquipment($info->coque);
+            $mission['lance'] = $this->m_mission->getEquipment($info->lance);
+            $mission['module'] = $this->m_mission->getEquipment($info->module);
+            $mission['combinaison'] = $this->m_mission->getEquipment($info->combinaison);
+            $mission['pilote'] = $this->m_mission->getPersonnel($info->pilote);
+            $mission['spationaute'] = $this->m_mission->getPersonnel($info->spationaute);
+            $mission['spationaute2'] = $this->m_mission->getPersonnel($info->spationaute2);
+            $mission['actions'] = $this->m_mission->getAction($info->id_space_action);
+            $mission['events'] = $this->m_mission->getEvents($user_id);
+            $mission['now'] = now();
+
+        	
+            $data['content'] = $this->load->view('template/content/mission_viewStatus5_content',$mission,TRUE);
             break;
         case 6:
-            $data['content'] = $this->load->view('template/content/mission_viewStatus6_content','',TRUE);
+        	$mission['info'] = $info;
+        	$mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info->id_space_object);            
+            $mission['coque'] = $this->m_mission->getEquipment($info->coque);
+            $mission['lance'] = $this->m_mission->getEquipment($info->lance);
+            $mission['module'] = $this->m_mission->getEquipment($info->module);
+            $mission['combinaison'] = $this->m_mission->getEquipment($info->combinaison);
+            $mission['pilote'] = $this->m_mission->getPersonnel($info->pilote);
+            $mission['spationaute'] = $this->m_mission->getPersonnel($info->spationaute);
+            $mission['spationaute2'] = $this->m_mission->getPersonnel($info->spationaute2);
+            $mission['actions'] = $this->m_mission->getAction($info->id_space_action);
+            $mission['events'] = $this->m_mission->getEvents($user_id);
+            $mission['now'] = now();
+        
+            $data['content'] = $this->load->view('template/content/mission_viewStatus6_content',$mission,TRUE);
             break;
         case 7:
+        	print_r(now());
             $data['content'] = $this->load->view('template/content/mission_viewStatus7_content','',TRUE);
+            break;
+        case 8:
+            $data['content'] = $this->load->view('template/content/mission_viewStatus8_content','',TRUE);
             break;
         }     
         
@@ -220,6 +265,138 @@ class c_mission extends CI_Controller {
         
         $this->load->view('layout',$data);
     }
-}
+    
+    function doAction(){
+    	$this->load->model('m_mission');
+    	$this->load->helper('date');
+    	
+        $user_id = $this->session->userdata('id');
+        $id_mission = $this->uri->segment(3);
+        $id_action = $this->uri->segment(4);
+        
+        $action = $this->m_mission->getAction($id_action);
+        $info = $this->m_mission->infoMission($user_id, $id_mission);
+        
+        if(($info->point_action - $action->cout_space_action) >= 0){
+	        $data = array(
+	                'id_space_action' => $id_action,
+	                'date_start_space_action' => now(),
+	                'date_end_space_action' => (now() + $action->time_space_action),
+	                'id_status' => 5,
+	        );
+	        
+			$this->m_mission->addAction($data, $user_id, $id_mission);
+			$this->m_mission->updateActionPoint($action->cout_space_action, $user_id, $id_mission);
+			
+			redirect('c_mission/listMission');
+		}
+		else{
+			echo 'Vous n\'avez pas assez de point d\'action';
+		}   
 
+    }
+    
+    function analyseAction() {
+    	$this->load->model('m_mission');
+    	$this->load->helper('date');
+    	$this->load->library('probabilityRandom');
+    	
+    	$user_id = $this->session->userdata('id');
+    	$id_mission = $this->uri->segment(3);
+        $id_action = $this->uri->segment(4);
+        
+        $info = $this->m_mission->infoMission($user_id, $id_mission);
+        $eventsNotAlreadys = $this->m_mission->getSpaceObjectEvent($info->id_space_object,$id_action);
+        $eventsAlreadys = $this->m_mission->getEvents($user_id);
+        
+        $events = array();
+        
+        foreach($eventsNotAlreadys as $eventsNotAlready){
+        	$event = $this->m_mission->getSingleEvents($user_id, $eventsNotAlready->id_space_object_event);
+        	if(empty($event)){
+        		$events[] = $eventsNotAlready;
+        	}
+        }
+        
+        $total = 0;
+        
+        if(empty($events)){
+        	
+        	$data2 = array(
+	                'id_space_action' => 0,
+	                'date_start_space_action' => 0,
+	                'date_end_space_action' => 0,
+	                'id_status' => 4,
+	        );
+	        
+			$this->m_mission->addAction($data2, $user_id, $id_mission);
+        	
+        	redirect('c_mission/index'); 
+        }
+        else{       
+        	foreach($events AS $event){
+        		$total = $total + $event->probabilite_space_object_event;
+        	}
+        	        	
+        	$multiplicateur = ($total*100)/$total;
+	        
+	        $eventsProba = new probabilityRandom;
+	        
+	        foreach($events AS $event){
+	        	$eventsProba->add( $event, (($event->probabilite_space_object_event)*$multiplicateur));
+	        }
+	        
+	  
+	        $event = $eventsProba->get();
+	        
+	        echo $event->name_space_object_event;
+	        
+	        
+				        $this->m_mission->updateUserSpaceObject($user_id, $info->id_space_object, $event->point_space_object_event);
+
+			$data = array(
+	                'id_user' => $user_id,
+	                'id_space_object_event' => $event->id_space_object_event,
+	                'id_mission' => $id_mission,
+	                'date_discover_space_object_event' => now(),
+	        );
+	        
+	        
+	        
+			$this->m_mission->addUserSpaceObjectEvent($data);
+			
+			$data2 = array(
+	                'id_space_action' => 0,
+	                'date_start_space_action' => 0,
+	                'date_end_space_action' => 0,
+	                'id_status' => 4,
+	        );
+	        
+			$this->m_mission->addAction($data2, $user_id, $id_mission);
+			
+			redirect('c_mission/index');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+        }
+    }
+    function comeBack(){
+    	$this->load->model('m_mission');
+    	$this->load->helper('date');
+    	
+        $user_id = $this->session->userdata('id');
+        $id_mission = $this->uri->segment(3);
+
+        $info = $this->m_mission->infoMission($user_id, $id_mission);
+        
+		$data = array(
+	                'date_end_start' => now(),
+	                'date_end_end' => (now() + 300),
+	                'id_status' => 7
+	        );
+	        
+		$this->m_mission->comeBack($data, $user_id, $id_mission);
+		redirect('c_mission/index');
+
+    }
+    
+}
 ?>

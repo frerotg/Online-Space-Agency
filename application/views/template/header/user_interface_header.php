@@ -3,6 +3,7 @@
     Bienvenue Mr le Directeur.
 </p>
 <ul>
+	 <li><?= anchor('c_message/index', 'Boite de reception', array('title' => 'Accedez à la page de gestion des messages')); ?></li>
      <li><?= anchor('c_personnel/index', 'Personnel de l\'agence', array('title' => 'Accedez à la page de gestion du personnel')); ?></li>
      <li><?= anchor('c_building/index', 'Batiment de l\'agence', array('title' => 'Accedez à la page de gestion des batiments')); ?></li>
      <li><?= anchor('c_technology/index', 'Technologie  de l\'agence', array('title' => 'Accedez à la page de gestion des technologies')); ?></li>
