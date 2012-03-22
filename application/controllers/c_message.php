@@ -89,10 +89,10 @@ class c_message extends CI_Controller {
             $message = $this->input->post('message');
 
             $data = array(
-                'id_user' => $id_user_receive,
+                'id_user_receive' => $id_user_receive,
                 'id_user_send' => $user_id,
                 'title_message' => $title_message,
-                'message' => $message,
+                'content_message' => $message,
                 'date_message' => now()
             );
 

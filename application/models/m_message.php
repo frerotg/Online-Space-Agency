@@ -15,7 +15,7 @@ class m_message extends CI_Model {
     function listMessage($user_id){
     	$this->db->select('*');
         $this->db->from('user_message');
-        $this->db->where('id_user', $user_id);
+        $this->db->where('id_user_receive', $user_id);
         $this->db->order_by("date_message", "asc");
         $query = $this->db->get();
         
@@ -27,7 +27,7 @@ class m_message extends CI_Model {
     function getMessage($user_id, $id_message){
     	$this->db->select('*');
         $this->db->from('user_message');
-        $this->db->where('id_user', $user_id);
+        $this->db->where('id_user_receive', $user_id);
         $this->db->where('id_message', $id_message);
         $query = $this->db->get();
         
@@ -38,7 +38,7 @@ class m_message extends CI_Model {
     
     function removeMessage($user_id, $id_message){
     	$this->db->where('id_message', $id_message);
-    	$this->db->where('id_user', $user_id);
+    	$this->db->where('id_user_receive', $user_id);
 		$this->db->delete('user_message'); 
     
     }

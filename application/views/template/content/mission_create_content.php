@@ -7,11 +7,11 @@
                                             foreach ($zones as $zone){
                                                     $data = array(
                                                     'name'        => 'zone',
-                                                    'id'          => $zone->name,
-                                                    'value'       => $zone->id_zone,
+                                                    'id'          => $zone->name_zone_space,
+                                                    'value'       => $zone->id_zone_space,
                                                     'checked'     => FALSE,
                                                     );?>         
-                                                <?= form_label($zone->name, $zone->name); ?> 
+                                                <?= form_label($zone->name_zone_space, $zone->name_zone_space); ?> 
                                                 <?= form_radio($data); ?>
                                            <?php
                                            }
@@ -25,11 +25,11 @@
                                             foreach ($objects as $object){
                                                     $data = array(
                                                     'name'        => 'object',
-                                                    'id'          => $object->name,
+                                                    'id'          => $object->name_space_object,
                                                     'value'       => $object->id_space_object,
                                                     'checked'     => FALSE,
                                                     );?>         
-                                                <?= form_label($object->name, $object->name); ?> 
+                                                <?= form_label($object->name_space_object, $object->name_space_object); ?> 
                                                 <?= form_radio($data); ?>
                                            <?php
                                            }
