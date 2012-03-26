@@ -1,5 +1,4 @@
-    	<div class="row">
-	    	<div class="span16">
+
 	    		<?php $attributes = array('class' => 'createMission'); ?>
                             <?= form_open_multipart('c_mission/create', $attributes); ?>
                                 <?= form_fieldset('Etape 1'); ?> 
@@ -190,7 +189,4 @@
                                 <?= form_fieldset_close(); ?>
                                 <?= form_submit(array('value' => 'S\'inscrire', 'class' => 'btn primary register-btn')); ?>
                             <?= form_close(); ?>
-	    	</div>
-    	</div>
-    	<div class="row">
-    	</div>
+

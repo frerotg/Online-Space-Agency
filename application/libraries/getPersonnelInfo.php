@@ -10,7 +10,7 @@
  *
  * @author greenpix
  */
-class getPersonnelInfo {
+class getpersonnelinfo {
     
     function getName(){
         $CI =& get_instance();

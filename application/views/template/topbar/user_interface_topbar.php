@@ -1,9 +1,13 @@
-<h3><a href="<?=base_url(); ?>">Online Space Agency</a></h3>
-<ul>
-    <li><?= anchor('c_user/disconnection', 'Se deconnecter', array('title' => 'S\'inscrire sur Online Space Agency')); ?></li>
-    <?= $resource->pierre ?>
-    <?= $resource->metal ?>
-    <?= $resource->oxygene ?>
-    <?= $resource->carburant ?>
-    <?= $resource->argent ?>
+<a class="brand" href="<?=base_url(); ?>">Online Space Agency</a>
+<ul class="nav">
+    <li class="divider-vertical"></li>
+    <li>Pierre : <?= $resource->pierre ?></li>
+    <li class="divider-vertical"></li>
+    <li>Metal : <?= $resource->metal ?></li>
+    <li class="divider-vertical"></li>
+    <li>Oxygène : <?= $resource->oxygene ?></li>
+    <li class="divider-vertical"></li>
+    <li>Carburant : <?= $resource->carburant ?></li>
+    <li class="divider-vertical"></li>
+    <li>Argent : <?= $resource->argent ?></li>
 </ul>

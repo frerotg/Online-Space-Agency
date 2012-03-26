@@ -31,7 +31,7 @@
     <td><?php echo anchor('c_personnel/kick/' .$spationaute->id_personnel ,'Virer', array('title' =>'Virer ce personnel',
                                                                               'class' => 'kick',
                                                                               'id' => $spationaute->id_personnel)) ?></td>
-    <td><?php echo anchor('c_personnel/auction/' .$spationaute->id_personnel ,'Vendre aux enchères', array('title' =>'Virer ce personnel',
+    <td><?php echo anchor('c_personnel/auction/' .$spationaute->id_personnel ,'Vendre aux enchères (Ne fonctionne pas encore)', array('title' =>'Virer ce personnel',
                                                                               'class' => 'auction')) ?></td>
               </tr>
                 <?php
@@ -51,7 +51,7 @@
                     <td><?php echo anchor('c_personnel/kick/' .$pilote->id_personnel ,'Virer', array('title' =>'Virer ce personnel',
                                                                               'class' => 'kick',
                                                                               'id' => $pilote->id_personnel)) ?></td>
-    <td><?php echo anchor('c_personnel/auction/' .$pilote->id_personnel ,'Vendre aux enchères', array('title' =>'Virer ce personnel',
+    <td><?php echo anchor('c_personnel/auction/' .$pilote->id_personnel ,'Vendre aux enchères (Ne fonctionne pas encore)', array('title' =>'Virer ce personnel',
                                                                               'class' => 'auction')) ?></td>
               </tr>
                 <?php
@@ -71,7 +71,7 @@
     <td><?php echo anchor('c_personnel/kick/' .$scientifique->id_personnel ,'Virer', array('title' =>'Virer ce personnel',
                                                                               'class' => 'kick',
                                                                               'id' => $scientifique->id_personnel)) ?></td>
-    <td><?php echo anchor('c_personnel/auction/' .$scientifique->id_personnel ,'Vendre aux enchères', array('title' =>'Virer ce personnel',
+    <td><?php echo anchor('c_personnel/auction/' .$scientifique->id_personnel ,'Vendre aux enchères (Ne fonctionne pas encore)', array('title' =>'Virer ce personnel',
                                                                               'class' => 'auction')) ?></td>
               </tr>
                 <?php
@@ -91,7 +91,7 @@
     <td><?php echo anchor('c_personnel/kick/' .$horslaloi->id_personnel ,'Virer', array('title' =>'Virer ce personnel',
                                                                               'class' => 'kick',
                                                                               'id' => $horslaloi->id_personnel)) ?></td>
-    <td><?php echo anchor('c_personnel/auction/' .$horslaloi->id_personnel ,'Vendre aux enchères', array('title' =>'Virer ce personnel',
+    <td><?php echo anchor('c_personnel/auction/' .$horslaloi->id_personnel ,'Vendre aux enchères (Ne fonctionne pas encore)', array('title' =>'Virer ce personnel',
                                                                               'class' => 'auction')) ?></td>
               </tr>
                 <?php
@@ -111,7 +111,7 @@
     <td><?php echo anchor('c_personnel/kick/' .$securite->id_personnel ,'Virer', array('title' =>'Virer ce personnel',
                                                                               'class' => 'kick',
                                                                               'id' => $securite->id_personnel)) ?></td>
-    <td><?php echo anchor('c_personnel/auction/' .$securite->id_personnel ,'Vendre aux enchères', array('title' =>'Virer ce personnel',
+    <td><?php echo anchor('c_personnel/auction/' .$securite->id_personnel ,'Vendre aux enchères (Ne fonctionne pas encore)', array('title' =>'Virer ce personnel',
                                                                               'class' => 'auction')) ?></td>
               </tr>
                 <?php

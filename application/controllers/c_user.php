@@ -165,6 +165,7 @@ class c_user extends CI_Controller {
                         'director_first_name' => $director_first_name,
                         'director_last_name' => $director_last_name,
                         'director_conviction' => $director_conviction,
+                        'director_experience' => '2',
                         'pierre' => '10000',
                         'metal' => '10000',
                         'oxygene' => '1000',

@@ -188,7 +188,9 @@ class m_user extends CI_Model {
     function setSpaceObject($id_user, $id){
         $data = array(
            'id_user' => $id_user ,
-           'id_space_object' => $id
+           'id_space_object' => $id,
+           'id_space_object_status' => 1,
+           'xp_space_object_status' => 0
         );
         $this->db->insert('user_space_object', $data);
     }

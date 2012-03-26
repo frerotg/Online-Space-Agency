@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ressources>
+    <ressource name="pierre">
+        <get niveau="1">100</get>
+        <get niveau="2">200</get>
+        <get niveau="3">300</get>
+    </ressource>
+    <ressource name="metal">
+        <get niveau="1">100</get>
+        <get niveau="2">200</get>
+        <get niveau="3">300</get>
+    </ressource>
+    <ressource name="oxygene">
+        <get niveau="1">100</get>
+        <get niveau="2">200</get>
+        <get niveau="3">300</get>
+    </ressource>
+    <ressource name="carburant">
+        <get niveau="1">100</get>
+        <get niveau="2">200</get>
+        <get niveau="3">300</get>
+    </ressource>
+    <ressource name="argent">
+        <get niveau="1">100</get>
+        <get niveau="2">200</get>
+        <get niveau="3">300</get>
+    </ressource>
+</ressources>

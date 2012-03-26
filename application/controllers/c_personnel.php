@@ -37,7 +37,7 @@ class c_personnel extends CI_Controller {
     function createPersonnel($personnel_type, $rep){
         
         $this->load->model('m_personnel');
-        $this->load->library('getPersonnelInfo');
+        $this->load->library('getpersonnelinfo');
         
         //Le nom du personnel
         $name = $this->getpersonnelinfo->getName();
@@ -50,7 +50,7 @@ class c_personnel extends CI_Controller {
         //Le status du personnel
         $status = 0;       
         //Le propriétaire du personnel
-        $owner = 0;       
+        $owner = NULL;       
         //Salaire du personnel
         $salaire = $this->getpersonnelinfo->getSalaire($skill['skill1'], $skill['skill2'],$skill['skill3']);      
         //Valeur du personnel

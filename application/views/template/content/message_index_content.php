@@ -1,8 +1,4 @@
-    	<div class="row">
-	    	<div class="span16">
-	    	</div>
-    	</div>
-    	<div class="row">
+
     		<?php echo anchor('c_message/newMessage/','Nouveau message', array('title' =>'Nouveau message')) ?>
     		<table class="bordered-table zebra-striped">
              <tr>
@@ -26,4 +22,3 @@
 		<?php
 		}?>
 		</table>
-       	</div>

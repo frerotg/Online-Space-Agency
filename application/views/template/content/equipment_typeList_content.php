@@ -1,11 +1,12 @@
-    	<div class="row">
-	    	<div class="span16">
-	    		
-	    	</div>
-    	</div>
-    	<div class="row">
-    		<div class="span10">
-                    <ul> 
+<table class="table">
+	<thead>
+		<tr>
+			<th>Nom du bâtiment</th>
+			<th>Status du bâtiment</th>
+			<th>Nombre d'exemplaire(s)</th>
+		</tr>
+	</thead>
+	<tbody>
                     <?php
                     foreach ($users_equipments as $equipment) { 
                         
@@ -34,27 +35,23 @@
                         }
                         
                         ?>
-                        <li>
-                        <?= $equipment->name_equipment ?>
+                        <tr>
+                        <td><?= $equipment->name_equipment ?></td>
                         <?php
                         if($equipment->status_equipment == 1){
-                             echo (' Votre equipement est en construction et il reste <span id="countdown" class="'.($equipment->date_end_equipment - now()).'"></span> sec Vous actuellement'.$equipment->amount_equipment.' exemplaire de cet equipement');
+                             echo ('<td>Votre equipement est en construction et il reste <span id="countdown" class="'.($equipment->date_end_equipment - now()).'"></span> sec Vous actuellement'.$equipment->amount_equipment.' exemplaire de cet equipement</td>');
                         }
                         else{
                             if($foo && $foo2){
-                                echo anchor('c_equipment/build/'.$equipment->id_equipment,'Construire', array('title' => 'Construire le'.$equipment->name_equipment, 'class' => ''));
-                                echo('Vous actuellement'.$equipment->amount_equipment.'exemplaire de cet equipement');
+                                echo '<td>'.anchor('c_equipment/build/'.$equipment->id_equipment,'Construire', array('title' => 'Construire le'.$equipment->name_equipment, 'class' => '')).'</td>';
+                                echo('<td>'.$equipment->amount_equipment.'</td>');
                             }
                             else{
-                                echo('Vous ne répondez pas aux conditions nécéssaire pour construire cet equipment');
-                                echo('Vous actuellement'.$equipment->amount_equipment.'exemplaire de cet equipement');
+                                echo('<td>Vous ne répondez pas aux conditions nécéssaire pour construire cet equipment</td>');
+                                echo('<td>'.$equipment->amount_equipment.'</td>');
                             }
-                        }?>
-                        </li>
-                    <?php
+                        }
                     }?>
-                        </li>
-                    </ul>
-    		</div>
-    		<div class="span6"></div>
-        </div>
+		</tr>
+	</tbody>
+</table>
