@@ -19,19 +19,13 @@ class c_personnel extends CI_Controller {
             $this->load->model('m_user');
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
+            $this->load->model('m_message');
+                $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
         }
         else{
             redirect('c_main/index');
         }
-    }
-    
-    function index(){
-        $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-        $data['content'] = $this->load->view('template/content/personnel_index_content', '', TRUE);
-        $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
-
-        $this->load->view('layout',$data);
     }
    
     function createPersonnel($personnel_type, $rep){
@@ -111,7 +105,7 @@ class c_personnel extends CI_Controller {
         
     }
     
-    function listHave(){
+    function index(){
         
         $user_id = $this->session->userdata('id');
         
@@ -145,7 +139,7 @@ class c_personnel extends CI_Controller {
         }
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-        $data['content'] = $this->load->view('template/content/personnel_listHave_content', $table, TRUE);
+        $data['content'] = $this->load->view('template/content/personnel_index_content', $table, TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
         $data['script'] = $this->load->view('template/script/personnel_script', '', TRUE);
         

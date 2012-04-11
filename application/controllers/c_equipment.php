@@ -18,6 +18,8 @@ class c_equipment extends CI_Controller {
             $this->load->model('m_user');
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
+            $this->load->model('m_message');
+                $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
         
             $this->load->model('m_equipment');
@@ -74,7 +76,7 @@ class c_equipment extends CI_Controller {
         
         foreach ($list['users_technologys'] as $technology){
             if($technology->level_technology>= 1){
-                $list['list_technology'][] = $technology->id;
+                $list['list_technology'][] = $technology->id_technology;
             }
         }
         

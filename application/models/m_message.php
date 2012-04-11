@@ -47,6 +47,26 @@ class m_message extends CI_Model {
     	$this->db->insert('user_message', $data);
     }
     
+    function getID($username){
+    	$this->db->select('id');
+        $this->db->from('users');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    
+    function getMessageNoRead($id_user){
+        $this->db->from('user_message');
+        $this->db->where('id_user_receive', $id_user);
+        $this->db->where('read_message', 0);
+		$query = $this->db->get();
+        
+        $result = $query->result();
+    	return $result;
+    }
+    
 }
 
 ?>

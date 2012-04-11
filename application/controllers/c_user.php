@@ -17,8 +17,11 @@ class c_user extends CI_Controller {
         if($this->session->userdata('is_connect')){
             
             $this->load->model('m_user');
+            $this->load->model('m_message');
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
+            $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
+            
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
         }
         else{
@@ -117,6 +120,11 @@ class c_user extends CI_Controller {
                     $form_data['country_continent'] = $this->input->post('country_continent');
                     $form_data['country_capital'] = $this->input->post('country_capital');
                     $form_data['country_government'] = $this->input->post('country_government');
+                    
+                    $experiences = $this->m_user->getExperiences();
+                    foreach($experiences AS $experience){
+                    	$form_data['listExperiences'][$experience->id_type_personnel] = $experience->name_type_personnel;
+                    }
 
                     $data['header'] = $this->load->view('template/header/register_step3_header', '', TRUE);
                     $data['content'] = $this->load->view('template/element/form/register/registerStep3',$form_data, TRUE);
@@ -150,6 +158,7 @@ class c_user extends CI_Controller {
                     $agency_initial = $this->input->post('agency_initial');
                     $director_first_name = $this->input->post('director_first_name');
                     $director_last_name = $this->input->post('director_last_name');
+                    $director_experience = $this->input->post('director_experience');
                     $director_conviction = $this->input->post('director_conviction');
 
                     $data = array(
@@ -165,7 +174,7 @@ class c_user extends CI_Controller {
                         'director_first_name' => $director_first_name,
                         'director_last_name' => $director_last_name,
                         'director_conviction' => $director_conviction,
-                        'director_experience' => '2',
+                        'director_experience' => $director_experience,
                         'pierre' => '10000',
                         'metal' => '10000',
                         'oxygene' => '1000',
@@ -179,6 +188,16 @@ class c_user extends CI_Controller {
                     );
                     
                     $this->m_user->addOnce($data);
+                    
+                    $this->load->library('email');
+
+					$this->email->from('noreply@online-space-agency.net', 'Online Space Agency');
+					$this->email->to($form_data['email']); 
+					
+					$this->email->subject('Inscription à Online Space Agency');
+					$this->email->message('Bonjour/Bonsoir '.$director_first_name.' '.$director_last_name.'.<br /> Votre agency à été créer !');	
+					
+					$this->email->send();
 
                     $data['header'] = $this->load->view('template/header/register_success_header', '', TRUE);
                     $data['content'] = $this->load->view('template/element/form/register/success', TRUE);
@@ -300,9 +319,19 @@ class c_user extends CI_Controller {
     
     function user_interface() { 
                 
+        $id_user = $this->session->userdata('id');
+        $this->load->model('m_building');
+        $this->load->model('m_technology');
+        $this->load->model('m_equipment');
+        $this->load->model('m_mission');
+        
+        $foo['missions'] = $this->m_mission->listUserMission($id_user);
+        $foo['listBuildings'] = $this->m_building->checkUnderConstruction($id_user);
+        $foo['listTechnologys'] = $this->m_technology->checkUnderDevelop($id_user);
+        $foo['listEquipments'] = $this->m_equipment->checkUnderConstruction($id_user);
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-        $data['content'] = $this->load->view('template/content/user_interface_content', '', TRUE);
+        $data['content'] = $this->load->view('template/content/user_interface_content', $foo, TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
         
         $this->load->view('layout',$data);
@@ -345,6 +374,82 @@ class c_user extends CI_Controller {
         redirect('c_main/index');
         
     }
+    
+    function index(){
+    	 $id_user = $this->session->userdata('id');
+    	 
+    	 $foo['email'] = $this->m_user->getEmail($id_user);
+    	 
+    	 $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
+         $data['content'] = $this->load->view('template/content/user_index_content', $foo, TRUE);
+         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        
+         $this->load->view('layout',$data);
+    }
+    
+    function updateInfo(){
+    	$this->load->model('m_user');
+        $this->load->library('form_validation');
+        $id_user = $this->session->userdata('id');
+		
+		$password_old = $this->input->post('password_old');
+		
+		if(!empty($password_old)){
+			$this->form_validation->set_rules('password_old', 'Password actuelle', 'trim|required|callback_checkPassword');
+			$this->form_validation->set_rules('password_new', 'Nouveau password', 'trim|required|matches[password_new2]');
+			$this->form_validation->set_rules('password_new2', 'Confirmation password', 'trim|required');
+		}
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        
+        if ($this->form_validation->run() == FALSE){
+			$foo['email'] = $this->m_user->getEmail($id_user);
+			
+         	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
+         	$data['content'] = $this->load->view('template/content/user_index_content', $foo, TRUE);
+         	$data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        }
+        else{
+            
+            $form_data['password_new'] = sha1($this->input->post('password'));
+            $form_data['email'] = $this->input->post('email');
+            
+            $data = array(
+                        'password' => $form_data['password_new'],
+                        'email' => $form_data['email'],
+                    );
+                    
+            $this->m_user->updateOnce($id_user, $data);
+
+            
+           	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
+         	$data['content'] = $this->load->view('template/content/success_updateInfo', '', TRUE);
+         	$data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        }
+        
+        $this->load->view('layout',$data);
+
+    }
+    
+    function checkPassword($p){
+        $this->load->model('m_user');
+        $u = $this->session->userdata('username');
+        
+        $password = sha1($p);
+        
+        $resultat = $this->m_user->checkUser($u, $password);
+        
+        if($resultat == 1)
+        {
+                return TRUE;
+        }
+        else
+        {
+        		$this->form_validation->set_message('checkPassword', 'Mot de passe incorrect');
+                return FALSE;
+        }
+    }
+    
+    
     
 }
 

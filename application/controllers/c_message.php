@@ -19,6 +19,8 @@ class c_message extends CI_Controller {
             $this->load->model('m_user');
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
+            $this->load->model('m_message');
+                $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
 
         }
@@ -84,10 +86,12 @@ class c_message extends CI_Controller {
         }
         else{
 
-            $id_user_receive = $this->input->post('id_user_receive');
+            $username_receive = $this->input->post('username_receive');
             $title_message = $this->input->post('title_message');
             $message = $this->input->post('message');
-
+			
+			$id_user_receive = $this->m_message->getID($username_receive);
+			
             $data = array(
                 'id_user_receive' => $id_user_receive,
                 'id_user_send' => $user_id,

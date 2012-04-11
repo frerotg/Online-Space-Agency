@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'LeagueGothicRegular';
+    src: url('../fonts/League_Gothic-webfont.eot');
+    src: url('../fonts/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/League_Gothic-webfont.woff') format('woff'),
+         url('../fonts/League_Gothic-webfont.ttf') format('truetype'),
+         url('../fonts/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('futura.eot');
+    src: url('futura.eot?#iefix') format('embedded-opentype'),
+         url('futura.woff') format('woff'),
+         url('futura.ttf') format('truetype'),
+         url('futura.svg#Futura') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+	font-size: 10px;
+	line-height: 1.2;
+	background: #55adaa;
+	section.home{
+		margin: auto;
+		width: 1280px;
+		background: #55adaa;
+		header{
+			background: #55adaa url("../img/layout/register-background.png") no-repeat top left;
+			height: 124px;
+			width: 1280px;
+			padding-top: 33px;
+			a{
+				font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+				text-transform: uppercase;
+				font-size: 3em;
+				text-align: center;
+				display: block;
+				width: 482px;
+				height: 83px;
+				padding-top: 17px;
+				margin: auto;
+				color: #e7e3cf;
+				text-shadow: 1px 1px 0px #4c4c4c, 3px 3px 0px #272621;
+				text-decoration: none;
+			}
+		}
+		div.description{
+			width: 940px;
+			padding: 0 10px;
+			margin: auto;
+			
+			div.description-left{
+				float: left;
+				width: 220px;
+				padding-right: 10px;
+				h1{
+					font-size: 10px;
+					text-align: left;
+					font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+					color: #e7e3cf;
+					text-transform: uppercase;
+					text-shadow: 1px 1px 0px #55adaa, 4px 4px 0px #47928f;
+					line-height: 2.6em;
+					span.little-h1{
+						font-size: 2.4em;
+					}
+					span.big-h1{
+						font-size: 4.8em;
+					}
+				}
+				p{
+					text-align: left;
+					font-family: 'Futura', Arial, Helvetica, sans-serif;
+					font-size: 1.8em;
+					color: #e7e3cf;
+					line-height: 1.2
+				}
+			}
+			
+			div.description-right{
+				float: right;
+				width: 220px;
+				padding-left: 10px;
+				h1{
+					font-size: 10px;
+					text-align: right;
+					font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+					color: #e7e3cf;
+					text-transform: uppercase;
+					text-shadow: 1px 1px 0px #55adaa, 4px 4px 0px #47928f;
+					line-height: 2.6em;
+					span.little-h1{
+						font-size: 2.4em;
+					}
+					span.big-h1{
+						font-size: 4.8em;
+					}
+				}
+				p{
+					text-align: right;
+					font-family: 'Futura', Arial, Helvetica, sans-serif;
+					font-size: 1.8em;
+					color: #e7e3cf;
+					line-height: 1.2
+				}
+			}
+			
+			div.logo{
+				margin: 0 220px;
+				padding: 0 10px;
+				width: 460px;
+				text-align: center;
+				img{
+					margin: auto;
+					width: 379px;
+					height: 350px;
+				}
+			}
+		}
+		div.connection{
+			form{
+				margin-top: 50px;
+				fieldset{
+					width: 100%;
+					border: none;
+					legend{
+							background: url("../img/layout/line.png") repeat-x left center;
+							text-align: center;
+							display: block;
+							width: 100%;
+							padding: 0;
+							span {
+								padding: 0 10px;
+								background: #55adaa;
+								font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+								color: #e7e3cf;
+								text-transform: uppercase;
+								text-shadow: 1px 1px 0px #55adaa, 4px 4px 0px #47928f;
+								font-size: 3.6em;
+							}
+					}
+					.contener-username{
+						float: left;
+						width: 50%;
+						text-align: right;
+						input#username{
+							width: 220px;
+							height: 40px;
+							background-color: #47928f!important;
+							border-radius: 5px;
+							margin: auto;
+							
+						}
+					}
+					.contener-password{
+						float: right;
+						width: 50%;
+						input#password{
+							background-color: #47928f!important;
+							border-radius: 5px;
+							width: 220px;
+							height: 40px;
+							margin: auto;
+						}
+					}
+					.input-connection{
+						background: url("../img/layout/btn-connection.png") no-repeat;
+						width: 147px;
+						height: 38px;
+						border: none;
+						font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+						text-transform: uppercase;
+						font-size: 2em;
+						text-align: center;
+						color: #e7e3cf;
+						text-shadow: 1px 1px 0px #4c4c4c, 3px 3px 0px #272621;
+						text-decoration: none;
+						margin: auto;
+					}
+					
+				}
+			}
+		}
+		
+	}
+}

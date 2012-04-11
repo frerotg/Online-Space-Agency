@@ -9,6 +9,7 @@
 	<?php foreach ($users_buildings as $building) { 
 		$foo = TRUE;
 		$foo2 = TRUE;
+		$enConstruction = 0;
 		
 		if(!empty($building->building_required)){
         	$foo = FALSE;

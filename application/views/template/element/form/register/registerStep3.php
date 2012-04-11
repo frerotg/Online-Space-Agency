@@ -19,6 +19,7 @@
 		        <?= form_error('agency_initial', '<span class="help-inline">', '</span>'); ?>                     
             </div>
         </div>
+                
         <div class="clearfix">
 	        <?= form_label('Nom du directeur :', 'director_first_name'); ?>
 	        <div class="input">
@@ -37,6 +38,12 @@
 		        <?= form_error('director_last_name', '<span class="help-inline">', '</span>'); ?>
 		    </div>
 		</div>
+		<div class="clearfix">
+	        <?= form_label('Carrière du directeur :'); ?>
+	        <div class="input">        
+		        <?= form_dropdown('director_experience', $listExperiences); ?>
+	        </div>
+	    </div>
 		<div class="clearfix">
 	        <?= form_label('Conviction :'); ?>
 	        <div class="input">        

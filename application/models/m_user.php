@@ -124,6 +124,15 @@ class m_user extends CI_Model {
         return $result;
     }
     
+    function getExperiences(){
+        $this->db->select('id_type_personnel, name_type_personnel');
+        $this->db->from('personnel_type');
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
     function updateResource($user_id, $resource, $amount){
         
         $this->db->where('id', $user_id);
@@ -207,6 +216,22 @@ class m_user extends CI_Model {
         
         $this->db->where('id', $user_id);
         $this->db->update('users', array('first_time' => '1')); 
+    }
+    
+    function updateOnce($user_id, $data){
+        
+        $this->db->where('id', $user_id);
+        $this->db->update('users', $data); 
+    }
+    
+    function getEmail($user_id){
+    	$this->db->select('email');
+        $this->db->from('users');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
     }
 }
 ?>
