@@ -28,6 +28,9 @@ class c_building extends CI_Controller {
 
             foreach ($buildings as $building) {
                 if(now() >= $building->date_end_building){
+                	$this->load->model('m_message');
+                	
+                	$this->m_message->addAlert($user_id, 'Bâtiment construit', 'Votre bâtiment "'.$building->name_building.'" à été construit avec succès !');
                     $this->m_building->changeStatus($user_id, $building->id_building);
                 }
             }
@@ -112,10 +115,14 @@ class c_building extends CI_Controller {
 
         if($reqPierre<=$resources->pierre AND $reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
             $this->m_building->updateBuilding($user_id, $building_id, 1, $buildTime);
+            $status = 'success';
         }
         else{
-            echo('Pas assez de ressources');
+            $status = 'error';
         }
+        
+        $data = array('status'=>$status, 'time'=>$buildTime);
+        echo json_encode($data);
     }
     
     function evolve(){

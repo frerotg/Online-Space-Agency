@@ -1,3 +1,5 @@
+<p class="success"><strong>Bravo</strong> Tu as recruté du personnel.</p>
+<p class="error"><strong>Erreur !</strong> Tu est trop fauché pour recruté ce personnel.</p>
 <table class="table">
 	<thead>
 		<tr>
@@ -40,7 +42,7 @@
             	if($building->level_building == 0){
                 	if($foo && $foo2){
                     	if($enConstruction != 1){
-                        	echo '<td>'.anchor('c_building/build/'.$building->id_building,'Construire', array('title' => 'Construire le'.$building->name_building, 'class' => '')).'</td>';
+                        	echo '<td>'.anchor('c_building/build/'.$building->id_building,'Construire', array('title' => 'Construire le'.$building->name_building, 'class' => 'build', 'id' => $building->id_building)).'</td>';
                         }
                         else{
                         	echo '<td>Un bâtiment est déjà en construction</td>';
@@ -51,7 +53,7 @@
                     }
                	}
                	else{
-               		echo '<td>'.anchor('c_building/evolve/'.$building->id_building.'/'.(($building->level_building) +1),'Evoluer au niveau suivant', array('title' => 'Evoluer le batiment'.$building->name_building, 'class' => '')).'</td>';
+               		echo '<td>'.anchor('c_building/evolve/'.$building->id_building.'/'.(($building->level_building) +1),'Evoluer au niveau suivant', array('title' => 'Evoluer le batiment'.$building->name_building, 'class' => 'evolve')).'</td>';
                	}
 			}
 		}?>

@@ -32,6 +32,9 @@
                             echo('<td>Vous ne pouvez pas encore débloquer cette technologie</td>');
                         }
                     }
+                    elseif($technology->level_technology == $technology->levelmax_technology){
+                    	echo('<td>Vous avez atteint le niveau max</td>');
+                    }
                     else{
                         echo '<td>'.anchor('c_technology/improve/'.$technology->id_technology.'/'.(($technology->level_technology) +1),'Evoluer au niveau suivant', array('title' => 'Evoluer le batiment'.$technology->name_technology, 'class' => '')).'</td>';
                     }

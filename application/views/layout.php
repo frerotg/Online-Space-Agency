@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?=base_url(); ?>css/bootstrap-responsive.min.css"> -->
     <link rel="stylesheet" href="<?=base_url(); ?>css/jquery.css">
     <link rel="stylesheet" href="<?=base_url(); ?>css/style.css">
+    <link rel="stylesheet" href="<?=base_url(); ?>css/jquery.qtip.min.css">
 </head>
 <body>
 	<div id="container-all">

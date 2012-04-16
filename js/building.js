@@ -14,26 +14,27 @@ $(function(){
 	}
     });
     
-    $('.recruit').click(function(){
-    var id = $(this).attr('id');
-    var parent = $(this).parent().parent();
-    var url_send = $(this).attr('href');
+    $('a[title]').qtip();
     
-    $.ajax({
-      type: "POST",
-      url: url_send,
-      success: function(data)
-      {
-        var responseData = jQuery.parseJSON(data);
-        if(responseData.status == 'error'){
-            $('.error').fadeIn();
-        }
-        else{
-            parent.slideUp("slow",function(){$(this).remove();});
-            $('.success').fadeIn();
-        }
-      }
-    });
-    return false;
-  });
+	$('.build').click(function(){
+    	var id = $(this).attr('id');
+    	var parent = $(this).parent();
+    	var url_send = $(this).attr('href');
+    
+    	$.ajax({
+	      	type: "POST",
+	      	url: url_send,
+	      	success: function(data){
+	        	var responseData = jQuery.parseJSON(data);
+	        	if(responseData.status == 'error'){
+	        	$('.error').fadeIn();
+	        	}
+	        	else{
+	        	$('.success').fadeIn();
+	        	parent.text('Il reste '+responseData.time+' sec');
+	        	}
+	      	}
+    	});
+	return false;
+	});
 });

@@ -67,6 +67,17 @@ class m_message extends CI_Model {
     	return $result;
     }
     
+    function addAlert($id_user_receive, $title_message, $message){
+    	$data = array(
+        	'id_user_receive' => $id_user_receive,
+            'id_user_send' => 2,
+            'title_message' => $title_message,
+            'content_message' => $message,
+            'date_message' => now()
+            );
+    	$this->db->insert('user_message', $data);
+    }
+    
 }
 
 ?>
