@@ -115,6 +115,7 @@ class c_message extends CI_Controller {
     	$this->m_message->removeMessage($user_id, $id_message);
     	
     	redirect('c_message/index');
-    }    
+    }
+    
     
 }
