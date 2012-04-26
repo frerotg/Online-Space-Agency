@@ -47,9 +47,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql51-53.perso';
-$db['default']['username'] = 'onlinespace';
-$db['default']['password'] = 'badudes4';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'onlinespace';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

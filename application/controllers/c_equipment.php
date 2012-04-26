@@ -19,7 +19,7 @@ class c_equipment extends CI_Controller {
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
             $this->load->model('m_message');
-                $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
+            $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
         
             $this->load->model('m_equipment');
@@ -109,11 +109,14 @@ class c_equipment extends CI_Controller {
 
         if($reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
             $this->m_equipment->buildEquipment($user_id, $equipment_id, $buildTime);
-            redirect('c_main/index');
+            $status = 'success';
         }
         else{
-            echo('Pas assez de ressources');
+            $status = 'error';
         }
+        
+        $data = array('status'=>$status, 'time'=>$buildTime);
+        echo json_encode($data);
         
     }
 }

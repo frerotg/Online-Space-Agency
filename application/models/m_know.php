@@ -39,6 +39,16 @@ class m_know extends CI_Model {
     function test(){
     	$this->db->insert('know_type', array('name_know_type' => 'Salut', 'description_know_type' => 'lol'));
     }
+    
+    function historicDate($date){    
+    	$this->db->select('*');
+    	$this->db->from('know_date');
+    	$this->db->where('date_know_date', $date);
+    	$query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
 }
 
 ?>

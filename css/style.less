@@ -79,6 +79,8 @@
 @black: #414042;
 @darkblack: #282828;
 
+@background: #f6f4ec;
+
 
 
 body {
@@ -238,6 +240,65 @@ body {
 							border: 2px dashed #b8b6a9;
 							margin: 8px;
 						} 
+					}
+				}
+			}
+		}
+		div.content{
+			div.welcome{
+				p{
+					font-family: 'LobsterTwoBold';
+					font-size: 2.4em;
+					color: @black;
+					text-align: center;
+				}
+			}
+			div.historicalDate{
+				width: 780px;
+				padding: 10px;
+				margin: auto;
+				background-color: @darkwhite;
+				p{
+					font-family: Georgia;
+					color: @black;
+					font-size: 16px;
+					font-style: italic;
+				}
+			}
+			div.mission{
+				h1{
+					font-family: 'LobsterTwoBold';
+					font-size: 2.4em;
+					color: @black;
+					text-align: center;
+					background: url("../img/layout/lineblack.png") repeat-x center;
+					span{
+						padding: 0 20px;
+						background-color: @background;
+					}
+				}
+				div.way{
+					width: 800px;
+					margin: auto;
+					div{
+						display: inline-block;
+					}
+					div.earth{
+						width: 140px;
+						height: 180px;
+						background: url("../img/layout/icon-earth.png") no-repeat center
+					}
+					div.progress{
+						width: 520px;
+						height: 180px;
+						background-color: aqua;
+					}
+					div.destination{
+						width: 140px;
+						height: 180px;
+						background-color: green;
+					}
+					div.rocket{
 					}
 				}
 			}

@@ -114,12 +114,12 @@
                                             foreach ($combinaisons as $combinaison){
                                                     $data = array(
                                                     'name'        => 'combinaison',
-                                                    'id'          => $combinaison->name,
+                                                    'id'          => $combinaison->name_equipment,
                                                     'value'       => $combinaison->id_equipment,
                                                     'checked'     => FALSE,
                                                     );?>
                                                 <label class="radio"> 
-                                                <?= form_radio($data); ?><?= $combinaison->name ?>
+                                                <?= form_radio($data); ?><?= $combinaison->name_equipment ?>
                                                 </label>
                                            <?php
                                            }

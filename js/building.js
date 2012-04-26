@@ -11,6 +11,7 @@ $(function(){
 	startNumber: number,
 	callBack: function(me) {
 		$(me).text('Votre batiment est construit !').css('color','#090');
+		window.location.reload();
 	}
     });
     

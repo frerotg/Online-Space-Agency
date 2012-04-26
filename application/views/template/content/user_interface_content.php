@@ -1,3 +1,18 @@
+	<div class="welcome">
+		<p>Bienvenue Mr/Mme <?= $this->session->userdata('username'); ?></p>
+	</div>
+	<div class="historicalDate">
+		<p>Le 25 avril 1990, le télescope spatial Hubble fût lancé depuis Cap Canaveral</p>
+	</div>
+	<div class="mission">
+		<h1><span>Mission en cours</span></h1>
+		<div class="way">
+			<div class="earth"><h2>Terre</h2></div><!--
+			--><div class="progress"><h2>235sec</h2></div><!--
+			--><div class="destination"><h2>Saturne</h2></div><!--
+			--><div class="rocket"></div>
+		</div>
+	</div>
 <?php
 	if(empty($listBuildings)){
 		echo 'Vous n\'avez aucun bâtiment en construction';

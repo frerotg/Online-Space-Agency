@@ -324,11 +324,18 @@ class c_user extends CI_Controller {
         $this->load->model('m_technology');
         $this->load->model('m_equipment');
         $this->load->model('m_mission');
-        
+        $this->load->model('m_know');
+        $this->load->helper('date');
+                
         $foo['missions'] = $this->m_mission->listUserMission($id_user);
         $foo['listBuildings'] = $this->m_building->checkUnderConstruction($id_user);
         $foo['listTechnologys'] = $this->m_technology->checkUnderDevelop($id_user);
         $foo['listEquipments'] = $this->m_equipment->checkUnderConstruction($id_user);
+        
+        $format = 'DATE_RFC822';
+		$time = time();
+		$date = standard_date($format, $time);
+		$foo['know_date'] = $this->m_know->historicDate($date);
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/user_interface_content', $foo, TRUE);

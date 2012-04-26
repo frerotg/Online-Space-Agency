@@ -224,7 +224,7 @@ class m_mission extends CI_Model {
     }
     
     function updateActionPoint($actionCout, $user_id, $id_mission){
-    	$this->db->query('UPDATE user_mission SET point_action=point_action-'.$actionCout.' WHERE id_user='.$id_user.' AND id_mission='.$id_mission.' ');
+    	$this->db->query('UPDATE user_mission SET point_action=point_action-'.$actionCout.' WHERE id_user='.$user_id.' AND id_mission='.$id_mission.' ');
     }
     
     function addUserSpaceObjectEvent($data){
@@ -235,6 +235,23 @@ class m_mission extends CI_Model {
         $this->db->where('id_user', $id_user);
         $this->db->where('id_mission', $id_mission);
 		$this->db->update('user_mission', $data); 
+    }
+    
+    function listUserSpaceObject($id_user){
+    	$this->db->select('*');
+        $this->db->from('user_space_object');
+        $this->db->where('id_user', $id_user);
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
+    function setSpaceObjectStatus($user_id, $userSpaceObject, $number){
+    	$array = array('id_space_object_status'=> $number);
+        $this->db->where('id_user', $user_id);
+        $this->db->where('id_space_object', $userSpaceObject);
+        $this->db->update('user_space_object', $array);
     }
 }
 

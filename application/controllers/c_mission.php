@@ -36,8 +36,8 @@ class c_mission extends CI_Controller {
                     elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
                         $this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
                     }
-                    elseif( (($mission->date_start_end) == 0) AND (($mission->date_end_start) == 0) ){
-                    	if($mission->id_space_action == 0){
+                    elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
+                    	if($mission->id_space_action == NULL){
                         	$this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
                         }
                         else{
@@ -55,6 +55,23 @@ class c_mission extends CI_Controller {
                     elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
                         $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
                     }
+                }
+                
+                $userSpaceObjects = $this->m_mission->listUserSpaceObject($user_id);
+                
+                foreach($userSpaceObjects AS $userSpaceObject){
+                	if($userSpaceObject->xp_space_object_status == 0){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 1);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 1) AND ($userSpaceObject->xp_space_object_status < 100)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 2);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 100) AND ($userSpaceObject->xp_space_object_status < 1000)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 3);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 1000) AND ($userSpaceObject->xp_space_object_status < 10000)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 4);
+                	}
                 }
             }
             else{
@@ -157,7 +174,8 @@ class c_mission extends CI_Controller {
             $phase_test = $this->input->post('phase_test');
 
             $data = array(
-                'id_user' => $user_id,
+                'id_user' => $user_id, 
+                'id_status' => 1,
                 'id_zone_space' => $zone,
                 'id_space_object' => $object,
                 'coque' => $coque,
@@ -168,7 +186,10 @@ class c_mission extends CI_Controller {
                 'spationaute' => $spationaute,
                 'spationaute2' => $spationaute2,
                 'phase_test' => $phase_test,
-                'date_start_start' => $date_start
+                'id_space_action' => NULL,
+                'date_start_start' => $date_start,
+                'date_test' => $date_start+100,
+				'date_start_end' => $date_start+200
             );
 
             $this->m_mission->addMission($data);
@@ -351,10 +372,8 @@ class c_mission extends CI_Controller {
 	  
 	        $event = $eventsProba->get();
 	        
-	        echo $event->name_space_object_event;
 	        
-	        
-				        $this->m_mission->updateUserSpaceObject($user_id, $info->id_space_object, $event->point_space_object_event);
+			$this->m_mission->updateUserSpaceObject($user_id, $info->id_space_object, $event->point_space_object_event);
 
 			$data = array(
 	                'id_user' => $user_id,
@@ -368,7 +387,7 @@ class c_mission extends CI_Controller {
 			$this->m_mission->addUserSpaceObjectEvent($data);
 			
 			$data2 = array(
-	                'id_space_action' => 0,
+	                'id_space_action' => NULL,
 	                'date_start_space_action' => 0,
 	                'date_end_space_action' => 0,
 	                'id_status' => 4,

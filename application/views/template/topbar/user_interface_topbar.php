@@ -6,7 +6,10 @@
 	--><li><span class="icon icon-carburant">Carburant</span><span class="ressource"><?= $resource->carburant ?></span></li><!--
 	--><li><span class="icon icon-argent">Argent</span><span class="ressource"><?= $resource->argent ?>€</span></li><!--
 --></ul><!--
---><?= anchor('c_message/index','<span class="icon icon-mail">'.$message.'</span>Message', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-message')); ?><!--
+--><?php if($message !== 0){?>
+<?= anchor('c_message/index','<span class="icon icon-mail">'.$message.'</span>Message', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-message'));}
+	else{?><?= anchor('c_message/index','Message', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-message'));
+	}?><!--
 --><?= anchor('c_user/index', 'Gestion du compte', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-setting')); ?><!--
 --><?= anchor('c_stat/index', 'Statistique', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-stat')); ?><!--
 --><?= anchor('c_user/disconnection', 'Deconnection', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-logout')); ?>

@@ -24,6 +24,15 @@ class m_message extends CI_Model {
 
     }
     
+    function listUser(){
+    	$this->db->select('id,username');
+        $this->db->from('users');
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
     function getMessage($user_id, $id_message){
     	$this->db->select('*');
         $this->db->from('user_message');
@@ -70,7 +79,7 @@ class m_message extends CI_Model {
     function addAlert($id_user_receive, $title_message, $message){
     	$data = array(
         	'id_user_receive' => $id_user_receive,
-            'id_user_send' => 2,
+            'id_user_send' => 3,
             'title_message' => $title_message,
             'content_message' => $message,
             'date_message' => now()

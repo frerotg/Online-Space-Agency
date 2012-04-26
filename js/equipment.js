@@ -14,7 +14,7 @@ $(function(){
 	}
     });
     
-    $('.recruit').click(function(){
+    $('.build').click(function(){
     var id = $(this).attr('id');
     var parent = $(this).parent().parent();
     var url_send = $(this).attr('href');

@@ -43,7 +43,7 @@
                         }
                         else{
                             if($foo && $foo2){
-                                echo '<td>'.anchor('c_equipment/build/'.$equipment->id_equipment,'Construire', array('title' => 'Construire le'.$equipment->name_equipment, 'class' => '')).'</td>';
+                                echo '<td>'.anchor('c_equipment/build/'.$equipment->id_equipment,'Construire', array('title' => 'Construire le'.$equipment->name_equipment, 'class' => 'build')).'</td>';
                                 echo('<td>'.$equipment->amount_equipment.'</td>');
                             }
                             else{

@@ -84,7 +84,7 @@ class m_equipment extends CI_Model {
         $query = $this->db->get();
         $result = $query->result();
         
-        $array = array('status_equipment' => 1, 'date_start_equipment' => now(), 'date_end_equipment' => (now()+$buildTime), 'amount_equipment' => (($result[0]->amount)+1));
+        $array = array('status_equipment' => 1, 'date_start_equipment' => now(), 'date_end_equipment' => (now()+$buildTime), 'amount_equipment' => (($result[0]->amount_equipment)+1));
         $this->db->where('id_user', $user_id);
         $this->db->where('id_equipment', $equipment_id);
         $this->db->update('user_equipment', $array);  
