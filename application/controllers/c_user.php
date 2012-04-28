@@ -23,6 +23,82 @@ class c_user extends CI_Controller {
             $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
+            
+            $this->load->model('m_building');
+            $buildings = $this->m_building->checkUnderConstruction($user_id);
+
+            foreach ($buildings as $building) {
+                if(now() >= $building->date_end_building){
+                	$this->load->model('m_message');
+                	
+                	$this->m_message->addAlert($user_id, 'Bâtiment construit', 'Votre bâtiment "'.$building->name_building.'" à été construit avec succès !');
+                    $this->m_building->changeStatus($user_id, $building->id_building);
+                }
+            }
+            $this->load->model('m_equipment');
+            $equipments = $this->m_equipment->checkUnderConstruction($user_id);
+
+            foreach ($equipments as $equipment) {
+                if(now() >= $equipment->date_end_equipment){
+                    $this->m_equipment->changeStatus($user_id, $equipment->id_equipment);
+                }
+            }
+            $this->load->model('m_mission');
+                $missions = $this->m_mission->listUserMission($user_id);
+                
+                foreach ($missions as $mission) {
+                    if( (($mission->date_start_start) <= now()) AND (($mission->date_test) >= now()) ){
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 2);
+                    }
+                    elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
+                    }
+                    elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
+                    	if($mission->id_space_action == NULL){
+                        	$this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
+                        }
+                        else{
+                        	if($mission->date_start_space_action != 0 AND $mission->date_end_space_action > now()){
+                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 5);
+                        	}
+                        	else if($mission->date_start_space_action != 0 AND $mission->date_end_space_action <= now()){
+                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 6);
+                        	}
+                        }
+                    }
+                    elseif( (($mission->date_end_start) <= now()) AND (($mission->date_end_end) >= now()) ){
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 7);
+                    }
+                    elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
+                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
+                    }
+                }
+                
+                $userSpaceObjects = $this->m_mission->listUserSpaceObject($user_id);
+                
+                foreach($userSpaceObjects AS $userSpaceObject){
+                	if($userSpaceObject->xp_space_object_status == 0){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 1);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 1) AND ($userSpaceObject->xp_space_object_status < 100)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 2);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 100) AND ($userSpaceObject->xp_space_object_status < 1000)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 3);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 1000) AND ($userSpaceObject->xp_space_object_status < 10000)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 4);
+                	}
+                }
+                $this->load->model('m_technology');
+            	$technologys = $this->m_technology->checkUnderDevelop($user_id);
+
+            	foreach ($technologys as $technology) {
+                	if(now() >= $technology->date_end_technology){
+                		$this->m_technology->changeStatus($user_id, $technology->id_technology);
+            		}
+        		}
+
         }
         else{
         }
@@ -454,8 +530,7 @@ class c_user extends CI_Controller {
                 return FALSE;
         }
     }
-    
-    
+
     
 }
 

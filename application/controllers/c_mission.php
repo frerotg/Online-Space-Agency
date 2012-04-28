@@ -25,7 +25,6 @@ class c_mission extends CI_Controller {
                 $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
                 $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
                 
-                $user_id = $this->session->userdata('id');
                 $this->load->model('m_mission');
                 $missions = $this->m_mission->listUserMission($user_id);
                 
