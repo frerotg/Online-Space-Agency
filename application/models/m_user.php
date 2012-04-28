@@ -233,5 +233,42 @@ class m_user extends CI_Model {
         $result = $query->row();
         return $result;
     }
+    
+    function checkEquipmentUnderConstruction($id){
+        
+        $this->db->select('*');
+        $this->db->from('user_equipment');
+        $this->db->join('equipment_list', 'user_equipment.id_equipment = equipment_list.id_equipment');
+        $this->db->where('id_user', $id);
+        $this->db->where('status_equipment', 1);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    function checkBuildingUnderConstruction($id){
+        
+        $this->db->select('*');
+        $this->db->from('user_building');
+        $this->db->join('building_list', 'user_building.id_building = building_list.id_building');
+        $this->db->where('id_user', $id);
+        $this->db->where('status_building', 1);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    function checkUnderDevelop($id){
+        
+        $this->db->select('*');
+        $this->db->from('user_technology');
+        $this->db->join('technology_list', 'user_technology.id_technology = technology_list.id_technology');
+        $this->db->where('id_user', $id);
+        $this->db->where('status_technology', 1);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
 }
 ?>

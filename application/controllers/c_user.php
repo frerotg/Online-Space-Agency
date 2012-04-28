@@ -320,17 +320,15 @@ class c_user extends CI_Controller {
     function user_interface() { 
                 
         $id_user = $this->session->userdata('id');
-        $this->load->model('m_building');
-        $this->load->model('m_technology');
-        $this->load->model('m_equipment');
+        $this->load->model('m_user');
         $this->load->model('m_mission');
         $this->load->model('m_know');
         $this->load->helper('date');
                 
         $foo['missions'] = $this->m_mission->listUserMission($id_user);
-        $foo['listBuildings'] = $this->m_building->checkUnderConstruction($id_user);
-        $foo['listTechnologys'] = $this->m_technology->checkUnderDevelop($id_user);
-        $foo['listEquipments'] = $this->m_equipment->checkUnderConstruction($id_user);
+        $foo['building'] = $this->m_user->checkBuildingUnderConstruction($id_user);
+        $foo['technology'] = $this->m_user->checkUnderDevelop($id_user);
+        $foo['equipment'] = $this->m_user->checkEquipmentUnderConstruction($id_user);
         
         $format = 'DATE_RFC822';
 		$time = time();
@@ -340,6 +338,7 @@ class c_user extends CI_Controller {
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/user_interface_content', $foo, TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        $data['script'] = $this->load->view('template/script/user_script', '', TRUE);
         
         $this->load->view('layout',$data);
     }

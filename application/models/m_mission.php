@@ -17,6 +17,7 @@ class m_mission extends CI_Model {
         $this->db->select('*');
         $this->db->from('user_mission');
         $this->db->join('mission_status', 'user_mission.id_status = mission_status.id_status');
+        $this->db->join('space_object', 'user_mission.id_space_object = space_object.id_space_object');
         $this->db->where('id_user', $user_id);
         $query = $this->db->get();
         $result = $query->result();

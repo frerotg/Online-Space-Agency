@@ -1,10 +1,9 @@
 /*
 	Class:    	countDown
-	Author:   	David Walsh
-	Website:    http://davidwalsh.name
+	Author:   	Grégory	Frerot
+	Website:    http://www.greenpix.be
 	Version:  	1.0.0
-	Date:     	11/30/2008
-	Built For:  jQuery 1.2.6
+	Date:     	04/02/2012
 */
 
 jQuery.fn.countDown = function(settings,to) {
