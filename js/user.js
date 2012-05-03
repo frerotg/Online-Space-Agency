@@ -1,11 +1,5 @@
 $(function(){
-    $('.error').hide();
-    $('.success').hide();
-    $('.error_argent').hide();
-    $('.error_price').hide();
-    $('.formBid').hide();
-    
-    
+  
     $('.countdown').each(function(){
     
 	    var number = $(this).html();
@@ -21,5 +15,10 @@ $(function(){
     
     });
   
-    $('a[title]').qtip();
+    $('.infobulle-rocket').hide();
+    $('.rocket').mouseover(function(){
+    	$('.infobulle-rocket').show();
+    }).mouseout(function(){
+    	$('.infobulle-rocket').hide();
+    });
 });

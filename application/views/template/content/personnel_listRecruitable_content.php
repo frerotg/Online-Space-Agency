@@ -1,117 +1,117 @@
-
-    <div class="alert-message success">
-    <p><strong>Bravo</strong> Tu as recruté du personnel.</p>
-    </div>
-    <div class="alert-message error">
-    <p><strong>Erreur !</strong> Tu est trop fauché pour recruté ce personnel.</p>
-    </div>
-    <?php
-    foreach($types as $type){?>
-         <h3><?= $type->name_type_personnel ?></h3>
-         <table class="bordered-table zebra-striped">
-             <tr>
-                 <th>ID du Type</th>
-                 <th>Nom</th>
-                 <th>Réputation /100</th>
-                 <th><?= $type->skill1_type_personnel ?></th>
-                 <th><?= $type->skill2_type_personnel ?></th>
-                 <th><?= $type->skill3_type_personnel ?></th>
-                 <th>Salaire par moi</th>
-                 <th>Valeur</th>
-             </tr>
-        <?php
-        switch ($type->id_type_personnel) {
-            case 1:
-                foreach($spationautes AS $spationaute){?>
-                <tr>
-                <td><?= $spationaute->id_personnel; ?></td>
-                <td><?= $spationaute->name_personnel; ?></td>
-                <td><?= $spationaute->reputation_personnel; ?></td>
-                <td><?= $spationaute->skill1_personnel; ?></td>
-                <td><?= $spationaute->skill2_personnel; ?></td>
-                <td><?= $spationaute->skill3_personnel; ?></td>
-                <td><?= $spationaute->salaire_personnel; ?></td>
-                <td><?= $spationaute->valeur_personnel; ?></td>
-                <td><?php echo anchor('c_personnel/recruit/' .$spationaute->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
+<div class="personnel_index">
+	<ul class="sub-menu">
+		<li>
+			<?= anchor('c_personnel/index', 'Mon personnel', array('title' => 'Accedez à la page de gestion de mon personnel', 'class' => '')); ?>
+		</li>
+		<li><?= anchor('c_personnel/listRecruitable', 'Acheter un personnel', array('title' => 'Accedez à la page d\'achat du personnel', 'class' => '')); ?>
+		</li>
+	</ul>
+	<p class="description">
+		Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+	</p>
+	<div class="alert">
+		<div class="success">
+			<p>Vous avez virer ce personnel</p>
+		</div>
+		<div class="fail">
+			<p>Vous ne pouvez virer ce personnel</p>
+		</div>
+	</div>
+	<div class="content-personnel">
+		<ul>
+			<li><a href="#table-personnel1">Pilote</a></li>
+			<li><a href="#table-personnel2">Spationaute</a></li>
+			<li><a href="#table-personnel3">Scientifique</a></li>
+			<li><a href="#table-personnel4">Hors la loi</a></li>
+			<li><a href="#table-personnel5">Garde</a></li>
+		</ul>
+		<?php foreach($types AS $type): ?>
+		<table class="table-personnel" id="table-personnel<?= $type->id_type_personnel ?>">
+			<thead>
+				<tr>
+	                 <th class="personnel-name">Nom</th>
+	                 <th class="personnel-skill1"><?= $type->skill1_type_personnel ?></th>
+	                 <th class="personnel-skill2"><?= $type->skill2_type_personnel ?></th>
+	                 <th class="personnel-salaire">Salaire</th>
+	                 <th class="personnel-valeur">Valeur</th>
+	                 <th class="personnel-action"></th>
+	             </tr>
+             </thead>
+             <tbody>
+	             <?php switch ($type->id_type_personnel){
+	             	case 1: ?>
+	             		<?php foreach($spationautes AS $spationaute): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $spationaute->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $spationaute->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $spationaute->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $spationaute->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $spationaute->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/recruit/' .$spationaute->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
                                                                                                 'class' => 'recruit',
-                                                                                                'id' => $spationaute->id_personnel)); ?></td>
-              </tr>
-                <?php
-                }
-                break;
-            case 2:
-                foreach($pilotes AS $pilote){?>
-                <tr>
-                <td><?= $pilote->id_personnel; ?></td>
-                <td><?= $pilote->name_personnel; ?></td>
-                <td><?= $pilote->reputation_personnel; ?></td>
-                <td><?= $pilote->skill1_personnel; ?></td>
-                <td><?= $pilote->skill2_personnel; ?></td>
-                <td><?= $pilote->skill3_personnel; ?></td>
-                <td><?= $pilote->salaire_personnel; ?></td>
-                <td><?= $pilote->valeur_personnel; ?></td>
-                <td><?php echo anchor('c_personnel/recruit/' .$pilote->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
+                                                                                                'id' => $spationaute->id_personnel)); ?></td></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		break;
+	             	case 2: ?>
+	             		<?php foreach($pilotes AS $pilote): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $pilote->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $pilote->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $pilote->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $pilote->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $pilote->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/recruit/' .$pilote->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
                                                                                                 'class' => 'recruit',
-                                                                                                'id' => $pilote->id_personnel)); ?></td>
-              </tr>
-                <?php
-                }
-                break;
-            case 3:
-                foreach($scientifiques AS $scientifique){?>
-                <tr>
-                <td><?= $scientifique->id_personnel; ?></td>
-                <td><?= $scientifique->name_personnel; ?></td>
-                <td><?= $scientifique->reputation_personnel; ?></td>
-                <td><?= $scientifique->skill1_personnel; ?></td>
-                <td><?= $scientifique->skill2_personnel; ?></td>
-                <td><?= $scientifique->skill3_personnel; ?></td>
-                <td><?= $scientifique->salaire_personnel; ?></td>
-                <td><?= $scientifique->valeur_personnel; ?></td>
-                <td><?php echo anchor('c_personnel/recruit/' .$scientifique->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
+                                                                                                'id' => $pilote->id_personnel)); ?></td></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		break;
+	             	case 3: ?>
+	             		<?php foreach($scientifiques AS $scientifique): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $scientifique->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $scientifique->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $scientifique->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $scientifique->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $scientifique->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/recruit/' .$scientifique->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
                                                                                                 'class' => 'recruit',
-                                                                                                'id' => $scientifique->id_personnel)); ?></td>
-              </tr>
-                <?php
-                }
-                break;
-            case 4:
-                foreach($horslalois AS $horslaloi){?>
-                <tr>
-                <td><?= $horslaloi->id_personnel; ?></td>
-                <td><?= $horslaloi->name_personnel; ?></td>
-                <td><?= $horslaloi->reputation_personnel; ?></td>
-                <td><?= $horslaloi->skill1_personnel; ?></td>
-                <td><?= $horslaloi->skill2_personnel; ?></td>
-                <td><?= $horslaloi->skill3_personnel; ?></td>
-                <td><?= $horslaloi->salaire_personnel; ?></td>
-                <td><?= $horslaloi->valeur_personnel; ?></td>
-                <td><?php echo anchor('c_personnel/recruit/' .$horslaloi->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
+                                                                                                'id' => $scientifique->id_personnel)); ?></td></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		break;
+	             	case 4: ?>
+	             		<?php foreach($horslalois AS $horslaloi): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $horslaloi->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $horslaloi->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $horslaloi->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $horslaloi->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $horslaloi->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/recruit/' .$horslaloi->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
                                                                                                 'class' => 'recruit',
-                                                                                                'id' => $horslaloi->id_personnel)); ?></td>
-              </tr>
-                <?php
-                }
-                break;
-            case 5:
-                foreach($securites AS $securite){?>
-                <tr>
-                <td><?= $securite->id_personnel; ?></td>
-                <td><?= $securite->name_personnel; ?></td>
-                <td><?= $securite->reputation_personnel; ?></td>
-                <td><?= $securite->skill1_personnel; ?></td>
-                <td><?= $securite->skill2_personnel; ?></td>
-                <td><?= $securite->skill3_personnel; ?></td>
-                <td><?= $securite->salaire_personnel; ?></td>
-                <td><?= $securite->valeur_personnel; ?></td>
-                <td><?php echo anchor('c_personnel/recruit/' .$securite->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
+                                                                                                'id' => $horslaloi->id_personnel)); ?></td></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		break;
+	             	case 5: ?>
+	             		<?php foreach($securites AS $securite): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $securite->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $securite->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $securite->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $securite->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $securite->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/recruit/' .$securite->id_personnel ,'Recruter', array('title' =>'Reruter ce personnel',
                                                                                                 'class' => 'recruit',
-                                                                                                'id' => $securite->id_personnel)); ?></td>
-              </tr>
-                <?php
-                }
-                break;
-        }?>
-        </table>
-    <?php
-    }?>
+                                                                                                'id' => $securite->id_personnel)); ?></td></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		break; ?>
+	             <?php } ?>
+             </tbody>
+		</table>
+		<?php endforeach; ?>
+	</div>
+</div>

@@ -20,7 +20,7 @@ class c_personnel extends CI_Controller {
             $user_id = $this->session->userdata('id');
             $resources['resource'] = $this->m_user->getResources($user_id);
             $this->load->model('m_message');
-                $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
+            $resources['message'] = count($this->m_message->getMessageNoRead($user_id));
             $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
         }
         else{
@@ -66,6 +66,56 @@ class c_personnel extends CI_Controller {
         $this->m_personnel->addPersonnel($data);
     }
     
+    function index(){
+        
+        $user_id = $this->session->userdata('id');
+        
+        $this->load->model('m_personnel');
+        $list = $this->m_personnel->getList(1,$user_id);
+        $table['types'] = $this->m_personnel->getType();
+        
+        $table['spationautes'] = array();
+        $table['pilotes'] = array();
+        $table['scientifiques'] = array();
+        $table['horslalois'] = array();
+        $table['securites'] = array();
+        
+        
+        foreach($list as $personnel){
+            if($personnel->id_type_personnel == 1){
+                $table['spationautes'][] = $personnel;
+            }
+            if($personnel->id_type_personnel == 2){
+                $table['pilotes'][] = $personnel;
+            }
+            if($personnel->id_type_personnel == 3){
+                $table['scientifiques'][] = $personnel;
+            }
+            if($personnel->id_type_personnel == 4){
+                $table['horslalois'][] = $personnel;
+            }
+            if($personnel->id_type_personnel == 5){
+                $table['securites'][] = $personnel;
+            }
+        }
+        
+        $limit_spationaute = 2;
+        $limit_pilote = 2;
+        $limit_scientifique = 2;
+        $limit_horslaloi = 2;
+        $limit_securite = 2;
+        
+        $table['limit'] = array('spationaute' => $limit_spationaute,'pilote' => $limit_pilote,'scientifique' => $limit_scientifique,'horslaloi' => $limit_horslaloi,'securite' => $limit_securite);
+        
+        $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
+        $data['content'] = $this->load->view('template/content/personnel_index_content', $table, TRUE);
+        $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        $data['script'] = $this->load->view('template/script/personnel_script', '', TRUE);
+        
+        $this->load->view('layout',$data);
+        
+    }
+    
     function listRecruitable(){
         
         $this->load->model('m_personnel');
@@ -104,48 +154,6 @@ class c_personnel extends CI_Controller {
         $this->load->view('layout',$data);
         
     }
-    
-    function index(){
-        
-        $user_id = $this->session->userdata('id');
-        
-        $this->load->model('m_personnel');
-        $list = $this->m_personnel->getList(1,$user_id);
-        $table['types'] = $this->m_personnel->getType();
-        
-        $table['spationautes'] = array();
-        $table['pilotes'] = array();
-        $table['scientifiques'] = array();
-        $table['horslalois'] = array();
-        $table['securites'] = array();
-        
-        
-        foreach($list as $personnel){
-            if($personnel->id_type_personnel == 1){
-                $table['spationautes'][] = $personnel;
-            }
-            if($personnel->id_type_personnel == 2){
-                $table['pilotes'][] = $personnel;
-            }
-            if($personnel->id_type_personnel == 3){
-                $table['scientifiques'][] = $personnel;
-            }
-            if($personnel->id_type_personnel == 4){
-                $table['horslalois'][] = $personnel;
-            }
-            if($personnel->id_type_personnel == 5){
-                $table['securites'][] = $personnel;
-            }
-        }
-        
-        $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-        $data['content'] = $this->load->view('template/content/personnel_index_content', $table, TRUE);
-        $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
-        $data['script'] = $this->load->view('template/script/personnel_script', '', TRUE);
-        
-        $this->load->view('layout',$data);
-        
-    }
    
     function recruit(){
         $user_id = $this->session->userdata('id');
@@ -157,19 +165,40 @@ class c_personnel extends CI_Controller {
         $this->load->model('m_personnel');
         $personnel = $this->m_personnel->getOnce($id);
         
-        if($resources->argent >= $personnel->valeur_personnel){
-            
-            $argent = $resources->argent - $personnel->valeur_personnel;
-            
-            $this->m_user->updateResource($user_id, 'argent', $argent);
-            $this->m_personnel->updateStatus($id, 1);
-            $this->m_personnel->updateOwner($id, $user_id);
-            
-            $status = 'success';
+        $id_type_personnel = $personnel->id_type_personnel;
+        $mypersonnel = $this->m_personnel->getListbyType($id_type_personnel, $user_id);
+        
+        switch($id_type_personnel){
+        	case 1: $limit = 2;
+        	break;
+        	case 2: $limit = 2;
+        	break;
+        	case 3: $limit = 2;
+        	break;
+        	case 4: $limit = 2;
+        	break;
+        	case 5: $limit = 2;
+        	break;
         }
-        else{
-            $status = 'error';
-        }
+        
+        if(count($mypersonnel) < $limit){
+	        if($resources->argent >= $personnel->valeur_personnel){
+	            
+	            $argent = $resources->argent - $personnel->valeur_personnel;
+	            
+	            $this->m_user->updateResource($user_id, 'argent', $argent);
+	            $this->m_personnel->updateStatus($id, 1);
+	            $this->m_personnel->updateOwner($id, $user_id);
+	            
+	            $status = 'success';
+	        }
+	        else{
+	            $status = 'error';
+	        }
+	    }
+	    else{
+	    	$status = 'error';
+	    }
         
         $data = array('status'=>$status);
         echo json_encode($data);
@@ -190,9 +219,11 @@ class c_personnel extends CI_Controller {
             
         $this->m_user->updateResource($user_id, 'argent', $argent);
         $this->m_personnel->updateStatus($id, 0);
-        $this->m_personnel->updateOwner($id, 0);
+        $this->m_personnel->updateOwner($id, $user_id);
         
-        redirect('c_personnel/listHave');
+        $status = 'success';
+        $data = array('status'=>$status);
+        echo json_encode($data);
     }
     
     function auction(){

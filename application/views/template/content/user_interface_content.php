@@ -1,3 +1,4 @@
+<div class="user_interface_index">
 	<div class="welcome">
 		<p>Bienvenue Mr/Mme <?php echo $this->session->userdata('username'); ?></p>
 	</div>
@@ -13,9 +14,9 @@
 				--><div class="progress"></div><!--
 				--><div class="destination"><h2><?php echo $mission->name_space_object ?></h2></div><!--
 				--><div class="rocket">
-					<div class="infobulle-rocket">
-						<p><?php echo $mission->name_status ?></p>
-					</div>
+						<div class="infobulle-rocket">
+							<p><?php echo $mission->name_status ?></p>
+						</div>
 					<?php if($mission->id_status == 1): ?>
 					<p class="time countdown"><?php echo ($mission->date_start_start - now()) ?></p>
 					<?php elseif($mission->id_status == 2 or $mission->id_status == 3): ?>
@@ -61,3 +62,4 @@
 		<p class="status nothing">Aucun equipement en construction</p>
 		<?php endif; ?>
 	</div>
+</div>

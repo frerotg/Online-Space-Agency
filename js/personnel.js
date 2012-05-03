@@ -1,53 +1,52 @@
 $(function(){
-    $('.error').hide();
-    $('.success').hide();
-    $('.error_argent').hide();
-    $('.error_price').hide();
-    $('.formBid').hide();
-    
+	$('.success').hide();
+	$('.fail').hide();
+	
     $('.recruit').click(function(){
-    var id = $(this).attr('id');
-    var parent = $(this).parent().parent();
-    var url_send = $(this).attr('href');
-    
-    $.ajax({
-      type: "POST",
-      url: url_send,
-      success: function(data)
-      {
-        var responseData = jQuery.parseJSON(data);
-        if(responseData.status == 'error'){
-            $('.error').fadeIn();
-        }
-        else{
-            parent.slideUp("slow",function(){$(this).remove();});
-            $('.success').fadeIn();
-        }
-      }
-    });
-    return false;
-  });
-  $('.kick').click(function(){
-    var id = $(this).attr('id');
-    var parent = $(this).parent().parent();
-    var url_send = $(this).attr('href');
-    
-    $.ajax({
-      type: "POST",
-      url: url_send,
-      success: function()
-      {
-        $('.success').fadeIn();
-        parent.slideUp("slow",function(){$(this).remove();});
-      }
-    });
-    return false;
-  });
-  $('.bid').click(function(){
-    $(this).parent().parent().next().fadeIn();
-    return false;
-  });
+	    var id = $(this).attr('id');
+	    var parent = $(this).parent().parent();
+	    var url_send = $(this).attr('href');
+	    
+	    $.ajax({
+	      type: "POST",
+	      url: url_send,
+	      success: function(data)
+	      {
+	        var responseData = jQuery.parseJSON(data);
+	        if(responseData.status == 'error'){
+	            $('.fail').fadeIn();
+	        }
+	        else{
+	            parent.slideUp("slow",function(){$(this).remove();});
+	            $('.success').fadeIn();
+	        }
+	      }
+	    });
+	    return false;
+  	});
   
+  	$('.kick').click(function(){
+	    var id = $(this).attr('id');
+	    var parent = $(this).parent().parent();
+	    var url_send = $(this).attr('href');
+	    $.ajax({
+	      type: "POST",
+	      url: url_send,
+	      success: function()
+	      {
+	        $('.success').fadeIn();
+	        parent.slideUp("slow",function(){$(this).remove();});
+	      }
+	    });
+	    return false;
+  	});
+  	
+  	$( ".content-personnel" ).tabs();
+
+	//$('table.table-personnel').hide();
+	
+
+  /*
   $('#time_end').datetimepicker({ 
       dateFormat: 'yy-mm-dd',
       ampm: true,
@@ -65,5 +64,5 @@ $(function(){
         });
     $( "#price" ).val($( "#slider-range" ).slider( "value" ));
     $( "#price_slider" ).html($( "#slider-range" ).slider( "value" ));
-  
+  */
 });

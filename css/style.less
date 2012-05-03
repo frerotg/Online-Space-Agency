@@ -81,6 +81,9 @@
 
 @background: #f6f4ec;
 
+@red: #f23d4c;
+
+@green: #57cb85;
 
 
 body {
@@ -245,181 +248,315 @@ body {
 			}
 		}
 		div.content{
-			div.welcome{
-				p{
-					font-family: 'LobsterTwoBold';
-					font-size: 2.4em;
-					color: @black;
-					text-align: center;
-				}
-			}
-			div.historicalDate{
-				width: 780px;
-				padding: 10px;
-				margin: auto;
-				background-color: @darkwhite;
-				p{
-					font-family: Georgia;
-					color: @black;
-					font-size: 16px;
-					font-style: italic;
-				}
-			}
-			div.mission{
-				h1{
-					font-family: 'LobsterTwoBold';
-					font-size: 2.4em;
-					color: @black;
-					text-align: center;
-					background: url("../img/layout/lineblack.png") repeat-x center;
-					margin: 10px 10px 20px 10px;
-					span{
-						padding: 0 20px;
-						background-color: @background;
+			div.user_interface_index{
+				div.welcome{
+					p{
+						font-family: 'LobsterTwoBold';
+						font-size: 2.4em;
+						color: @black;
+						text-align: center;
 					}
 				}
-				div.way{
-					width: 800px;
+				div.historicalDate{
+					width: 780px;
+					padding: 10px;
 					margin: auto;
-					position: relative;
-					div{
-						display: inline-block;
-						vertical-align: top;
+					background-color: @darkwhite;
+					p{
+						font-family: Georgia;
+						color: @black;
+						font-size: 16px;
+						font-style: italic;
 					}
-					div.earth{
-						width: 140px;
-						height: 180px;
-						background: url("../img/layout/icon-earth.png") no-repeat center;
-						position: relative;
-						h2{
-							position: absolute;
-							bottom: 0;
-							text-align: center;
-							width: 140px;
-							font-family: 'LobsterTwoBold';
-							font-size: 2em;
-							color: @black;
+				}
+				div.mission{
+					h1{
+						font-family: 'LobsterTwoBold';
+						font-size: 2.4em;
+						color: @black;
+						text-align: center;
+						background: url("../img/layout/lineblack.png") repeat-x center;
+						margin: 10px 10px 20px 10px;
+						span{
+							padding: 0 20px;
+							background-color: @background;
 						}
 					}
-					div.progress{
-						width: 520px;
-						height: 180px;
-						background: url("../img/layout/way.png") repeat-x left center;
-					}
-					div.destination{
-						width: 140px;
-						height: 180px;
-						background: url("../img/layout/icon-saturne.png") no-repeat center;
+					div.way{
+						width: 800px;
+						margin: auto;
 						position: relative;
-						h2{
-							position: absolute;
-							bottom: 0;
-							text-align: center;
-							width: 140px;
-							font-family: 'LobsterTwoBold';
-							font-size: 2em;
-							color: @black;
+						div{
+							display: inline-block;
+							vertical-align: top;
 						}
-					}
-					div.rocket{
-						background: url("../img/layout/rocket.png") no-repeat center;
-						width: 50px;
-						height: 50px;
-						position: absolute;
-						top: 65px;
-						left: 330px;
-						.infobulle-rocket {
+						div.earth{
+							width: 140px;
+							height: 180px;
+							background: url("../img/layout/icon-earth.png") no-repeat center;
 							position: relative;
-							background: @white;
-							border: 2px dashed @darkwhite;
-							padding: 0 5px 15px 5px;
-							width: 140px;
-							height: 30px;
-							border-radius: 5px;
-							box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-							top: -70px;
-							left: -43px;
-							p{
-								font-family: 'LobsterTwoRegular';
-								font-size: 2.1em;
-								color: @darkwhite;
-								line-height: 0px;
+							h2{
+								position: absolute;
+								bottom: 0;
 								text-align: center;
+								width: 140px;
+								font-family: 'LobsterTwoBold';
+								font-size: 2em;
+								color: @black;
 							}
 						}
-						.infobulle-rocket:after, .arrow_box:before {
-							top: 100%;
-							border: dashed transparent;
-							content: " ";
-							height: 0;
-							width: 0;
+						div.progress{
+							width: 520px;
+							height: 180px;
+							background: url("../img/layout/way.png") repeat-x left center;
+						}
+						div.destination{
+							width: 140px;
+							height: 180px;
+							background: url("../img/layout/icon-saturne.png") no-repeat center;
+							position: relative;
+							h2{
+								position: absolute;
+								bottom: 0;
+								text-align: center;
+								width: 140px;
+								font-family: 'LobsterTwoBold';
+								font-size: 2em;
+								color: @black;
+							}
+						}
+						div.rocket{
+							background: url("../img/layout/rocket.png") no-repeat center;
+							width: 50px;
+							height: 50px;
 							position: absolute;
-							pointer-events: none;
+							top: 65px;
+							left: 330px;
+							.infobulle-rocket {
+								position: relative;
+								background: @white;
+								border: 2px dashed @darkwhite;
+								padding: 0 5px 15px 5px;
+								width: 140px;
+								height: 30px;
+								border-radius: 5px;
+								box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+								top: -70px;
+								left: -43px;
+								p{
+									font-family: 'LobsterTwoRegular';
+									font-size: 2.1em;
+									color: @darkwhite;
+									line-height: 0px;
+									text-align: center;
+								}
+							}
+							.infobulle-rocket:after, .arrow_box:before {
+								top: 100%;
+								border: dashed transparent;
+								content: " ";
+								height: 0;
+								width: 0;
+								position: absolute;
+								pointer-events: none;
+							}
+							
+							.infobulle-rocket:after {
+								border-top-color: @white;
+								border-width: 20px;
+								left: 50%;
+								margin-left: -20px;
+							}
+							.infobulle-rocket:before {
+								border-top-color: @white;
+								border-width: 26px;
+								left: 50%;
+								margin-left: -26px;
+							}
+						}
+					}
+				}
+				div.encours{
+					width: 225px;
+					height:300px;
+					display: inline-block;
+					margin: 0 47.5px;
+					position: relative;
+					vertical-align: top;
+					h3{
+						width: 225px;
+						position: absolute;
+						top: 70px;
+						left: 0;
+						font-family: 'LeagueGothicRegular';
+						font-size: 3em;
+						text-transform: uppercase; 
+						text-shadow: 1px 1px 0px @blue, 3px 3px 0px @black;
+						text-align: center;
+						color: @black;
+					}
+					img{
+						position: absolute;
+						top: 160px;
+						left: 55px;
+					}
+					.status{
+						width: 225px;
+						position: absolute;
+						top: 225px;
+						left: 0;
+						font-family: 'LeagueGothicRegular';
+						font-size: 2.3em;
+						text-transform: uppercase; 
+						text-align: center;
+						color: @black;
+						&.nothing{
+							top: 140px;
+						}
+	
+					}
+				}
+				div.batiment-encours{
+					background: url("../img/layout/icon-batiment-encours.png") no-repeat top center;
+				}
+				div.technologie-encours{
+					background: url("../img/layout/icon-technologie-encours.png") no-repeat top center;
+				}
+				div.equipement-encours{
+					background: url("../img/layout/icon-equipement-encours.png") no-repeat top center;
+				}
+			}
+			div.personnel_index{
+				ul.sub-menu{
+					float: left;
+					width: 350px;
+					margin: 0 10px;
+					height: 90px;
+					li{
+						margin-left: 60px;
+						a{
+							color: @black;
+							font-size: 20px;
+							font-family: 'LobsterTwoBold';
+							text-decoration: none;
+						}
+					}
+				}
+				p.description{
+					width: 540px;
+					margin: 0 10px 0 410px;
+					height: 90px;
+					font-family: 'Futura';
+					font-size: 16px;
+					padding-left: 10px;
+					border-left: 2px solid @black;
+					text-align: left;
+				}
+				div.alert{
+					width: 800px;
+					padding: 0 10px;
+					margin: auto;
+					height: 100px;
+					border-radius: 5px;
+					position: relative;
+					div{
+						border-radius: 5px;
+						height: 45px;
+						position: absolute;
+						top: 10px;
+						width: 800px;
+						&.success{
+							background-color: @green;
+						}
+						&.fail{
+							background-color: @red;
+						}
+						p{
+						font-family: 'Futura';
+						font-size: 16px;
+					}
+					}
+				}
+				
+				div.content-personnel{
+					ul{
+						margin: 0 80px;
+						padding: 0;
+						li{
+							float: left;
+							list-style: none;
+							padding: 0 9px;
+							width: 140px;
+							text-align: center;
+							border-left: 2px solid @black;
+							&:first-child{
+								border: none;
+							}
+							a{
+								font-family: 'LeagueGothicRegular';
+								font-size: 32px;
+								color: @darkwhite;
+								text-decoration: none;
+							}
+							&.actif{
+								a{
+									color: @darkwhite;
+								}
+							}
+							&.ui-state-active{
+								a{
+									color: @black;
+								}
+							}
 						}
 						
-						.infobulle-rocket:after {
-							border-top-color: @white;
-							border-width: 20px;
-							left: 50%;
-							margin-left: -20px;
+					}
+					.ui-tabs-hide
+					{ 
+						display: none !important; 
+					}
+					.table-personnel{
+						border-top: 2px solid @black;
+						width: 820px;
+						margin: auto;
+						border-collapse: collapse;
+						thead{
+							tr{
+								border: none;
+								height: 60px;
+								vertical-align: middle;
+								font-family: 'LobsterTwoItalic';
+								font-size: 22px;
+								text-align: center;
+								font-weight: 100;
+								th{
+									width: 160px;
+									&.personnel-action{
+										width: 20px;
+									}
+								}
+								
+							}
 						}
-						.infobulle-rocket:before {
-							border-top-color: @white;
-							border-width: 26px;
-							left: 50%;
-							margin-left: -26px;
+						tbody{
+							tr{
+								border: none;
+								height: 45px;
+								vertical-align: middle;
+								font-family: 'LobsterTwoItalic';
+								font-size: 18px;
+								text-align: center;
+								background: @white;
+								td{
+									width: 160px;
+									&.personnel-action{
+										width: 20px;
+									}
+								}
+							}
 						}
 					}
 				}
-			}
-			div.encours{
-				width: 225px;
-				height:300px;
-				display: inline-block;
-				margin: 0 47.5px;
-				position: relative;
-				vertical-align: top;
-				h3{
-					width: 225px;
-					position: absolute;
-					top: 70px;
-					left: 0;
-					font-family: 'LeagueGothicRegular';
-					font-size: 3em;
-					text-transform: uppercase; 
-					text-shadow: 1px 1px 0px @blue, 3px 3px 0px @black;
-					text-align: center;
-					color: @black;
-				}
-				img{
-					position: absolute;
-					top: 160px;
-					left: 55px;
-				}
-				.status{
-					width: 225px;
-					position: absolute;
-					top: 225px;
-					left: 0;
-					font-family: 'LeagueGothicRegular';
-					font-size: 2.3em;
-					text-transform: uppercase; 
-					text-align: center;
-					color: @black;
-					&.nothing{
-						top: 140px;
-					}
-
-				}
-			}
-			div.batiment-encours{
-				background: url("../img/layout/icon-batiment-encours.png") no-repeat top center;
-			}
-			div.technologie-encours{
-				background: url("../img/layout/icon-technologie-encours.png") no-repeat top center;
-			}
-			div.equipement-encours{
-				background: url("../img/layout/icon-equipement-encours.png") no-repeat top center;
 			}
 		}
 	}

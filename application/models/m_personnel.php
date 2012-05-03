@@ -65,6 +65,18 @@ class m_personnel extends CI_Model {
         return $data;
     }
     
+    function getListbyType($id_type, $owner_id){
+    
+        $this->db->select('*');
+        $this->db->from('personnel_list');
+        $this->db->where(array('id_type_personnel' => $id_type,
+        					   'owner_personnel' => $owner_id));
+        $query = $this->db->get();
+        $data = $query->result();  
+        
+        return $data;
+    }
+    
     function getType(){
         $this->db->select('*');
         $this->db->from('personnel_type');
