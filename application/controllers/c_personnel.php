@@ -191,16 +191,19 @@ class c_personnel extends CI_Controller {
 	            $this->m_personnel->updateOwner($id, $user_id);
 	            
 	            $status = 'success';
+	            $message = 'Vous avez recruté '.$personnel->name_personnel.' pour '.$personnel->valeur_personnel;
 	        }
 	        else{
 	            $status = 'error';
+	            $message = 'Vous n\'avez pas assez d\'argent pour recruter'.$personnel->name_personnel;
 	        }
 	    }
 	    else{
 	    	$status = 'error';
+	    	$message = 'Vous avez déjà atteint la limite de personnel pour ce métier';
 	    }
         
-        $data = array('status'=>$status);
+        $data = array('status'=>$status, 'message'=>$message);
         echo json_encode($data);
         
     }
@@ -219,10 +222,11 @@ class c_personnel extends CI_Controller {
             
         $this->m_user->updateResource($user_id, 'argent', $argent);
         $this->m_personnel->updateStatus($id, 0);
-        $this->m_personnel->updateOwner($id, $user_id);
+        $this->m_personnel->updateOwner($id, NULL);
         
         $status = 'success';
-        $data = array('status'=>$status);
+        $message = 'Vous avez viré '.$personnel->name_personnel.' et récupéré 60% de sa valeur c\'est à dire '.((($personnel->valeur_personnel)/100)*60);
+        $data = array('status'=>$status, 'message'=>$message);
         echo json_encode($data);
     }
     

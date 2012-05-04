@@ -1,9 +1,6 @@
 $(function(){
-    $('.error').hide();
     $('.success').hide();
-    $('.error_argent').hide();
-    $('.error_price').hide();
-    $('.formBid').hide();
+	$('.fail').hide();
     
     var number = $('#countdown').attr('class');
     
@@ -18,9 +15,13 @@ $(function(){
     $('a[title]').qtip();
     
 	$('.build').click(function(){
+    	
     	var id = $(this).attr('id');
     	var parent = $(this).parent();
     	var url_send = $(this).attr('href');
+    	
+    	$('.success').hide();
+		$('.fail').hide();
     
     	$.ajax({
 	      	type: "POST",
@@ -28,11 +29,37 @@ $(function(){
 	      	success: function(data){
 	        	var responseData = jQuery.parseJSON(data);
 	        	if(responseData.status == 'error'){
-	        	$('.error').fadeIn();
+	        		$('.fail').fadeIn();
 	        	}
 	        	else{
-	        	$('.success').fadeIn();
-	        	parent.text('Il reste '+responseData.time+' sec');
+	        		$('.success').fadeIn()
+	        		parent.html('<p>Il reste '+responseData.time+' sec</p>');
+	        	}
+	      	}
+    	});
+	return false;
+	});
+	
+	$('.evolve').click(function(){
+    	
+    	var id = $(this).attr('id');
+    	var parent = $(this).parent();
+    	var url_send = $(this).attr('href');
+    	
+    	$('.success').hide();
+		$('.fail').hide();
+    
+    	$.ajax({
+	      	type: "POST",
+	      	url: url_send,
+	      	success: function(data){
+	        	var responseData = jQuery.parseJSON(data);
+	        	if(responseData.status == 'error'){
+	        		$('.fail').fadeIn();
+	        	}
+	        	else{
+	        		$('.success').fadeIn()
+	        		parent.html('<p>Il reste '+responseData.time+' sec</p>');
 	        	}
 	      	}
     	});

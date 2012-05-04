@@ -11,10 +11,10 @@
 	</p>
 	<div class="alert">
 		<div class="success">
-			<p>Vous avez virer ce personnel</p>
+			<p></p>
 		</div>
 		<div class="fail">
-			<p>Vous ne pouvez virer ce personnel</p>
+			<p></p>
 		</div>
 	</div>
 	<div class="content-personnel">

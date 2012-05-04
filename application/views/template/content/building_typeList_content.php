@@ -1,5 +1,11 @@
-<p class="success"><strong>Bravo</strong> Tu as recruté du personnel.</p>
-<p class="error"><strong>Erreur !</strong> Tu est trop fauché pour recruté ce personnel.</p>
+	<div class="alert">
+		<div class="success">
+			<p></p>
+		</div>
+		<div class="fail">
+			<p></p>
+		</div>
+	</div>
 <table class="table">
 	<thead>
 		<tr>

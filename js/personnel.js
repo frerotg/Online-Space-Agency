@@ -7,6 +7,9 @@ $(function(){
 	    var parent = $(this).parent().parent();
 	    var url_send = $(this).attr('href');
 	    
+	    $('.success').hide();
+		$('.fail').hide();
+	    
 	    $.ajax({
 	      type: "POST",
 	      url: url_send,
@@ -14,10 +17,12 @@ $(function(){
 	      {
 	        var responseData = jQuery.parseJSON(data);
 	        if(responseData.status == 'error'){
+	        	$('.fail p').text(responseData.message);
 	            $('.fail').fadeIn();
 	        }
 	        else{
 	            parent.slideUp("slow",function(){$(this).remove();});
+	            $('.success p').text(responseData.message);
 	            $('.success').fadeIn();
 	        }
 	      }
@@ -29,11 +34,17 @@ $(function(){
 	    var id = $(this).attr('id');
 	    var parent = $(this).parent().parent();
 	    var url_send = $(this).attr('href');
+	    
+	    $('.success').hide();
+		$('.fail').hide();
+	    
 	    $.ajax({
 	      type: "POST",
 	      url: url_send,
-	      success: function()
+	      success: function(data)
 	      {
+	      	var responseData = jQuery.parseJSON(data);
+	      	$('.success p').text(responseData.message);
 	        $('.success').fadeIn();
 	        parent.slideUp("slow",function(){$(this).remove();});
 	      }
