@@ -36,6 +36,17 @@ class m_building extends CI_Model {
         return $result;
     }
     
+    function listUserBuildingAll($id_user){
+    	$this->db->select('*');
+        $this->db->from('user_building');
+        $this->db->where('id_user', $id_user);
+        $this->db->order_by("user_building.id_building", "asc"); 
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
     function listUserTechnology($id,$type_id){
         
         $this->db->select('*');
@@ -44,6 +55,17 @@ class m_building extends CI_Model {
         $this->db->where('id_user', $id);
         $this->db->where('id_type_technology', $type_id);
         $this->db->order_by("technology_list.id_technology", "asc"); 
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
+    function listUserTechnologyAll($id_user){
+    	$this->db->select('*');
+        $this->db->from('user_technology');
+        $this->db->where('id_user', $id_user);
+        $this->db->order_by("user_technology.id_technology", "asc"); 
         $query = $this->db->get();
         
         $result = $query->result();

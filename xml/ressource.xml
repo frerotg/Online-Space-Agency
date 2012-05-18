@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ressources>
     <ressource name="pierre">
-    	<get niveau="0"><value>10</value></get>
-        <get niveau="1"><value>100</value></get>
-        <get niveau="2"><value>200</value></get>
-        <get niveau="3"><value>300</value></get>
+<get niveau="1"><value>5000</value></get>	<get niveau="2"><value>11250</value></get>	<get niveau="3"><value>20000</value></get>	<get niveau="4"><value>31250</value></get>	<get niveau="5"><value>45000</value></get>	<get niveau="6"><value>61250</value></get>	<get niveau="7"><value>80000</value></get>	<get niveau="8"><value>101250</value></get>	<get niveau="9"><value>125000</value></get>	<get niveau="10"><value>151250</value></get>	<get niveau="11"><value>180000</value></get>	<get niveau="12"><value>211250</value></get>	<get niveau="13"><value>245000</value></get>	<get niveau="14"><value>281250</value></get>	<get niveau="15"><value>320000</value></get>	<get niveau="16"><value>361250</value></get>	<get niveau="17"><value>405000</value></get>	<get niveau="18"><value>451250</value></get>	<get niveau="19"><value>500000</value></get>	<get niveau="20"><value>551250</value></get>	<get niveau="21"><value>605000</value></get>	<get niveau="22"><value>661250</value></get>
     </ressource>
     <ressource name="metal">
-    	<get niveau="0"><value>10</value></get>
-        <get niveau="1"><value>100</value></get>
-        <get niveau="2"><value>200</value></get>
-        <get niveau="3"><value>300</value></get>
+<get niveau="1"><value>12500</value></get>	<get niveau="2"><value>15000</value></get>	<get niveau="3"><value>17500</value></get>	<get niveau="4"><value>20000</value></get>	<get niveau="5"><value>22500</value></get>	<get niveau="6"><value>24000</value></get>	<get niveau="7"><value>26500</value></get>	<get niveau="8"><value>29000</value></get>	<get niveau="9"><value>31500</value></get>	<get niveau="10"><value>34000</value></get>	<get niveau="11"><value>35500</value></get>	<get niveau="12"><value>38000</value></get>	<get niveau="13"><value>40500</value></get>	<get niveau="14"><value>43000</value></get>	<get niveau="15"><value>45500</value></get>	<get niveau="16"><value>47000</value></get>	<get niveau="17"><value>49500</value></get>	<get niveau="18"><value>52000</value></get>	<get niveau="19"><value>54500</value></get>	<get niveau="20"><value>57000</value></get>	<get niveau="21"><value>59500</value></get>	<get niveau="22"><value>62000</value></get>
     </ressource>
     <ressource name="oxygene">
-    	<get niveau="0"><value>10</value></get>
-        <get niveau="1"><value>100</value></get>
-        <get niveau="2"><value>200</value></get>
-        <get niveau="3"><value>300</value></get>
+<get niveau="1"><value>500</value></get>	<get niveau="2"><value>700</value></get>	<get niveau="3"><value>860</value></get>	<get niveau="4"><value>1000</value></get>	<get niveau="5"><value>1110</value></get>	<get niveau="6"><value>1220</value></get>	<get niveau="7"><value>1320</value></get>	<get niveau="8"><value>1410</value></get>	<get niveau="9"><value>1500</value></get>	<get niveau="10"><value>1580</value></get>	<get niveau="11"><value>1650</value></get>	<get niveau="12"><value>1730</value></get>	<get niveau="13"><value>1800</value></get>	<get niveau="14"><value>1870</value></get>	<get niveau="15"><value>1930</value></get>	<get niveau="16"><value>2000</value></get>	<get niveau="17"><value>2060</value></get>	<get niveau="18"><value>2120</value></get>	<get niveau="19"><value>2170</value></get>	<get niveau="20"><value>2230</value></get>	<get niveau="21"><value>2290</value></get>	<get niveau="22"><value>2340</value></get>
     </ressource>
     <ressource name="carburant">
-    	<get niveau="0"><value>10</value></get>
-        <get niveau="1"><value>100</value></get>
-        <get niveau="2"><value>200</value></get>
-        <get niveau="3"><value>300</value></get>
+<get niveau="1"><value>12500</value></get>	<get niveau="2"><value>15000</value></get>	<get niveau="3"><value>17500</value></get>	<get niveau="4"><value>20000</value></get>	<get niveau="5"><value>22500</value></get>	<get niveau="6"><value>24000</value></get>	<get niveau="7"><value>26500</value></get>	<get niveau="8"><value>29000</value></get>	<get niveau="9"><value>31500</value></get>	<get niveau="10"><value>34000</value></get>	<get niveau="11"><value>35500</value></get>	<get niveau="12"><value>38000</value></get>	<get niveau="13"><value>40500</value></get>	<get niveau="14"><value>43000</value></get>	<get niveau="15"><value>45500</value></get>	<get niveau="16"><value>47000</value></get>	<get niveau="17"><value>49500</value></get>	<get niveau="18"><value>52000</value></get>	<get niveau="19"><value>54500</value></get>	<get niveau="20"><value>57000</value></get>	<get niveau="21"><value>59500</value></get>	<get niveau="22"><value>62000</value></get>
     </ressource>
     <ressource name="argent">
-    	<get niveau="0"><value>10</value></get>
-        <get niveau="1"><value>100</value></get>
-        <get niveau="2"><value>200</value></get>
-        <get niveau="3"><value>300</value></get>
+<get niveau="1"><value>52500</value></get>	<get niveau="2"><value>55000</value></get>	<get niveau="3"><value>57500</value></get>	<get niveau="4"><value>60000</value></get>	<get niveau="5"><value>62500</value></get>	<get niveau="6"><value>60000</value></get>	<get niveau="7"><value>62500</value></get>	<get niveau="8"><value>65000</value></get>	<get niveau="9"><value>67500</value></get>	<get niveau="10"><value>70000</value></get>	<get niveau="11"><value>67500</value></get>	<get niveau="12"><value>70000</value></get>	<get niveau="13"><value>72500</value></get>	<get niveau="14"><value>75000</value></get>	<get niveau="15"><value>77500</value></get>	<get niveau="16"><value>75000</value></get>	<get niveau="17"><value>77500</value></get>	<get niveau="18"><value>80000</value></get>	<get niveau="19"><value>82500</value></get>	<get niveau="20"><value>85000</value></get>	<get niveau="21"><value>87500</value></get>	<get niveau="22"><value>90000</value></get>
     </ressource>
 </ressources>

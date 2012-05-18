@@ -69,6 +69,7 @@ class c_message extends CI_Controller {
     	$id_message = $this->uri->segment(3);
     	
     	$foo['message'] = $this->m_message->getMessage($user_id, $id_message);
+    	$this->m_message->readOne($id_message);
     	
     	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/message_readone_content', $foo, TRUE);

@@ -1,315 +1,2085 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <buildings>
-    <building id="6">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="7">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="8">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="9">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="10">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="11">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="12">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="13">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="14">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="15">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="16">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
-    <building id="17">
-        <cout niveau="1">
-            <pierre>1</pierre>
-            <metal>1</metal>
-            <oxygene>0</oxygene>
-            <carburant>1</carburant>
-            <argent>1</argent>
-            <time>30</time>
-        </cout>
-        <cout niveau="2">
-            <pierre>10</pierre>
-            <metal>10</metal>
-            <oxygene>0</oxygene>
-            <carburant>10</carburant>
-            <argent>10</argent>
-            <time>60</time>
-        </cout>
-        <cout niveau="3">
-            <pierre>30</pierre>
-            <metal>30</metal>
-            <oxygene>0</oxygene>
-            <carburant>30</carburant>
-            <argent>30</argent>
-            <time>120</time>
-        </cout>
-    </building>
+  <building id="10">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>60</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>240</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>17000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>540</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>960</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>41300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>1500</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>57600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>2160</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>76600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>2940</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>98400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>3840</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>123200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>4860</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>150800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>6000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>181300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>7260</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>214800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>8640</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>251200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>10140</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>290700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>11760</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>333100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>13500</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>378600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>15360</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>427200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>17340</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>478800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>19440</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>533600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>21660</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>591400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>24000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>652400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>26460</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>716500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>29040</time>
+    </cout>
+  </building>
+  <building id="11">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>900</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>9200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>3600</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>17600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>8100</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>28600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>14400</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>42400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>22500</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>58900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>32400</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>78100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>44100</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>100100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>57600</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>125100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>72900</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>153000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>90000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>183700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>108900</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>217400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>129600</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>254000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>152100</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>293700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>176400</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>336400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>202500</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>382100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>230400</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>430900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>260100</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>482700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>291600</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>537700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324900</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>595800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>360000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>657000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>396900</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>721300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>435600</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="12">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>2900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1200</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4800</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>10800</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>26900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>19200</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>30000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>43200</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>58800</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>96600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>76800</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>121200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>97200</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>148600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>120000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>178800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>145200</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>212100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>172800</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>248300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>202800</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>287600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>235200</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>329800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>270000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>375000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>307200</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>423400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>346800</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>474800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>388800</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>529400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>433200</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>587000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>480000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>647700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>529200</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>711600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>580800</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="13">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="7">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="7">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="6">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="8">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="9">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="15">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>2800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1200</argent>
+      <time>120</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4800</argent>
+      <time>480</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>10800</argent>
+      <time>1080</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>26400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>19200</argent>
+      <time>1920</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>39600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>30000</argent>
+      <time>3000</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>55600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>43200</argent>
+      <time>4320</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>74200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>58800</argent>
+      <time>5880</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>95700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>76800</argent>
+      <time>7680</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>120200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>97200</argent>
+      <time>9720</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>147500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>120000</argent>
+      <time>12000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>177600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>145200</argent>
+      <time>14520</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>210800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>172800</argent>
+      <time>17280</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>246900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>202800</argent>
+      <time>20280</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>286000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>235200</argent>
+      <time>23520</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>328100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>270000</argent>
+      <time>27000</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>373300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>307200</argent>
+      <time>30720</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>421500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>346800</argent>
+      <time>34680</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>472800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>388800</argent>
+      <time>38880</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>527300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>433200</argent>
+      <time>43320</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>584800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>480000</argent>
+      <time>48000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>645400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>529200</argent>
+      <time>52920</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>709200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>580800</argent>
+      <time>58080</time>
+    </cout>
+  </building>
+  <building id="14">
+    <cout niveau="1">
+      <pierre>5000</pierre>
+      <metal>5000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>10000</argent>
+      <time>300</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>10000</pierre>
+      <metal>10000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>20000</argent>
+      <time>1200</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>15000</pierre>
+      <metal>15000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>30000</argent>
+      <time>2700</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>20000</pierre>
+      <metal>20000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>40000</argent>
+      <time>4800</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>25000</pierre>
+      <metal>25000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>50000</argent>
+      <time>7500</time>
+    </cout>
+  </building>
+  <building id="16">
+    <cout niveau="1">
+      <pierre>2100</pierre>
+      <metal>3000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000</argent>
+      <time>90</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>6600</pierre>
+      <metal>8500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>4000</argent>
+      <time>360</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>13700</pierre>
+      <metal>16600</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>9000</argent>
+      <time>810</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>23400</pierre>
+      <metal>27300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>16000</argent>
+      <time>1440</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>35800</pierre>
+      <metal>40700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>25000</argent>
+      <time>2250</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>51000</pierre>
+      <metal>56900</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>36000</argent>
+      <time>3240</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>68900</pierre>
+      <metal>75800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>49000</argent>
+      <time>4410</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>89600</pierre>
+      <metal>97500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>64000</argent>
+      <time>5760</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>113300</pierre>
+      <metal>122200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>81000</argent>
+      <time>7290</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>139800</pierre>
+      <metal>149700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>100000</argent>
+      <time>9000</time>
+    </cout>
+    <cout niveau="11">
+      <pierre>169200</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>121000</argent>
+      <time>10890</time>
+    </cout>
+    <cout niveau="12">
+      <pierre>201600</pierre>
+      <metal>213400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>144000</argent>
+      <time>12960</time>
+    </cout>
+    <cout niveau="13">
+      <pierre>236900</pierre>
+      <metal>249700</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>169000</argent>
+      <time>15210</time>
+    </cout>
+    <cout niveau="14">
+      <pierre>275300</pierre>
+      <metal>289100</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>196000</argent>
+      <time>17640</time>
+    </cout>
+    <cout niveau="15">
+      <pierre>316600</pierre>
+      <metal>331400</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>225000</argent>
+      <time>20250</time>
+    </cout>
+    <cout niveau="16">
+      <pierre>361000</pierre>
+      <metal>376800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>256000</argent>
+      <time>23040</time>
+    </cout>
+    <cout niveau="17">
+      <pierre>408500</pierre>
+      <metal>425300</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>289000</argent>
+      <time>26010</time>
+    </cout>
+    <cout niveau="18">
+      <pierre>459000</pierre>
+      <metal>476800</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>324000</argent>
+      <time>29160</time>
+    </cout>
+    <cout niveau="19">
+      <pierre>512700</pierre>
+      <metal>531500</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>361000</argent>
+      <time>32490</time>
+    </cout>
+    <cout niveau="20">
+      <pierre>569400</pierre>
+      <metal>589200</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>400000</argent>
+      <time>36000</time>
+    </cout>
+    <cout niveau="21">
+      <pierre>629300</pierre>
+      <metal>650000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>441000</argent>
+      <time>39690</time>
+    </cout>
+    <cout niveau="22">
+      <pierre>692300</pierre>
+      <metal>714000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>484000</argent>
+      <time>43560</time>
+    </cout>
+  </building>
+  <building id="17">
+    <cout niveau="1">
+      <pierre>10000</pierre>
+      <metal>5000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>10000</argent>
+      <time>900</time>
+    </cout>
+    <cout niveau="2">
+      <pierre>40000</pierre>
+      <metal>20000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>40000</argent>
+      <time>3600</time>
+    </cout>
+    <cout niveau="3">
+      <pierre>90000</pierre>
+      <metal>45000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>90000</argent>
+      <time>8100</time>
+    </cout>
+    <cout niveau="4">
+      <pierre>160000</pierre>
+      <metal>80000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>160000</argent>
+      <time>14400</time>
+    </cout>
+    <cout niveau="5">
+      <pierre>250000</pierre>
+      <metal>125000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>250000</argent>
+      <time>22500</time>
+    </cout>
+    <cout niveau="6">
+      <pierre>360000</pierre>
+      <metal>180000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>360000</argent>
+      <time>32400</time>
+    </cout>
+    <cout niveau="7">
+      <pierre>490000</pierre>
+      <metal>245000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>490000</argent>
+      <time>44100</time>
+    </cout>
+    <cout niveau="8">
+      <pierre>640000</pierre>
+      <metal>320000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>640000</argent>
+      <time>57600</time>
+    </cout>
+    <cout niveau="9">
+      <pierre>810000</pierre>
+      <metal>405000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>810000</argent>
+      <time>72900</time>
+    </cout>
+    <cout niveau="10">
+      <pierre>1000000</pierre>
+      <metal>500000</metal>
+      <oxygene>0</oxygene>
+      <carburant>0</carburant>
+      <argent>1000000</argent>
+      <time>90000</time>
+    </cout>
+  </building>
 </buildings>

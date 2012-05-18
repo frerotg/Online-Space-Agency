@@ -87,6 +87,16 @@ class m_message extends CI_Model {
     	$this->db->insert('user_message', $data);
     }
     
+    function readOne($id_message){
+    	$data = array(
+               'read_message' => 1,
+            );
+
+	$this->db->where('id_message', $id_message);
+	$this->db->update('user_message', $data); 
+
+    }
+    
 }
 
 ?>

@@ -54,25 +54,28 @@ class c_building extends CI_Controller {
     
     function typeList(){
         
-        $user_id = $this->session->userdata('id');
+		$user_id = $this->session->userdata('id');
         $type_id = $this->uri->segment(3);
         
         $this->load->model('m_building');
-        $list['users_buildings'] = $this->m_building->listUserBuilding($user_id, $type_id);
-        $list['users_technologys'] = $this->m_building->listUserTechnology($user_id, $type_id);
-        $list['list_building'] = array();
-        $list['list_technology'] = array();
+        $list['buildings'] = $this->m_building->listUserBuilding($user_id, $type_id);
+        $user_buildings = $this->m_building->listUserBuildingAll($user_id);
+        $user_technologys = $this->m_building->listUserTechnologyAll($user_id);
         
-        foreach ($list['users_buildings'] as $building){
-            if($building->level_building == 1){
-                $list['list_building'][] = $building->id_building;
-            }
+        foreach($user_buildings AS $user_building){
+        	$list['user_buildings'][$user_building->id_building] = $user_building->level_building;
+        }
+        foreach($user_technologys AS $user_technology){
+        	$list['user_technologys'][$user_technology->id_technology] = $user_technology->level_technology;
         }
         
-        foreach ($list['users_technologys'] as $technology){
-            if($technology->level_technology == 1){
-                $list['list_technology'][] = $technology->id_technology;
-            }
+        $underConstruction = $this->m_building->checkUnderConstruction($user_id);
+        
+        if(!empty($underConstruction)){
+        	$list['underConstruction'] = 1;
+        }
+        else{
+        	$list['underConstruction'] = 0;
         }
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
@@ -114,14 +117,27 @@ class c_building extends CI_Controller {
         $resources = $this->m_user->getResources($user_id);
 
         if($reqPierre<=$resources->pierre AND $reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
+            
             $this->m_building->updateBuilding($user_id, $building_id, 1, $buildTime);
+            
+            $endPierre = ($resources->pierre) - $reqPierre;
+            $this->m_user->updateResource($user_id, 'pierre', $endPierre);
+            
+            $endMetal = ($resources->metal) - $reqMetal;
+            $this->m_user->updateResource($user_id, 'metal', $endMetal);
+            
+            $endArgent = ($resources->argent) - $reqArgent;
+            $this->m_user->updateResource($user_id, 'argent', $endArgent);
+            
             $status = 'success';
+            $message = 'La construction du bâtiment à débuté';
         }
         else{
             $status = 'error';
+            $message = 'Vous n\'avez pas assez de ressources pour construire ce bâtiment';
         }
         
-        $data = array('status'=>$status, 'time'=>$buildTime);
+        $data = array('status'=>$status, 'time'=>$buildTime, 'message'=>$message);
         echo json_encode($data);
     }
     
@@ -148,9 +164,22 @@ class c_building extends CI_Controller {
         
         if($reqPierre<=$resources->pierre AND $reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
             $this->m_building->updateBuilding($user_id, $building_id, $level, $buildTime);
+            
+            $endPierre = ($resources->pierre) - $reqPierre;
+            $this->m_user->updateResource($user_id, 'pierre', $endPierre);
+            
+            $endMetal = ($resources->metal) - $reqMetal;
+            $this->m_user->updateResource($user_id, 'metal', $endMetal);
+            
+            $endArgent = ($resources->argent) - $reqArgent;
+            $this->m_user->updateResource($user_id, 'argent', $endArgent);
+            
+            $status = 'success';
         }
         else{
-            echo('Pas assez de ressources');
+            $status = 'error';
         }
+        $data = array('status'=>$status, 'time'=>$buildTime);
+        echo json_encode($data);
     }
 }

@@ -29,10 +29,12 @@ $(function(){
 	      	success: function(data){
 	        	var responseData = jQuery.parseJSON(data);
 	        	if(responseData.status == 'error'){
+	        		$('.fail p').text(responseData.message);
 	        		$('.fail').fadeIn();
 	        	}
 	        	else{
 	        		$('.success').fadeIn()
+	        		$('.success p').text(responseData.message);
 	        		parent.html('<p>Il reste '+responseData.time+' sec</p>');
 	        	}
 	      	}

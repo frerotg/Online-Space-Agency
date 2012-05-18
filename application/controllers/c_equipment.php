@@ -49,35 +49,28 @@ class c_equipment extends CI_Controller {
     }
     
     function typeList(){
-        
         $user_id = $this->session->userdata('id');
         $type_id = $this->uri->segment(3);
         
         $this->load->model('m_equipment');
-        $list['users_equipments'] = $this->m_equipment->listUserEquipment($user_id, $type_id);
-        $list['users_buildings'] = $this->m_equipment->listUserBuilding($user_id, $type_id);
-        $list['users_technologys'] = $this->m_equipment->listUserTechnology($user_id, $type_id);
+        $list['equipments'] = $this->m_equipment->listUserEquipment($user_id, $type_id);
+        $user_buildings = $this->m_equipment->listUserBuildingAll($user_id);
+        $user_technologys = $this->m_equipment->listUserTechnologyAll($user_id);
         
-        $list['list_equipment'] = array();
-        $list['list_building'] = array();
-        $list['list_technology'] = array();
-        
-        foreach ($list['users_equipments'] as $equipment){
-            if($equipment->amount_equipment >= 1){
-                $list['list_building'][] = $equipment->id_equipment;
-            }
+        foreach($user_buildings AS $user_building){
+        	$list['user_buildings'][$user_building->id_building] = $user_building->level_building;
+        }
+        foreach($user_technologys AS $user_technology){
+        	$list['user_technologys'][$user_technology->id_technology] = $user_technology->level_technology;
         }
         
-        foreach ($list['users_buildings'] as $building){
-            if($building->level_building >= 1){
-                $list['list_building'][] = $building->id_building;
-            }
-        }
+        $underConstruction = $this->m_equipment->checkUnderConstruction($user_id);
         
-        foreach ($list['users_technologys'] as $technology){
-            if($technology->level_technology>= 1){
-                $list['list_technology'][] = $technology->id_technology;
-            }
+        if(!empty($underConstruction)){
+        	$list['underConstruction'] = 1;
+        }
+        else{
+        	$list['underConstruction'] = 0;
         }
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
@@ -86,7 +79,6 @@ class c_equipment extends CI_Controller {
         $data['script'] = $this->load->view('template/script/equipment_script', '', TRUE);
         
         $this->load->view('layout',$data);
-        
         
     }
     
@@ -109,13 +101,32 @@ class c_equipment extends CI_Controller {
 
         if($reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
             $this->m_equipment->buildEquipment($user_id, $equipment_id, $buildTime);
+            
+            $endPierre = ($resources->pierre) - $reqPierre;
+            $this->m_user->updateResource($user_id, 'pierre', $endPierre);
+            
+            $endMetal = ($resources->metal) - $reqMetal;
+            $this->m_user->updateResource($user_id, 'metal', $endMetal);
+            
+            $endOxygene = ($resources->oxygene) - $reqOxygene;
+            $this->m_user->updateResource($user_id, 'oxygene', $endOxygene);
+            
+            $endCarburant = ($resources->carburant) - $reqCarburant;
+            $this->m_user->updateResource($user_id, 'carburant', $endCarburant);
+            
+            $endArgent = ($resources->argent) - $reqArgent;
+            $this->m_user->updateResource($user_id, 'argent', $endArgent);
+
+            
             $status = 'success';
+            $message = 'La construction de l\'equipement à débuté';
         }
         else{
             $status = 'error';
+            $message = 'Pas assez de ressource pour cet équipement';
         }
         
-        $data = array('status'=>$status, 'time'=>$buildTime);
+        $data = array('status'=>$status, 'time'=>$buildTime, 'message'=>$message);
         echo json_encode($data);
         
     }

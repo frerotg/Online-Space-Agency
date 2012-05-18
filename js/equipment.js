@@ -26,11 +26,13 @@ $(function(){
       {
         var responseData = jQuery.parseJSON(data);
         if(responseData.status == 'error'){
-            $('.error').fadeIn();
+            $('.fail').fadeIn();
+            $('.fail p').text(responseData.message);
         }
         else{
-            parent.slideUp("slow",function(){$(this).remove();});
+            $('.success p').text(responseData.message);
             $('.success').fadeIn();
+            parent.html('<p>Il reste '+responseData.time+' sec</p>');
         }
       }
     });

@@ -169,7 +169,7 @@ class c_mission extends CI_Controller {
             $pilote = $this->input->post('pilote');
             $spationaute = $this->input->post('spationaute');
             $spationaute2 = $this->input->post('spationaute2');
-            $date_start = $this->input->post('date_start');
+            $date_start = human_to_unix($this->input->post('date_start'));
             $phase_test = $this->input->post('phase_test');
 
             $data = array(
@@ -187,8 +187,8 @@ class c_mission extends CI_Controller {
                 'phase_test' => $phase_test,
                 'id_space_action' => NULL,
                 'date_start_start' => $date_start,
-                'date_test' => $date_start+100,
-				'date_start_end' => $date_start+200
+                'date_test' => $date_start+($phase_test*100),
+				'date_start_end' => $date_start+($phase_test*100)+300
             );
 
             $this->m_mission->addMission($data);
