@@ -38,7 +38,7 @@
 	<div class="batiment-encours encours">
 		<h3>Batiment</h3>
 		<?php if(!empty($building)): ?>
-		<img src="" alt="" width="120" height="80" />
+		<img src="<?=base_url(); ?>/data/image-batiment/<?=$building->id_building ?>-mini.jpg" width="120" height="80" />
 		<p class="status countdown"><?php echo ($building->date_end_building - now()); ?></p>
 		<?php else: ?>
 		<p class="status nothing">Aucun batiment en construction</p>

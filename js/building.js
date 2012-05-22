@@ -34,8 +34,10 @@ $(function(){
 	        	}
 	        	else{
 	        		$('.success').fadeIn()
-	        		$('.success p').text(responseData.message);
-	        		parent.html('<p>Il reste '+responseData.time+' sec</p>');
+	        		$('.success ').text(responseData.message);
+	        		var time = responseData.time[0];
+	        		parent.html('Il rest <span id="countdown" class="'+time+'"></span> sec');
+	        		console.log(time);
 	        	}
 	      	}
     	});

@@ -79,7 +79,7 @@ class m_message extends CI_Model {
     function addAlert($id_user_receive, $title_message, $message){
     	$data = array(
         	'id_user_receive' => $id_user_receive,
-            'id_user_send' => 3,
+            'id_user_send' => 4,
             'title_message' => $title_message,
             'content_message' => $message,
             'date_message' => now()

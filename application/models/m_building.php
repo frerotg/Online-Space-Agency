@@ -113,6 +113,17 @@ class m_building extends CI_Model {
         $array = array('status_building'=>0, 'date_start_building'=>0, 'date_end_building'=>0);
         $this->db->update('user_building', $array);
     }
+    
+    function haveBuilding($id_user, $id_building){
+    	$this->db->select('*');
+        $this->db->from('user_building');
+        $this->db->where('id_user', $id_user);
+        $this->db->where('id_building', $id_building);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
 }
 
 ?>

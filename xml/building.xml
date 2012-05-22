@@ -2082,4 +2082,7 @@
       <time>90000</time>
     </cout>
   </building>
+  <building id='18'>
+  	<cout niveau='1'><pierre>1000</pierre><metal>500</metal><oxygene>0</oxygene><carburant>0</carburant><argent>1000</argent><time>100</time></cout>	<cout niveau='2'><pierre>4000</pierre><metal>2000</metal><oxygene>0</oxygene><carburant>0</carburant><argent>4000</argent><time>400</time></cout>	<cout niveau='3'><pierre>9000</pierre><metal>4500</metal><oxygene>0</oxygene><carburant>0</carburant><argent>9000</argent><time>900</time></cout>	<cout niveau='4'><pierre>16000</pierre><metal>8000</metal><oxygene>0</oxygene><carburant>0</carburant><argent>16000</argent><time>1600</time></cout>	<cout niveau='5'><pierre>25000</pierre><metal>12500</metal><oxygene>0</oxygene><carburant>0</carburant><argent>25000</argent><time>2500</time></cout>	<cout niveau='6'><pierre>36000</pierre><metal>18000</metal><oxygene>0</oxygene><carburant>0</carburant><argent>36000</argent><time>3600</time></cout>	<cout niveau='7'><pierre>49000</pierre><metal>24500</metal><oxygene>0</oxygene><carburant>0</carburant><argent>49000</argent><time>4900</time></cout>	<cout niveau='8'><pierre>64000</pierre><metal>32000</metal><oxygene>0</oxygene><carburant>0</carburant><argent>64000</argent><time>6400</time></cout>	<cout niveau='9'><pierre>81000</pierre><metal>40500</metal><oxygene>0</oxygene><carburant>0</carburant><argent>81000</argent><time>8100</time></cout>
+  </building>
 </buildings>

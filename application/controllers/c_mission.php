@@ -26,6 +26,7 @@ class c_mission extends CI_Controller {
                 $data['topbar'] = $this->load->view('template/topbar/user_interface_topbar', $resources, TRUE);
                 
                 $this->load->model('m_mission');
+                $this->load->model('m_building');
                 $missions = $this->m_mission->listUserMission($user_id);
                 
                 foreach ($missions as $mission) {
@@ -62,7 +63,10 @@ class c_mission extends CI_Controller {
                 	if($userSpaceObject->xp_space_object_status == 0){
                 		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 1);
                 	}
-                	elseif(($userSpaceObject->xp_space_object_status >= 1) AND ($userSpaceObject->xp_space_object_status < 100)){
+                	elseif($userSpaceObject->xp_space_object_status == 1){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 5);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 2) AND ($userSpaceObject->xp_space_object_status < 100)){
                 		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 2);
                 	}
                 	elseif(($userSpaceObject->xp_space_object_status >= 100) AND ($userSpaceObject->xp_space_object_status < 1000)){
@@ -84,6 +88,7 @@ class c_mission extends CI_Controller {
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/mission_index_content','', TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        $data['script'] = $this->load->view('template/script/mission_script', '', TRUE);
 
         $this->load->view('layout',$data);
     }
@@ -127,6 +132,7 @@ class c_mission extends CI_Controller {
     function create(){
         
         $this->load->model('m_mission');
+        $this->load->model('m_building');
         $this->load->library('form_validation');
         
         $user_id = $this->session->userdata('id');
@@ -140,7 +146,6 @@ class c_mission extends CI_Controller {
         $this->form_validation->set_rules('pilote', 'Prénom du directeur', 'required');
         $this->form_validation->set_rules('spationaute', 'Prénom du directeur', 'required');
         $this->form_validation->set_rules('spationaute2', 'Prénom du directeur', 'required');
-        $this->form_validation->set_rules('date_start', 'Prénom du directeur', 'required');
         $this->form_validation->set_rules('phase_test', 'Prénom du directeur', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE){
@@ -169,8 +174,11 @@ class c_mission extends CI_Controller {
             $pilote = $this->input->post('pilote');
             $spationaute = $this->input->post('spationaute');
             $spationaute2 = $this->input->post('spationaute2');
-            $date_start = human_to_unix($this->input->post('date_start'));
+            $date_start_start = now();
             $phase_test = $this->input->post('phase_test');
+            $QG = $this->m_building->haveBuilding($user_id, 15);
+            $timeBytest = 150-(($QG->level_building-1)*5);
+            $date_test = now()+($phase_test*$timeBytest);         
 
             $data = array(
                 'id_user' => $user_id, 
@@ -186,9 +194,9 @@ class c_mission extends CI_Controller {
                 'spationaute2' => $spationaute2,
                 'phase_test' => $phase_test,
                 'id_space_action' => NULL,
-                'date_start_start' => $date_start,
-                'date_test' => $date_start+($phase_test*100),
-				'date_start_end' => $date_start+($phase_test*100)+300
+                'date_start_start' => $date_start_start,
+                'date_test' => $date_test,
+				'date_start_end' => $date_test+300
             );
 
             $this->m_mission->addMission($data);

@@ -1,9 +1,6 @@
 $(function(){
-    $('.error').hide();
+    $('.fail').hide();
     $('.success').hide();
-    $('.error_argent').hide();
-    $('.error_price').hide();
-    $('.formBid').hide();
     
     var number = $('#countdown').attr('class');
     

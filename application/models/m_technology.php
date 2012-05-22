@@ -91,6 +91,17 @@ class m_technology extends CI_Model {
         $array = array('status_technology'=>0, 'date_start_technology'=>0, 'date_end_technology'=>0);
         $this->db->update('user_technology', $array);
     }
+    
+    function haveTechnology($id_user, $id_technology){
+        $this->db->select('*');
+        $this->db->from('user_technology');
+        $this->db->where('id_user', $id_user);
+        $this->db->where('id_technology', $id_technology);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
 }
 
 ?>

@@ -99,6 +99,8 @@ class c_building extends CI_Controller {
     function build(){
         
         $this->load->model('m_building');
+        $this->load->model('m_mission');
+        
         $user_id = $this->session->userdata('id');
         $building_id = $this->uri->segment(3);
         
@@ -129,6 +131,10 @@ class c_building extends CI_Controller {
             $endArgent = ($resources->argent) - $reqArgent;
             $this->m_user->updateResource($user_id, 'argent', $endArgent);
             
+            if($building_id == 18){
+            	$this->m_mission->updateUserSpaceObject($user_id, 4, 1);
+            }
+            
             $status = 'success';
             $message = 'La construction du bâtiment à débuté';
         }
@@ -143,6 +149,7 @@ class c_building extends CI_Controller {
     
     function evolve(){
         $this->load->model('m_building');
+        $this->load->model('m_mission');
         
         $user_id = $this->session->userdata('id');
         $building_id = $this->uri->segment(3);
@@ -174,12 +181,42 @@ class c_building extends CI_Controller {
             $endArgent = ($resources->argent) - $reqArgent;
             $this->m_user->updateResource($user_id, 'argent', $endArgent);
             
+            if($building_id == 18){
+            	$telescope = $this->m_building->haveBuilding($user_id, 18);
+            	switch ($telescope->level_building){
+            		case 2: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 1, 1);
+            			break;
+            		case 3: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 2, 1);
+            			break;
+            		case 4: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 3, 1);
+            			break;
+            		case 5: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 5, 1);
+            			break;
+            		case 6: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 6, 1);
+            			break;
+            		case 7: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 7, 1);
+            			break;
+            		case 8: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 8, 1);
+            			break;
+            		case 9: 
+            			$this->m_mission->updateUserSpaceObject($user_id, 9, 1);            	
+            			break;
+            	}
+            }
+            
             $status = 'success';
         }
         else{
             $status = 'error';
         }
-        $data = array('status'=>$status, 'time'=>$buildTime);
+        $data = array('status'=>$status, 'time'=>90);
         echo json_encode($data);
     }
 }
