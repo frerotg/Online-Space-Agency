@@ -8,8 +8,7 @@ $(function(){
 	    $(this).countDown({
 			startNumber: number,
 			callBack: function(me) {
-				$(me).text('Votre batiment est construit !').css('color','#090');
-				window.location.reload();
+				$(me).text('En attente d\'ordre !').css('color','#090');
 			}
 	   	});
     

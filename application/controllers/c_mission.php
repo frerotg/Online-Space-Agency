@@ -63,10 +63,7 @@ class c_mission extends CI_Controller {
                 	if($userSpaceObject->xp_space_object_status == 0){
                 		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 1);
                 	}
-                	elseif($userSpaceObject->xp_space_object_status == 1){
-                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 5);
-                	}
-                	elseif(($userSpaceObject->xp_space_object_status >= 2) AND ($userSpaceObject->xp_space_object_status < 100)){
+                	elseif(($userSpaceObject->xp_space_object_status >= 1) AND ($userSpaceObject->xp_space_object_status < 100)){
                 		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 2);
                 	}
                 	elseif(($userSpaceObject->xp_space_object_status >= 100) AND ($userSpaceObject->xp_space_object_status < 1000)){
@@ -74,6 +71,12 @@ class c_mission extends CI_Controller {
                 	}
                 	elseif(($userSpaceObject->xp_space_object_status >= 1000) AND ($userSpaceObject->xp_space_object_status < 10000)){
                 		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 4);
+                	}
+                	elseif(($userSpaceObject->xp_space_object_status >= 10000) AND ($userSpaceObject->xp_space_object_status < 100000)){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 5);
+                	}
+                	elseif($userSpaceObject->xp_space_object_status >= 100000){
+                		$this->m_mission->setSpaceObjectStatus($user_id, $userSpaceObject->id_space_object, 6);
                 	}
                 }
             }
@@ -233,7 +236,8 @@ class c_mission extends CI_Controller {
             break;
         case 4:
         	$mission['info'] = $info;
-            $mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info->id_space_object);            
+            $mission['space_object'] = $this->m_mission->getUserSpaceObject($user_id, $info->id_space_object);
+            $mission['next_status'] = $this->m_mission->getNextSpaceObjectStatus($mission['space_object']->id_space_object_status);     
             $mission['coque'] = $this->m_mission->getEquipment($info->coque);
             $mission['lance'] = $this->m_mission->getEquipment($info->lance);
             $mission['module'] = $this->m_mission->getEquipment($info->module);
@@ -243,6 +247,19 @@ class c_mission extends CI_Controller {
             $mission['spationaute2'] = $this->m_mission->getPersonnel($info->spationaute2);
             $mission['actions'] = $this->m_mission->getAction('all');
             $mission['events'] = $this->m_mission->getEvents($user_id);
+            $afteraction = $this->session->flashdata('afterAction');    
+            $lastEvent = $this->uri->segment(4);
+            if($lastEvent != NULL){
+            	if($lastEvent == 0){
+            		$mission['statusLastEvent'] = 'fail';
+            		$mission['event'] = 'Vous avez déjà découvert toute les informations avec cette action';
+            	}
+            	else{
+            		$mission['statusLastEvent'] = 'success';
+            		$mission['event'] = $this->m_mission->getSingleEvents($user_id, $lastEvent);
+            	}
+            }
+            
             
             $data['content'] = $this->load->view('template/content/mission_viewStatus4_content',$mission ,TRUE);
             break;
@@ -353,15 +370,16 @@ class c_mission extends CI_Controller {
         if(empty($events)){
         	
         	$data2 = array(
-	                'id_space_action' => 0,
+	                'id_space_action' => NULL,
 	                'date_start_space_action' => 0,
 	                'date_end_space_action' => 0,
 	                'id_status' => 4,
 	        );
 	        
 			$this->m_mission->addAction($data2, $user_id, $id_mission);
+			
         	
-        	redirect('c_mission/index'); 
+        	redirect('c_mission/viewMission/'.$id_mission.'/0'); 
         }
         else{       
         	foreach($events AS $event){
@@ -402,7 +420,8 @@ class c_mission extends CI_Controller {
 	        
 			$this->m_mission->addAction($data2, $user_id, $id_mission);
 			
-			redirect('c_mission/index');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+			
+			redirect('c_mission/viewMission/'.$id_mission.'/'.$event->id_space_object_event);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
         }
     }

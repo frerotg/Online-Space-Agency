@@ -121,6 +121,17 @@ class m_mission extends CI_Model {
         return $result;
     }
     
+    function getNextSpaceObjectStatus($id_space_objec_status){
+    	$id = $id_space_objec_status+1;
+    	$this->db->select('*');
+        $this->db->from('space_object_status');
+    	$this->db->where('space_object_status.id_space_object_status', $id);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    
     function getEquipment($id_equipment){
         $this->db->select('*');
         $this->db->from('equipment_list');
@@ -173,8 +184,9 @@ class m_mission extends CI_Model {
     function getSingleEvents($id_user, $id_space_object_event){
         $this->db->select('*');
         $this->db->from('user_space_object_event');
+        $this->db->join('space_object_event', 'user_space_object_event.id_space_object_event = space_object_event.id_space_object_event');
         $this->db->where('user_space_object_event.id_user', $id_user);
-        $this->db->where('id_space_object_event', $id_space_object_event);
+        $this->db->where('user_space_object_event.id_space_object_event', $id_space_object_event);
         $query = $this->db->get();
         
         $result = $query->row();
