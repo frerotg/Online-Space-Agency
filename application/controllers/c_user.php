@@ -47,11 +47,32 @@ class c_user extends CI_Controller {
                 $missions = $this->m_mission->listUserMission($user_id);
                 
                 foreach ($missions as $mission) {
+                if($mission->date_start_start != NULL){
                     if( (($mission->date_start_start) <= now()) AND (($mission->date_test) >= now()) ){
                         $this->m_mission->changeStatus($user_id, $mission->id_mission, 2);
                     }
                     elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
+                        if($mission->id_status != 3){
+                        	$base = $this->m_building->haveBuilding($user_id, 14);
+	                    	$taux = 20-((($base->level_building)*10 / 100)*20);
+	                    	$rand = rand(1, 100);
+	                    	if($rand <= $taux){
+	                    		$data = array(
+											'date_start_start' => NULL,
+											'date_test' => NULL,
+							                'date_start_end' => NULL,
+							                'date_end_start' => NULL,
+							                'date_end_end' => NULL,
+							                'id_status' => 10
+							        );
+							        
+								$this->m_mission->comeBack($data, $user_id, $mission->id_mission);
+	                    	}
+	                    	else{
+	                    		$this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
+	                    	}
+	                    }
+
                     }
                     elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
                     	if($mission->id_space_action == NULL){
@@ -72,6 +93,7 @@ class c_user extends CI_Controller {
                     elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
                         $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
                     }
+                }
                 }
                 
                 $userSpaceObjects = $this->m_mission->listUserSpaceObject($user_id);

@@ -85,12 +85,26 @@ class c_equipment extends CI_Controller {
     function build(){
         
         $this->load->model('m_equipment');
+        $this->load->model('m_building');
+        
         $user_id = $this->session->userdata('id');
         $equipment_id = $this->uri->segment(3);
         
         $cout = $this->m_equipment->coutEquipment($equipment_id);
         
-        $buildTime = $cout[0]->time_equipment;
+        switch($cout[0]->id_type_equipment){
+        	case 1: $fabrique = $this->m_building->haveBuilding($user_id, 10);
+        	break;
+        	case 2: $fabrique = $this->m_building->haveBuilding($user_id, 11);
+        	break;
+        	case 3: $fabrique = $this->m_building->haveBuilding($user_id, 12);
+        	break;
+        	case 4: $fabrique = $this->m_building->haveBuilding($user_id, 13);
+        	break;
+        
+        }
+        
+        $buildTime = ($cout[0]->time_equipment - (((sqrt($fabrique->level_building)*5)/100)*$cout[0]->time_equipment));
         $reqMetal = $cout[0]->metal_equipment;
         $reqOxygene = $cout[0]->oxygene_equipment;
         $reqCarburant = $cout[0]->carburant_equipment;
@@ -101,9 +115,6 @@ class c_equipment extends CI_Controller {
 
         if($reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
             $this->m_equipment->buildEquipment($user_id, $equipment_id, $buildTime);
-            
-            $endPierre = ($resources->pierre) - $reqPierre;
-            $this->m_user->updateResource($user_id, 'pierre', $endPierre);
             
             $endMetal = ($resources->metal) - $reqMetal;
             $this->m_user->updateResource($user_id, 'metal', $endMetal);

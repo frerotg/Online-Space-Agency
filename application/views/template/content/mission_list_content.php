@@ -4,7 +4,8 @@ if (count($missions))
    <table class="bordered-table zebra-striped">
    <?php
    foreach ($missions as $mission)
-   {?>
+   {
+   	if($mission->id_status != 9){?>  
       <tr>
         <td><?= $mission->id_mission; ?></td>
         <td><?= $mission->id_zone_space; ?></td>
@@ -14,6 +15,7 @@ if (count($missions))
                                                                                         'id' => $mission->id_mission)); ?></td>
       </tr>
    <?php
+   	}
    }
    ?>
    </table>

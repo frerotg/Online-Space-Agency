@@ -71,6 +71,7 @@ class c_personnel extends CI_Controller {
         $user_id = $this->session->userdata('id');
         
         $this->load->model('m_personnel');
+        $this->load->model('m_building');
         $list = $this->m_personnel->getList(1,$user_id);
         $table['types'] = $this->m_personnel->getType();
         
@@ -99,11 +100,171 @@ class c_personnel extends CI_Controller {
             }
         }
         
-        $limit_spationaute = 2;
-        $limit_pilote = 2;
-        $limit_scientifique = 2;
-        $limit_horslaloi = 2;
-        $limit_securite = 2;
+        $base = $this->m_building->haveBuilding($user_id, 15);
+        
+        switch($base->level_building){
+            case 0:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 1:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 2:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 3:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 4:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 5:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 6:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 7:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 8:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 9:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 10:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 11:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 12:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 13:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 14:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 15:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 16:
+        		$limit_spationaute = 6;
+        		$limit_pilote = 3;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+			case 17:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 18:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 19:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 20:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 21:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 22:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        }
         
         $table['limit'] = array('spationaute' => $limit_spationaute,'pilote' => $limit_pilote,'scientifique' => $limit_scientifique,'horslaloi' => $limit_horslaloi,'securite' => $limit_securite);
         
@@ -168,16 +329,175 @@ class c_personnel extends CI_Controller {
         $id_type_personnel = $personnel->id_type_personnel;
         $mypersonnel = $this->m_personnel->getListbyType($id_type_personnel, $user_id);
         
+        $base = $this->m_building->haveBuilding($user_id, 15);
+        
+        switch($base->level_building){
+        	case 1:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 2:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 3:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 1;
+        		$limit_horslaloi = 1;
+        		$limit_securite = 1;
+        		break;
+        	case 4:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 5:
+        		$limit_spationaute = 2;
+        		$limit_pilote = 1;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 6:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 7:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 8:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 9:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 2;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 10:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 11:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 2;
+        		$limit_securite = 2;
+        		break;
+        	case 12:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 13:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 14:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 15:
+        		$limit_spationaute = 4;
+        		$limit_pilote = 2;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 16:
+        		$limit_spationaute = 6;
+        		$limit_pilote = 3;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+			case 17:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 3;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 18:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 19:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 20:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 21:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        	case 22:
+        		$limit_spationaute = 6;
+        		$limit_pilote =3;
+        		$limit_scientifique = 4;
+        		$limit_horslaloi = 3;
+        		$limit_securite = 3;
+        		break;
+        }
+        
         switch($id_type_personnel){
-        	case 1: $limit = 2;
+        	case 1: $limit = $limit_spationaute;
         	break;
-        	case 2: $limit = 2;
+        	case 2: $limit = $limit_pilote;
         	break;
-        	case 3: $limit = 2;
+        	case 3: $limit = $limit_scientifique;
         	break;
-        	case 4: $limit = 2;
+        	case 4: $limit = $limit_horslaloi;
         	break;
-        	case 5: $limit = 2;
+        	case 5: $limit = $limit_securite;
         	break;
         }
         

@@ -48,7 +48,7 @@
         			$lvl_carburant = $building['level_building'];
         			$get_carburant = $ressources->xpath('/ressources/ressource[@name="carburant"]/get[@niveau='.$lvl_carburant.']');
         		}
-        		elseif($building['id_building'] == 18){
+        		elseif($building['id_building'] == 16){
         			$lvl_argent = $building['level_building'];
         			$get_argent = $ressources->xpath('/ressources/ressource[@name="argent"]/get[@niveau='.$lvl_argent.']');
         		}

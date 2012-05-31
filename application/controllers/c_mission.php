@@ -30,31 +30,50 @@ class c_mission extends CI_Controller {
                 $missions = $this->m_mission->listUserMission($user_id);
                 
                 foreach ($missions as $mission) {
-                    if( (($mission->date_start_start) <= now()) AND (($mission->date_test) >= now()) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 2);
-                    }
-                    elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
-                    }
-                    elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
-                    	if($mission->id_space_action == NULL){
-                        	$this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
-                        }
-                        else{
-                        	if($mission->date_start_space_action != 0 AND $mission->date_end_space_action > now()){
-                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 5);
-                        	}
-                        	else if($mission->date_start_space_action != 0 AND $mission->date_end_space_action <= now()){
-                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 6);
-                        	}
-                        }
-                    }
-                    elseif( (($mission->date_end_start) <= now()) AND (($mission->date_end_end) >= now()) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 7);
-                    }
-                    elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
-                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
-                    }
+                	if($mission->date_start_start != NULL){
+	                    if( (($mission->date_start_start) <= now()) AND (($mission->date_test) >= now()) ){
+	                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 2);
+	                    }
+	                    elseif( (($mission->date_test) <= now()) AND (($mission->date_start_end) >= now()) ){
+	                    	$base = $this->m_building->haveBuilding($user_id, 14);
+	                    	$taux = 20-((($base->level_building)*10 / 100)*20);
+	                    	$rand = rand(1, 100);
+	                    	if($rand <= $taux){
+	                    		$data = array(
+											'date_start_start' => NULL,
+											'date_test' => NULL,
+							                'date_start_end' => NULL,
+							                'date_end_start' => NULL,
+							                'date_end_end' => NULL,
+							                'id_status' => 10
+							        );
+							        
+								$this->m_mission->comeBack($data, $user_id, $mission->id_mission);
+	                    	}
+	                    	else{
+	                    		$this->m_mission->changeStatus($user_id, $mission->id_mission, 3);
+	                    	}
+	                    }
+	                    elseif( (($mission->date_start_end) <= now()) AND (($mission->date_end_start) == 0) ){
+	                    	if($mission->id_space_action == NULL){
+	                        	$this->m_mission->changeStatus($user_id, $mission->id_mission, 4);
+	                        }
+	                        else{
+	                        	if($mission->date_start_space_action != 0 AND $mission->date_end_space_action > now()){
+	                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 5);
+	                        	}
+	                        	else if($mission->date_start_space_action != 0 AND $mission->date_end_space_action <= now()){
+	                        		$this->m_mission->changeStatus($user_id, $mission->id_mission, 6);
+	                        	}
+	                        }
+	                    }
+	                    elseif( (($mission->date_end_start) <= now()) AND (($mission->date_end_end) >= now()) ){
+	                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 7);
+	                    }
+	                    elseif( (($mission->date_end_end) <= now()) AND (($mission->date_end_end) != 0) ){
+	                        $this->m_mission->changeStatus($user_id, $mission->id_mission, 8);
+	                    }
+                	}
                 }
                 
                 $userSpaceObjects = $this->m_mission->listUserSpaceObject($user_id);
@@ -179,11 +198,29 @@ class c_mission extends CI_Controller {
             $spationaute2 = $this->input->post('spationaute2');
             $date_start_start = now();
             $phase_test = $this->input->post('phase_test');
+            
+            /*Calcul de la période Test-Lancement*/
             $QG = $this->m_building->haveBuilding($user_id, 15);
             $timeBytest = 150-(($QG->level_building-1)*5);
-            $date_test = now()+($phase_test*$timeBytest);         
-
-            $data = array(
+            $date_test = now()+($phase_test*$timeBytest); 
+            
+            /*Calcul de la période Lancement-Arrivée*/
+            $space_object = $this->m_mission->getUserSpaceObject($user_id, $object);
+            $lanceur = $this->m_mission->getEquipment($lance);
+            $date_start_end = $date_test + (($space_object->distance_space_object / $lanceur->skill1_equipment)*20);
+         
+            /*Update des ressources*/
+            $carburant = $space_object->distance_space_object*((($lanceur->skill2_equipment * 2) + $lanceur->skill1_equipment)*5);
+            $resources = $this->m_user->getResources($user_id);
+            
+            /* Calcul des points d'action*/
+            $moduleDeCommande = $this->m_mission->getEquipment($module);
+            $point_action = $moduleDeCommande->skill1_equipment * 100;
+            
+            if($resources->carburant >= $carburant){
+            	$this->m_user->updateResource($user_id, 'carburant', $carburant);
+            	
+            	$data = array(
                 'id_user' => $user_id, 
                 'id_status' => 1,
                 'id_zone_space' => $zone,
@@ -199,14 +236,21 @@ class c_mission extends CI_Controller {
                 'id_space_action' => NULL,
                 'date_start_start' => $date_start_start,
                 'date_test' => $date_test,
-				'date_start_end' => $date_test+300
-            );
+				'date_start_end' => $date_start_end,
+				'point_action' => $point_action
+            	);
 
-            $this->m_mission->addMission($data);
-
-
-            $data['header'] = $this->load->view('template/header/register_success_header', '', TRUE);
-            $data['content'] = $this->load->view('template/element/form/register/success_mission', TRUE);
+            	$this->m_mission->addMission($data);
+            	
+            	$data['header'] = $this->load->view('template/header/register_success_header', '', TRUE);
+            	$data['content'] = $this->load->view('template/element/form/register/success_mission', TRUE);
+            	
+            }
+            else{
+            
+            	$data['header'] = $this->load->view('template/header/register_success_header', '', TRUE);
+            	$data['content'] = $this->load->view('template/element/form/register/fail_mission', TRUE);
+            }
         }
         
         $data['footer'] = $this->load->view('template/footer/main_footer', '', TRUE);
@@ -297,11 +341,11 @@ class c_mission extends CI_Controller {
             $data['content'] = $this->load->view('template/content/mission_viewStatus6_content',$mission,TRUE);
             break;
         case 7:
-        	print_r(now());
             $data['content'] = $this->load->view('template/content/mission_viewStatus7_content','',TRUE);
             break;
         case 8:
-            $data['content'] = $this->load->view('template/content/mission_viewStatus8_content','',TRUE);
+        	$mission['info'] = $info;
+            $data['content'] = $this->load->view('template/content/mission_viewStatus8_content',$mission,TRUE);
             break;
         }     
         
@@ -324,11 +368,17 @@ class c_mission extends CI_Controller {
         $action = $this->m_mission->getAction($id_action);
         $info = $this->m_mission->infoMission($user_id, $id_mission);
         
-        if(($info->point_action - $action->cout_space_action) >= 0){
+        $module = $this->m_mission->getEquipment($info->module);
+        $combinaison = $this->m_mission->getEquipment($info->combinaison);
+        
+        $coutSpaceAction = ($action->cout_space_action - ((($combinaison->skill1_equipment * 2) / 100) * $action->cout_space_action));
+        $timeSpaceAction = ($action->time_space_action - ((($module->skill2_equipment * 2) / 100) * $action->time_space_action));
+        
+        if(($info->point_action - $coutSpaceAction) >= 0){
 	        $data = array(
 	                'id_space_action' => $id_action,
 	                'date_start_space_action' => now(),
-	                'date_end_space_action' => (now() + $action->time_space_action),
+	                'date_end_space_action' => (now() + $timeSpaceAction),
 	                'id_status' => 5,
 	        );
 	        
@@ -434,15 +484,38 @@ class c_mission extends CI_Controller {
 
         $info = $this->m_mission->infoMission($user_id, $id_mission);
         
+        $date_end_end = (now() + ($info->date_start_end - $info->date_test));
+        
 		$data = array(
 	                'date_end_start' => now(),
-	                'date_end_end' => (now() + 300),
+	                'date_end_end' => $date_end_end,
 	                'id_status' => 7
 	        );
 	        
 		$this->m_mission->comeBack($data, $user_id, $id_mission);
 		redirect('c_mission/index');
 
+    }
+    
+    function finish(){
+    	$this->load->model('m_mission');
+    	
+        $user_id = $this->session->userdata('id');
+        $id_mission = $this->uri->segment(3);
+
+        $info = $this->m_mission->infoMission($user_id, $id_mission);
+        
+		$data = array(
+					'date_start_start' => NULL,
+					'date_test' => NULL,
+	                'date_start_end' => NULL,
+	                'date_end_start' => NULL,
+	                'date_end_end' => NULL,
+	                'id_status' => 9
+	        );
+	        
+		$this->m_mission->comeBack($data, $user_id, $id_mission);
+		redirect('c_mission/index');
     }
     
 }

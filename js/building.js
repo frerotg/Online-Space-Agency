@@ -14,6 +14,18 @@ $(function(){
     
     $('a[title]').qtip();
     
+    $('span.display-info-building').click(function(){
+    	if($(this).hasClass('ouvert')){
+    		$(this).next().hide();
+    		$(this).removeClass('ouvert');
+    	}
+    	else{
+    		$(this).next().show();
+    		$(this).addClass('ouvert');
+    	}
+    	  
+    });
+    
 	$('.build').click(function(){
     	
     	var id = $(this).attr('id');
