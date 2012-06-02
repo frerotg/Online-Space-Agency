@@ -44,6 +44,7 @@ class c_equipment extends CI_Controller {
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/equipment_index_content', $list, TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        $data['script'] = $this->load->view('template/script/equipment_script', '', TRUE);
 
         $this->load->view('layout',$data);
     }
