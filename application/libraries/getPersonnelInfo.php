@@ -67,31 +67,30 @@ class getpersonnelinfo {
             $skill2 = rand(1,8);
             $skill3 = rand(1,8);
         }
-        elseif($reputation > 60 && $reputation <= 80){
-            $skill1 = rand(8,12);
-            $skill2 = rand(8,12);
-            $skill3 = rand(8,12);
+        elseif($reputation > 60 && $reputation <= 85){
+            $skill1 = rand(9,12);
+            $skill2 = rand(9,12);
+            $skill3 = rand(9,12);
         }
-        elseif($reputation > 80 && $reputation <= 95){
-            $skill1 = rand(12,16);
-            $skill2 = rand(12,16);
-            $skill3 = rand(12,16);
+        elseif($reputation > 85 && $reputation <= 95){
+            $skill1 = rand(13,16);
+            $skill2 = rand(13,16);
+            $skill3 = rand(13,16);
         }
         elseif($reputation > 95){
-            $skill1 = rand(16,20);
-            $skill2 = rand(16,20);
-            $skill3 = rand(16,20);
+            $skill1 = rand(17,20);
+            $skill2 = rand(17,20);
+            $skill3 = rand(17,20);
         }
         
         $skill = array('skill1' => $skill1,
-                       'skill2' => $skill2,
-                       'skill3' => $skill3);
+                       'skill2' => $skill2);
         return $skill;
     }
     
-    function getSalaire($skill1, $skill2, $skill3) {
+    function getSalaire($skill1, $skill2) {
         
-        $salaire = ($skill1 + $skill2 + $skill3)*100;
+        $salaire = ($skill1 + $skill2)*100;
         return $salaire;
     }
     
@@ -114,7 +113,7 @@ class getpersonnelinfo {
                 $ind = 0.6;
                 break;
         }
-        $valeur = $salaire*50*$ind;
+        $valeur = $salaire*25*$ind;
         return $valeur;
     }
 }

@@ -1,12 +1,4 @@
 <div class="building_list">
-	<div class="alert">
-		<div class="success">
-			<p></p>
-		</div>
-		<div class="fail">
-			<p></p>
-		</div>
-	</div>
 	<h1>Bâtiment</h1>
 	<ul>
 		<?php foreach($buildings AS $building):
@@ -21,6 +13,7 @@
 				if($user_technologys[$id] >= $level){}else{$ok = 0;}
 			}?>
 			<li>
+				<div class="alert"><div class="success"><p></p></div><div class="fail"><p></p></div></div>
 				<div class="photo-building">
 					<img class="img-1" src="<?=base_url(); ?>/data/image-batiment/<?=$building->id_building ?>-mini.jpg" />
 					<img class="img-2" src="<?=base_url(); ?>/data/image-batiment/<?=$building->id_building ?>-mini.jpg" />
@@ -32,6 +25,7 @@
 					<p class="level-building">niv.<?= $building->level_building ?></p>
 					<div class="status-building">
 						<?php if($building->status_building == 1):?>
+							<p id="countdown" class="<?php echo($building->date_end_building - now()) ?>"></p>
 						<?php else: ?>
 							<?php if($underConstruction !== 1): ?>
 					        	<?php if($building->level_building == 0): ?>
@@ -40,7 +34,7 @@
 					                	<?= anchor('c_building/build/'.$building->id_building,'Construire', array('title' => 'Construire le'.$building->name_building, 'class' => 'build', 'id' => $building->id_building)) ?>
 									<?php else: ?>
 										<span class="icon-lock"></span>
-					                	<p>Vous ne pouvez pas</p>
+					                	<p>Vous ne repondez pas au(x) critères</p>
 					                <?php endif; ?>
 								<?php else: ?>
 										<span class="icon-ok"></span>
@@ -56,10 +50,10 @@
 				<span class="display-info-building"></span>
 				<div class="info-building">
 					<div class="required-building">
-						<p class="time">147 sec.</p>
-						<p class="argent">9555</p>
-						<p class="pierre">10000</p>
-						<p class="metal">11000</p>
+						<p class="time"><?= $cout_buildings[$building->id_building][0]->time ?> sec.</p>
+						<p class="argent"><?= $cout_buildings[$building->id_building][0]->argent ?></p>
+						<p class="pierre"><?= $cout_buildings[$building->id_building][0]->pierre ?></p>
+						<p class="metal"><?= $cout_buildings[$building->id_building][0]->metal ?></p>
 					</div>
 					<div class="description-building">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in porttitor massa. Aenean vestibulum suscipit arcu, vitae convallis felis interdum congue. Suspendisse ultricies congue sodales.</p>

@@ -39,7 +39,7 @@
 					                	<?= anchor('c_equipment/build/'.$equipment->id_equipment,'Construire', array('title' => 'Construire le'.$equipment->name_equipment, 'class' => 'build', 'id' => $equipment->id_equipment)) ?>
 									<?php else: ?>
 										<span class="icon-lock"></span>
-					                	<p>Vous ne pouvez pas</p>
+					                	<p>Vous ne repondez pas au(x) critères pour ce bâtiment</p>
 					                <?php endif; ?>
 							<?php else: ?>
 								<span class="icon-lock"></span>
@@ -51,10 +51,10 @@
 				<span class="display-info-equipment"></span>
 				<div class="info-equipment">
 					<div class="required-equipment">
-						<p class="time">147 sec.</p>
-						<p class="argent">9555</p>
-						<p class="pierre">10000</p>
-						<p class="metal">11000</p>
+						<p class="time"><?= $equipment->time_equipment ?> sec.</p>
+						<p class="argent"><?= $equipment->argent_equipment ?></p>
+						<p class="pierre"><?= $equipment->oxygene_equipment ?></p>
+						<p class="metal"><?= $equipment->metal_equipment ?></p>
 					</div>
 					<div class="description-equipment">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in porttitor massa. Aenean vestibulum suscipit arcu, vitae convallis felis interdum congue. Suspendisse ultricies congue sodales.</p>

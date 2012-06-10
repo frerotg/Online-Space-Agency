@@ -1209,6 +1209,356 @@ body {
 					}
 				}	
 			}
+			.mission_view{
+				.ui-tabs-hide{ 
+					display: none !important; 
+				}
+				ul.tabs-mission{
+					margin: auto;
+					padding: 0;
+					width: 800px;
+					li{
+						display: inline-block;
+						width: 220px;
+						height: 45px;
+						&:first-child{margin-right: 67px;}
+						&:last-child{margin-left: 67px;}
+						a{
+							display: block;
+							font-family: 'LobsterTwoRegular';
+							font-size: 25px;
+							color: @black;
+							text-align: center;
+							
+						}
+					}
+					
+				}
+				div#actions{
+					div.destination{
+						width: 800px;
+						height: 230px;
+						background-color: @black;
+						margin: auto;
+						position: relative;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						div.image-destination{	
+							img{
+								width: 162px;
+								height: 162px;
+								border: 4px solid @darkwhite;
+								position: absolute;
+								top: 30px;
+								left: 50px;
+								-moz-border-radius: 5px;
+								-webkit-border-radius: 5px;
+								border-radius: 5px;
+								
+								-moz-box-shadow: 0px 0px 10px #000000;
+								-webkit-box-shadow: 0px 0px 10px #000000;
+								box-shadow: 0px 0px 10px #000000;
+								&.img-1{
+									-moz-transform:rotate(10deg);
+									-webkit-transform:rotate(10deg);
+									-o-transform:rotate(10deg);
+								}
+								&.img-2{
+									-moz-transform:rotate(-6deg);
+									-webkit-transform:rotate(-6deg);
+									-o-transform:rotate(-6deg);
+								}
+								&.img-3{}
+							}
+						}
+						div.description-destination{
+							margin-left: 250px;
+							ul{
+								list-style: none;
+								padding-top: 20px;
+								li{
+									font-family: 'LobsterTwoRegular';
+									font-size: 24px;
+									color: @white;
+									span{
+										font-family: 'LeagueGothicRegular';
+										font-size: 28px;
+										color: @white;
+									}
+									&.distance{
+										margin-bottom: 40px;
+										
+									}
+								}
+							}
+						}
+					}
+					div.experience-destination{
+						h2{
+							font-family: 'LeagueGothicRegular';
+							font-size: 28px;
+							color: @black;
+							width: 800px;
+							margin: auto;
+							margin-top: 30px;
+							text-decoration: underline;
+						}
+						div.content-bar{
+							background: @black;
+							width: 800px;
+							margin: auto;
+							-moz-border-radius: 5px;
+							-webkit-border-radius: 5px;
+							border-radius: 5px;
+							height: 60px;
+							p{
+								float: left;
+								width: 160px;
+								font-family: 'LobsterTwoRegular';
+								font-size: 16px;
+								color: @white;
+								text-align: center;
+								line-height: 60px;
+								height: 60px;
+								margin: 0;				
+							}
+							.bar{
+								width: 640px;
+								margin-left: 160px;
+								margin-top: 20px;
+								position: relative;
+								top: 20px;
+								.bar-background{
+									width: 630px;
+									margin: auto;
+									height: 20px;
+									-moz-border-radius: 20px;
+									-webkit-border-radius: 20px;
+									border-radius: 20px;
+									background: @white url("../img/layout/mission/background-bar.png") repeat-x;									
+								}
+								.bar-frontground{
+									width: 630px;
+									margin-left: 5px;
+									height: 20px;
+									-moz-border-radius: 20px;
+									-webkit-border-radius: 20px;
+									border-radius: 20px;
+									background: url("../img/layout/mission/frontground-bar.png") repeat-x;
+									position: relative;
+									top:-20px;
+								}
+							}		
+						}
+					}
+					div.actions-enabled{
+						width: 800px;
+						margin: auto;
+						position: relative;
+						clear: both;
+						h2{
+							font-family: 'LeagueGothicRegular';
+							font-size: 28px;
+							color: @black;
+							width: 800px;
+							margin: auto;
+							margin-top: 30px;
+							text-decoration: underline;
+							margin-bottom: 40px;
+						}
+						div.points-restant{
+							width: 50px;
+							height: 70px;
+							border: 2px dashed @black;
+							position: absolute;
+							right: -70px;
+							span.up{
+								display: block;
+								font-family: 'LobsterTwoRegular';
+								color: @black;
+								font-size: 16px;
+								text-align: center;
+							}
+							span.down{
+								display: block;
+								font-family: 'LobsterTwoRegular';
+								color: @black;
+								font-size: 20px;
+								text-align: center;
+							}
+						}
+						div.action{
+							height: 80px;
+							width: 800px;
+							margin-bottom: 40px;
+							position: relative;
+							div.image-action{
+								background: @darkwhite;
+								float: left;
+								width: 80px;
+								img{
+									width: 80px;
+									height: 80px;
+								}
+							}
+							div.label-action{
+								width: 390px;
+								margin-left: 70px;
+								float: left;
+								border-right: 2px solid @black;
+								margin-right: 5px;
+								h3{
+									font-family: 'LobsterTwoRegular';
+									font-size: 20px;
+									margin-bottom: 10px;
+									margin-top: 5px;
+								}
+								p{
+									font-family: 'Futura';
+									font-weight: 200;
+									font-size: 16px;
+									margin: 0;
+								}
+							}
+							div.info-action{
+								width: 70px;
+								height: 80px;
+								margin-left:557px;
+								
+								
+								p{
+									-moz-border-radius: 5px;
+									-webkit-border-radius: 5px;
+									border-radius: 5px;
+									background: @black;
+									line-height: 25px;
+									font-family: 'LobsterTwoRegular';
+									font-size:16px;
+									color: @white;
+									text-align: right;
+									margin-top: 50xp;
+									position: relative;
+									top: 10px;
+									padding-right: 5px;
+									&.cost{
+										background: @black url("../img/layout/mission/cost-icon.png") no-repeat 3px center;
+									}
+									
+									&.time{
+										background: @black url("../img/layout/mission/time-icon.png") no-repeat 3px center;
+									}
+								}
+							}
+							div.go-action{
+								position: absolute;
+								top: 22px;
+								right: 0;
+								width: 130px;
+								height: 45px;
+								a{
+									display: block;
+									-moz-border-radius: 5px;
+									-webkit-border-radius: 5px;
+									border-radius: 5px;
+									background: @black;
+									text-decoration: none;
+									color: @white;
+									font-family: 'LobsterTwoRegular';
+									font-size:18px;
+									line-height: 45px;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}				
+			}
+			div#discover{
+				width: 800px;
+				margin: auto;
+				.last-event{
+					h2{
+						font-family: 'LeagueGothicRegular';
+						font-size: 24px;
+						color: @black;
+						span{
+							font-family: 'LobsterTwoRegular';
+							font-size:24px;
+							color: @black;
+						}
+					}
+					.content-last-event{
+						width: 790px;
+						padding: 5px;
+						background: @darkwhite;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						.content-last-event2{
+							width: 786px;
+							position: relative;
+							border: 2px dashed @black;
+							-moz-border-radius: 5px;
+							-webkit-border-radius: 5px;
+							border-radius: 5px;
+							.image-last-event{
+								position: absolute;
+								top: 0;
+								left: 0;
+								img{
+									
+								}
+							}
+							.description-last-event{
+								width: 470px;
+								margin-left: 310px;
+								font-family: 'Futura';
+								font-weight: 200;
+								font-size: 16px;
+								color: @black;
+							}
+						}
+					}
+				}
+				.events{
+					h2{
+						font-family: 'LeagueGothicRegular';
+						font-size: 24px;
+						color: @black;
+						margin-top: 40px;
+					}
+					.event{
+						width: 790px;
+						padding: 5px;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						position: relative;
+						h3{
+							font-family: 'LobsterTwoRegular';
+							font-size:18px;
+							color: @black;
+						}
+						img{
+							position: absolute;
+							top: 0;
+							left: 0;
+						}
+						p{
+							width: 470px;
+							margin-left: 310px;
+							font-family: 'Futura';
+							font-weight: 200;
+							font-size: 16px;
+							color: @black;
+						}
+					}
+				}
+			}
+			div#events{
+						
+			}
 		}
 	}
 }

@@ -11,7 +11,7 @@
 	<?= anchor('c_equipment/index', '<span>Equipement</span>', array('title' => 'Accedez à la page de gestion des equipements', 'class' => 'link-equipment')); ?>
 </li><!--
 --><li>
-	<?= anchor('c_mission/index', '<span>Mission</span>', array('title' => 'Accedez à la page de gestion des missions', 'class' => 'link-mission')); ?>
+	<?= anchor('c_mission/listMission', '<span>Mission</span>', array('title' => 'Accedez à la page de gestion des missions', 'class' => 'link-mission')); ?>
 </li><!--
 --><li>
 	<?= anchor('c_know/index', '<span>Connaissance</span>', array('title' => 'Accedez à la page des connaissances', 'class' => 'link-know')); ?>

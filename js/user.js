@@ -7,9 +7,6 @@ $(function(){
 	    
 	    $(this).countDown({
 			startNumber: number,
-			callBack: function(me) {
-				$(me).text('En attente d\'ordre !').css('color','#090');
-			}
 	   	});
     
     });

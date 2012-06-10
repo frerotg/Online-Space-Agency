@@ -40,26 +40,6 @@
              <tbody>
 	             <?php switch ($type->id_type_personnel){
 	             	case 1: ?>
-	             		<?php foreach($spationautes AS $spationaute): ?>
-	             			<tr>
-				                <td class="personnel-name"><?= $spationaute->name_personnel; ?></td>
-				                <td class="personnel-skill1"><?= $spationaute->skill1_personnel; ?></td>
-				                <td class="personnel-skill2"><?= $spationaute->skill2_personnel; ?></td>
-				                <td class="personnel-salaire"><?= $spationaute->salaire_personnel; ?></td>
-				                <td class="personnel-valeur"><?= $spationaute->valeur_personnel; ?></td>
-				    			<td class="personnel-action"><?php echo anchor('c_personnel/kick/' .$spationaute->id_personnel ,'Virer', array('title' =>'Virer ce personnel', 'class' => 'kick', 'id' => $spationaute->id_personnel)) ?></td>
-	              			</tr>
-	             		<?php endforeach;
-	             		if(count($spationautes) !== $limit['spationaute']):
-	             			$restant = $limit['spationaute'] - count($spationautes);
-	             			for($i=1; $i<=$restant; $i++): ?>
-	             			<tr>
-				                <td colspan="6" class="post-free">Poste vacant</td>
-	              			</tr>
-	             			<?php endfor;
-	             		endif;
-	             		break;
-	             	case 2: ?>
 	             		<?php foreach($pilotes AS $pilote): ?>
 	             			<tr>
 				                <td class="personnel-name"><?= $pilote->name_personnel; ?></td>
@@ -72,6 +52,26 @@
 	             		<?php endforeach;
 	             		if(count($pilotes) !== $limit['pilote']):
 	             			$restant = $limit['pilote'] - count($pilotes);
+	             			for($i=1; $i<=$restant; $i++): ?>
+	             			<tr>
+				                <td colspan="6" class="post-free">Poste vacant</td>
+	              			</tr>
+	             			<?php endfor;
+	             		endif;
+	             		break;
+	             	case 2: ?>
+	             		<?php foreach($spationautes AS $spationaute): ?>
+	             			<tr>
+				                <td class="personnel-name"><?= $spationaute->name_personnel; ?></td>
+				                <td class="personnel-skill1"><?= $spationaute->skill1_personnel; ?></td>
+				                <td class="personnel-skill2"><?= $spationaute->skill2_personnel; ?></td>
+				                <td class="personnel-salaire"><?= $spationaute->salaire_personnel; ?></td>
+				                <td class="personnel-valeur"><?= $spationaute->valeur_personnel; ?></td>
+				    			<td class="personnel-action"><?php echo anchor('c_personnel/kick/' .$spationaute->id_personnel ,'Virer', array('title' =>'Virer ce personnel', 'class' => 'kick', 'id' => $spationaute->id_personnel)) ?></td>
+	              			</tr>
+	             		<?php endforeach;
+	             		if(count($spationautes) !== $limit['spationaute']):
+	             			$restant = $limit['spationaute'] - count($spationautes);
 	             			for($i=1; $i<=$restant; $i++): ?>
 	             			<tr>
 				                <td colspan="6" class="post-free">Poste vacant</td>

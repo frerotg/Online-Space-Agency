@@ -1,73 +1,94 @@
 <div class="mission_view4 mission_view">
-	<div class="destination">
-		<div class="image-destination">
-			<img class="img-1" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
-			<img class="img-2" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
-			<img class="img-3" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
+	<ul class="tabs-mission">
+		<li><a href="#actions">Actions de la mission</a></li>
+		<li><a href="#discover">Découverte de l'astre</a></li>
+		<li><a href="#infos">Infos de la mission</a></li>
+	</ul>
+	<div id="actions">
+		<div class="destination">
+			<div class="image-destination">
+				<img class="img-1" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
+				<img class="img-2" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
+				<img class="img-3" src="<?=base_url(); ?>/data/image-astre/<?=$space_object->id_space_object ?>.jpg" />
+			</div>
+			<div class="description-destination">
+				<ul>
+				<li class="name">Nom de l'astre : <span><?=$space_object->name_space_object ?></span></li>
+				<li class="type">Type d'astre : <span><?=$space_object->name_type_space ?></span></li>
+				<li class="distance">Distance de la Terre : <span><?=$space_object->distance_space_object ?> millions de km</span></li>
+				<li class="status">Status actuel de l'astre : <span><?=$space_object->name_space_object_status ?></span></li>
+				</ul>
+			</div>
 		</div>
-		<div class="description-destination">
-			<dl>
-				<dt>Nom de l'astre
-					<dd><?=$space_object->name_space_object ?></dd>
-				</dt>
-				<dt>Type d'astre
-					<dd><?=$space_object->name_type_space ?></dd>
-				</dt>
-				<dt>Distance de la Terre
-					<dd><?=$space_object->distance_space_object ?> millions de km</dd>
-				</dt>
-				<dt>Status actuel de l'astre
-					<dd><?=$space_object->name_space_object_status ?></dd>
-				</dt>
-			</dl>
+		<div class="experience-destination">
+			<h2>Experience actuelle de l’astre</h2>
+			<?php 
+			$pourcent = (($space_object->xp_space_object_status)/($next_status->step_space_object_status)*100);
+			$width = $pourcent*6.3;						
+			?>
+			<div class="content-bar">
+				<p><?=$space_object->xp_space_object_status ?> / <?=$next_status->step_space_object_status ?> (<?= $pourcent ?>%)</p>
+				<div class="bar">
+					<div class="bar-background"></div>
+					<div class="bar-frontground" style="width: <?= $width ?>px;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="actions-enabled">
+			<h2>Action(s) disponible pour la mission actuelle :</h2>
+			<div class="points-restant"><span class="up">Points restant : </span><span class="down"><?=$info->point_action ?></span></div>
+			<?php foreach($actions AS $action): ?>
+				<?php if($action->id_space_object_status <= $space_object->id_space_object_status): ?>
+					<div class="action">
+						<div class="image-action"><img src="<?=base_url(); ?>/data/image-action/<?=$action->id_space_action ?>.jpg" /></div>
+						<div class="label-action">
+							<h3><?=$action->name_space_action ?></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel sapien sem.accumsan id.</p>
+						</div>
+						<div class="info-action">
+							<p class="cost"><?=$action->cout_space_action ?> .pt</p>
+							<p class="time"><?=$action->time_space_action ?> .sec</p>
+						</div>
+						<div class="go-action">
+							<?= anchor('c_mission/doAction/'.$info->id_mission.'/'.$action->id_space_action,'Executer l\'action !', array('title' => 'Executer la mission')); ?>
+						</div>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
 		</div>
 	</div>
-	<div class="last-event">
-		<h2><span class="label">Dernière découverte : </span><?=$event->name_space_object_event; ?></h2>
-		<div class="content-last-event">
-			<div class="image-last-event">
-				<img src="<?=base_url(); ?>/data/image-event/<?=$event->id_space_object_event; ?>.jpg" />
+	<div id="discover">
+		<div class="last-event">
+			<h2><span class="label">Dernière découverte : </span><?=$event->name_space_object_event; ?></h2>
+			<div class="content-last-event">
+				<div class="content-last-event2">
+					<div class="image-last-event">
+						<img src="<?=base_url(); ?>/data/image-event/<?=$event->id_space_object_event; ?>.jpg" />
+					</div>
+					<div class="description-last-event">
+						<p><?=$event->description_space_object_event; ?></p>
+					</div>
+				</div>
 			</div>
-			<div class="description-last-event">
-				<p><?=$event->description_space_object_event; ?></p>
+		<div class="events">
+			<h2>Historique des découvertes</h2>
+			<div class="event">
+				<h3>blabla</h3>
+				<img src="#" />
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate tempus ipsum in ultrices. Fusce quis quam lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet sem leo. Sed egestas, odio eu feugiat sagittis, turpis erat tempor justo, nec tincidunt felis urna non mi. Vestibulum dapibus rhoncus urna, quis ullamcorper lectus rutrum non. Vivamus vitae enim vel sem gravida luctus.</p>
+			</div>
+			<div class="event">
+				<h3>blabla</h3>
+				<img src="#" />
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate tempus ipsum in ultrices. Fusce quis quam lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet sem leo. Sed egestas, odio eu feugiat sagittis, turpis erat tempor justo, nec tincidunt felis urna non mi. Vestibulum dapibus rhoncus urna, quis ullamcorper lectus rutrum non. Vivamus vitae enim vel sem gravida luctus.</p>
+			</div>
+			<div class="event">
+				<h3>blabla</h3>
+				<img src="#" />
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate tempus ipsum in ultrices. Fusce quis quam lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet sem leo. Sed egestas, odio eu feugiat sagittis, turpis erat tempor justo, nec tincidunt felis urna non mi. Vestibulum dapibus rhoncus urna, quis ullamcorper lectus rutrum non. Vivamus vitae enim vel sem gravida luctus.</p>
 			</div>
 		</div>
+	</div>
+	<div id="infos">
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-<h1>Votre mission est actuellement en attente d'ordre</h1>
-
-<p>Vous explorez actuellement <?=$space_object->name_space_object ?> son status actuel est <?=$space_object->name_space_object_status ?></p>
-
-<p>Vous avez a actuellement  <?=$space_object->xp_space_object_status ?> point(s) et vous avez besoin de <?=$next_status->step_space_object_status ?> points pour passé au niveau suivant qui évoluera le status de <?=$space_object->name_space_object ?> à <?=$next_status->name_space_object_status ?></p>
-
-
-<p>Action actuelle disponible pour l'état d'avancement de la planète :</p>
-
-<ul>
-<?php
-foreach($actions AS $action){
-	if($action->id_space_object_status <= $space_object->id_space_object_status){
-		echo '<li>'.anchor('c_mission/doAction/'.$info->id_mission.'/'.$action->id_space_action,$action->name_space_action, array('title' => 'Lancer one mission d\'/de '.$action->name_space_action, 'class' => '')).': cette action coûte '.$action->cout_space_action.' points d\'action et durera '.$action->time_space_action.' sec</li>';
-	}
-	else{
-		echo '<li>'.$action->name_space_action.'</li>';
-	}
-}
-echo anchor('c_mission/comeBack/'.$info->id_mission.'/','Retourner sur Terre', array('title' => 'Retourner sur Terre', 'class' => ''));?>
-</ul>
-
-<h2>Vous actuellement <?=$info->point_action ?> point(s) d'action disponible</h2>
-<?php if(isset($event)): ?>
-<pre><?php print_r($event); ?></pre>
-<?php endif; ?>

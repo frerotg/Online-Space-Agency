@@ -62,12 +62,20 @@ class c_building extends CI_Controller {
         $user_buildings = $this->m_building->listUserBuildingAll($user_id);
         $user_technologys = $this->m_building->listUserTechnologyAll($user_id);
         
+        $xml = simplexml_load_file('xml/building.xml');
+	    $buildings =  new SimpleXMLElement('xml/building.xml', NULL, TRUE);
+        
         foreach($user_buildings AS $user_building){
         	$list['user_buildings'][$user_building->id_building] = $user_building->level_building;
+        	
+        	$id = $user_building->id_building;
+        	$level = ($user_building->level_building)+1;
+	    	$list['cout_buildings'][$id] = $buildings->xpath('/buildings/building[@id='.$id.']/cout[@niveau='.$level.']');
         }
         foreach($user_technologys AS $user_technology){
         	$list['user_technologys'][$user_technology->id_technology] = $user_technology->level_technology;
         }
+        
         
         $underConstruction = $this->m_building->checkUnderConstruction($user_id);
         
@@ -212,11 +220,14 @@ class c_building extends CI_Controller {
             }
             
             $status = 'success';
+            $message = 'La construction du bâtiment à débuté';
         }
         else{
             $status = 'error';
+            $message = 'Vous n\'avez pas assez de ressources pour construire ce bâtiment';
         }
-        $data = array('status'=>$status, 'time'=>90);
+        
+        $data = array('status'=>$status, 'time'=>$buildTime, 'message'=>$message);
         echo json_encode($data);
     }
 }

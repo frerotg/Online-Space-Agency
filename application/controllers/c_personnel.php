@@ -46,7 +46,7 @@ class c_personnel extends CI_Controller {
         //Le propriétaire du personnel
         $owner = NULL;       
         //Salaire du personnel
-        $salaire = $this->getpersonnelinfo->getSalaire($skill['skill1'], $skill['skill2'],$skill['skill3']);      
+        $salaire = $this->getpersonnelinfo->getSalaire($skill['skill1'], $skill['skill2']);      
         //Valeur du personnel
         $valeur = $this->getpersonnelinfo->getValeur($personnel, $salaire);
         
@@ -57,7 +57,6 @@ class c_personnel extends CI_Controller {
            'reputation_personnel' => $reputation,
            'skill1_personnel' => $skill['skill1'] ,
            'skill2_personnel' => $skill['skill2'] ,
-           'skill3_personnel' => $skill['skill3'] ,
            'status_personnel' => $status ,
            'owner_personnel' => $owner ,
            'salaire_personnel' => $salaire ,

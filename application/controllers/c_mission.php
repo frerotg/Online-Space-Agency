@@ -105,16 +105,6 @@ class c_mission extends CI_Controller {
 
     }
     
-    function index(){
-
-        $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-        $data['content'] = $this->load->view('template/content/mission_index_content','', TRUE);
-        $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
-        $data['script'] = $this->load->view('template/script/mission_script', '', TRUE);
-
-        $this->load->view('layout',$data);
-    }
-    
     function listMission(){
         $user_id = $this->session->userdata('id');
         
@@ -352,7 +342,7 @@ class c_mission extends CI_Controller {
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE); 
         $data['script'] = $this->load->view('template/script/mission_script', '', TRUE);
         $data['footer'] = $this->load->view('template/footer/main_footer', '', TRUE);
-        $data['script'] = $this->load->view('template/script/register_script', '', TRUE);
+        $data['script'] = $this->load->view('template/script/mission_script', '', TRUE);
         
         $this->load->view('layout',$data);
     }
