@@ -50,6 +50,8 @@ class m_mission extends CI_Model {
         $this->db->select('*');
         $this->db->from('user_space_object');
         $this->db->join('space_object', 'user_space_object.id_space_object = space_object.id_space_object');
+        $this->db->join('space_object_status', 'user_space_object.id_space_object_status = space_object_status.id_space_object_status');
+        $this->db->join('space_type', 'space_object.id_type_space = space_type.id_type_space');
         $this->db->where('id_user', $user_id);
         $this->db->order_by("id_zone_space", "asc"); 
         $query = $this->db->get();
@@ -57,6 +59,23 @@ class m_mission extends CI_Model {
         $result = $query->result();
         return $result;
     }
+    
+    function listObjectDecouvert($user_id){
+        
+        $this->db->select('*');
+        $this->db->from('user_space_object');
+        $this->db->join('space_object', 'user_space_object.id_space_object = space_object.id_space_object');
+        $this->db->join('space_object_status', 'user_space_object.id_space_object_status = space_object_status.id_space_object_status');
+        $this->db->join('space_type', 'space_object.id_type_space = space_type.id_type_space');
+        $this->db->where('id_user', $user_id);
+        $this->db->where('user_space_object.xp_space_object_status >=', 1);
+        $this->db->order_by("id_zone_space", "asc"); 
+        $query = $this->db->get();
+        
+        $result = $query->result();
+        return $result;
+    }
+    
     function listEquipment($type_id, $user_id){
         
         $this->db->select('*');

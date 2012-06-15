@@ -12,24 +12,95 @@
 
 @font-face {
     font-family: 'Futura';
-    src: url('futura.eot');
-    src: url('futura.eot?#iefix') format('embedded-opentype'),
-         url('futura.woff') format('woff'),
-         url('futura.ttf') format('truetype'),
-         url('futura.svg#Futura') format('svg');
+    src: url('../fonts/futura.eot');
+    src: url('../fonts/futura.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/futura.woff') format('woff'),
+         url('../fonts/futura.ttf') format('truetype'),
+         url('../fonts/futura.svg#Futura') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
+@font-face {
+    font-family: 'LobsterTwoItalic';
+    src: url('../fonts/lobstertwo-italic-webfont.eot');
+    src: url('../fonts/lobstertwo-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lobstertwo-italic-webfont.woff') format('woff'),
+         url('../fonts/lobstertwo-italic-webfont.ttf') format('truetype'),
+         url('../fonts/lobstertwo-italic-webfont.svg#LobsterTwoItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LobsterTwoBold';
+    src: url('../fonts/lobstertwo-bold-webfont.eot');
+    src: url('../fonts/lobstertwo-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lobstertwo-bold-webfont.woff') format('woff'),
+         url('../fonts/lobstertwo-bold-webfont.ttf') format('truetype'),
+         url('../fonts/lobstertwo-bold-webfont.svg#LobsterTwoBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LobsterTwoBoldItalic';
+    src: url('../fonts/lobstertwo-bolditalic-webfont.eot');
+    src: url('../fonts/lobstertwo-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lobstertwo-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/lobstertwo-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/lobstertwo-bolditalic-webfont.svg#LobsterTwoBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LobsterTwoRegular';
+    src: url('../fonts/lobstertwo-regular-webfont.eot');
+    src: url('../fonts/lobstertwo-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lobstertwo-regular-webfont.woff') format('woff'),
+         url('../fonts/lobstertwo-regular-webfont.ttf') format('truetype'),
+         url('../fonts/lobstertwo-regular-webfont.svg#LobsterTwoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@blue: #55adaa;
+@darkblue: #47928f;
+@verydarkblue: #367673;
+
+@lightwhite: #f6f4ec;
+@white: #e7e3cf;
+@darkwhite: #d2cfbe;
+
+@black: #414042;
+@darkblack: #282828;
+
+@background: #f6f4ec;
+
+@red: #f23d4c;
+
+@green: #57cb85;
+
+
 body {
 	font-size: 10px;
 	line-height: 1.2;
-	background: #55adaa;
+	background: @lightwhite url("../img/layout/background-body.png") repeat-x bottom;
+	margin: 0;
+	padding: 0;
 	section.home{
 		margin: auto;
 		width: 1280px;
 		background: #55adaa;
+		border-bottom: 7px solid @darkblue;
+		padding-bottom: 65px;
 		header{
 			background: #55adaa url("../img/layout/register-background.png") no-repeat top left;
 			height: 124px;
@@ -125,7 +196,10 @@ body {
 		}
 		div.connection{
 			form{
+				position: relative;
 				margin-top: 50px;
+				background: url("../img/layout/line.png") repeat-x left bottom;
+				padding-bottom: 20px;
 				fieldset{
 					width: 100%;
 					border: none;
@@ -149,44 +223,412 @@ body {
 						float: left;
 						width: 50%;
 						text-align: right;
+						margin-top: 22px;
 						input#username{
 							width: 220px;
-							height: 40px;
-							background-color: #47928f!important;
+							height: 20px;
+							background-color: #47928f;
 							border-radius: 5px;
 							margin: auto;
-							
+							background-color: @darkblue;
+							border: 0;
+							-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.10);
+           					box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.10);
+           					font-family: 'LobsterTwoItalic';
+           					font-size: 18px;
+           					color: @verydarkblue;
+           					padding: 10px;
+           					margin-right: 20px;
+						}
+						&.error{
+							input#username{
+								background-color: @red;
+								-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
+								box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
+								color: darken(@red, 30%);
+							}
 						}
 					}
 					.contener-password{
 						float: right;
 						width: 50%;
+						margin-top: 22px;
 						input#password{
-							background-color: #47928f!important;
+							background-color: #47928f;
 							border-radius: 5px;
 							width: 220px;
-							height: 40px;
+							height: 20px;
 							margin: auto;
+							border: 0;
+							-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.10);
+           					box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.10);
+           					font-family: 'LobsterTwoItalic';
+           					font-size: 18px;
+           					color: @verydarkblue;
+           					padding: 10px;
+           					margin-left: 20px;
+						}
+						&.error{
+							input#password{
+								background-color: @red;
+								-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
+								box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
+								color: darken(@red, 30%);
+							}
 						}
 					}
-					.input-connection{
-						background: url("../img/layout/btn-connection.png") no-repeat;
-						width: 147px;
-						height: 38px;
-						border: none;
-						font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
-						text-transform: uppercase;
-						font-size: 2em;
+					p.error{
+						position: absolute;
+						top: 110px;
+						left: 310px;
 						text-align: center;
-						color: #e7e3cf;
-						text-shadow: 1px 1px 0px #4c4c4c, 3px 3px 0px #272621;
-						text-decoration: none;
-						margin: auto;
+						padding: 5px;
+						width: 660px;
+						height: 20px;
+						background: @red;
+						font-family: 'LobsterTwoItalic';
+           				font-size: 16px;
+           				border-radius: 5px;
+						color: darken(@red, 30%);
+						-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
+						box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.40) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.40);
 					}
-					
+					.contener-connection{
+						margin: auto;
+						width: 147px;
+						padding-left: 5px;
+						padding-top: 90px;
+						background: url("../img/layout/star.png") no-repeat center 30px;
+						.input-connection{
+							background: url("../img/layout/btn-connection.png") no-repeat;
+							width: 147px;
+							height: 38px;
+							border: none;
+							font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+							text-transform: uppercase;
+							font-size: 2em;
+							text-align: center;
+							color: #e7e3cf;
+							text-shadow: 1px 1px 0px #4c4c4c, 3px 3px 0px #272621;
+							text-decoration: none;
+							margin: auto;
+							cursor: pointer;
+							margin-top: 40px;
+						}
+					}
 				}
 			}
 		}
 		
+	}
+	section.stat{
+		background: @lightwhite;
+		margin: auto;
+		width: 1280px;
+		div.contener-stat-link{
+			width: 300px;
+			height: 100px;
+			margin: auto;
+			background: url("../img/layout/btn-stat.png") no-repeat;
+			position: relative;
+			top: -48px;
+			a{
+				display: block;
+				width: 264px;
+				height: 77px;
+				font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+				text-transform: uppercase;
+				font-size: 22px;
+				text-align: center;
+				color: #e7e3cf;
+				text-shadow: 1px 1px 0px #4c4c4c, 3px 3px 0px #272621;
+				text-decoration: none;
+				margin: auto;
+				cursor: pointer;
+				padding-top: 30px;
+				
+			}
+		}
+		.contener-stat{
+			width: 960px;
+			margin: auto;
+			padding: 20px 0 50px 0;
+			div.stat-box{
+				width: 300px;
+				height: 168px;
+				margin: 0 90px;
+				display: inline-block;
+				vertical-align: top;
+				&.stat1{
+					background: url("../img/layout/badge-terre.png") no-repeat;
+				}
+				&.stat2{
+					background: url("../img/layout/badge-telescope.png") no-repeat;
+				}
+				&.stat3{
+					background: url("../img/layout/badge-fusee.png") no-repeat;
+				}
+				&.stat4{
+					background: url("../img/layout/badge-dollars.png") no-repeat;
+					p.value-stat{font-size: 40pt; top: -82px;}
+				}
+				p.description-stat{
+					width: 300px;
+					text-align: center;
+					position: relative;
+					top: 83px;
+					font-size: 30px;
+					font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+					color: #e7e3cf;
+					text-transform: uppercase;
+					text-shadow: 1px 1px 0px #55adaa, 4px 4px 0px #47928f;
+				}
+				p.value-stat{
+					width: 300px;
+					text-align: center;
+					position: relative;
+					top: -127px;
+					font-size: 60pt;
+					font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+					color: @black;
+					text-transform: uppercase;
+					text-shadow: 1px 1px 0px @white, 4px 4px 0px @black;
+				}
+			}
+		}
+	}
+	section.register{
+		margin: auto;
+		width: 1280px;
+		background: @lightwhite url("../img/layout/bottom-register.png") no-repeat left bottom;
+		height: 950px;
+		padding-top: 50px;
+		div.contener-form-register{
+			width: 660px;
+			padding: 20px 50px 20px 50px;
+			margin: auto;
+			background: white;
+			-moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.20);
+			-webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.20);
+			-o-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.20);
+			box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.20);
+			height: 660px;
+			position: relative;
+			background: url("../img/layout/paper.png") repeat;
+			div.corner{
+				background: url("../img/layout/corner.png") no-repeat;
+				width: 70px;
+				height: 70px;
+				&.corner-top-left{
+					background-position: 0 0;
+					position: absolute;
+					top: -10px;
+					left: -10px;
+				}
+				&.corner-top-right{
+					background-position: -70px 0;
+					position: absolute;
+					top: -10px;
+					right: -10px;
+				}
+				&.corner-bottom-left{
+					background-position: 0 -70px;
+					position: absolute;
+					bottom: -10px;
+					left: -10px;
+				}
+				&.corner-bottom-right{
+					background-position: -70px -70px;
+					position: absolute;
+					bottom: -10px;
+					right: -10px;
+				}
+			}
+			div.title-register{
+				height: 160px;
+				background: url("../img/layout/line-black.png") repeat-x bottom left;
+				margin-bottom: 20px;
+				h1{
+					text-align: center;
+					span.little-h1{
+						font-family: 'Futura', Arial, Helvetica, sans-serif;
+						color: @black;
+						text-transform: uppercase;
+						font-size: 36px;
+					}
+					span.big-h1{
+						font-family: 'LobsterTwoBold';
+						color: @darkblue;
+						font-size: 70px;
+					}
+				}
+			}
+			form.register{
+				div.form-register{
+					div.add-info{
+						display: none;
+						width: 640px;
+						background: @lightwhite;
+						border: 2px dashed @darkwhite;
+						padding: 5px 10px;
+						margin-top: 10px;
+						p{
+							font-family: 'LobsterTwoItalic';
+							color: @black;
+							font-size: 16px;
+						}
+					}
+					div.contener-radio{
+						margin-top: 20px;
+					}
+					label{
+						display: block;
+						width: 660px;
+						font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+						color: @black;
+						text-transform: uppercase;
+						font-size: 24px;
+						margin-top: 20px;
+						&[for=rules]{
+							display: inline;
+							margin-right: 30px;
+						}
+						&[for=accept],&[for=refuse]{
+							display: inline;
+							margin-right: 20px;
+							cursor: pointer;
+						}
+						span.error{
+							color: @red;
+						}
+					}
+					input{
+						display: block;
+						width: 660px;
+						border: 0;
+						background: url("../img/layout/point-input.png") repeat-x bottom left;
+						height: 35px;
+						font-family: 'LobsterTwoItalic';
+						font-size: 24px;
+						color: @black;
+						margin: 0;
+						&[type=radio]{
+							display: inline;
+							width: 20px;
+							height: 28px;
+							margin: 0;
+							margin-right: 10px;
+							vertical-align:middle;
+						}
+						&[type=submit]{
+							display: block;
+							background: none;
+							cursor: pointer;
+							font-size: 34px;
+							height: 50px;
+							margin-top: 60px;
+							font-family: 'LobsterTwoItalic';
+							font-size: 34px;
+							color: @black;
+							text-align: center;
+							text-decoration: none;
+							position: absolute;
+							bottom: 40px;
+							left: 20px;
+						}
+					}
+					a.register-btn{
+						display: block;
+						background: none;
+						cursor: pointer;
+						font-size: 34px;
+						height: 50px;
+						margin-top: 60px;
+						font-family: 'LobsterTwoItalic';
+						font-size: 34px;
+						color: @black;
+						text-align: center;
+						text-decoration: none;
+						position: absolute;
+						bottom: 40px;
+						left: 277px;
+					}
+					a.next-register1{
+						display: none;
+					}
+					&.form-register2{
+						display: none;
+					}
+					&.form-register3{
+						display: none;
+					}
+				}
+			}
+			div.success-register{
+				display: none;
+				div.message-success-register{
+					display: block;
+					width: 400px;
+					height: 210px;
+					background: @green;
+					margin: auto;
+					-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.20);
+           			box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.20);
+           			padding-top: 100px;
+           			margin-top: 100px;
+					p{
+						font-family: 'LobsterTwoItalic';
+						font-size: 24px;
+						text-align: center;
+						color: #3a8b5a;
+					}
+				}
+				div.link-success-register{
+					width: 400px;
+					height: 105px;
+					background: url("../img/layout/btn-register-success.png") no-repeat top left;
+					margin: auto;
+					margin-top: 20px;
+					a{
+						display: block;
+						width: 380px;
+						height: 85px;
+						font-family: 'LeagueGothicRegular', Arial, Helvetica, sans-serif;
+						color: @black;
+						text-transform: uppercase;
+						text-shadow: 1px 1px 0px @green, 4px 4px 0px #3a8b5a;
+						text-decoration: none;
+						text-align: center;
+						font-size: 26px;
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+	footer{
+		width: 960px;
+		height: 200px;
+		margin: auto;
+		border-top: 7px solid @darkblue;
+		background: @blue;
+		p{
+			font-family: 'LobsterTwoItalic';
+			font-size: 22px;
+			text-align: right;
+			color: @darkblue;
+			display: inline-block;
+			width: 480px;
+			&.left{
+				text-align: left;
+				a{
+					font-family: 'LobsterTwoItalic';
+			font-size: 22px;
+			text-align: right;
+			color: darken(@darkblue, 10%);
+				}
+			}
+
+		}
 	}
 }

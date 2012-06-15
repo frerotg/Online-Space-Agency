@@ -32,14 +32,28 @@ class c_message extends CI_Controller {
     
     function index(){
    	 	$this->load->model('m_message');
+   	 	$this->load->model('m_user');
    	 	
     	$user_id = $this->session->userdata('id');
     	
-        $list['messages'] = $this->m_message->listMessage($user_id);
+        $messages = $this->m_message->listMessage($user_id);
+        
+        foreach($messages AS $message){
+	        $id_sender = $message->id_user_send;
+	        $username = $this->m_user->getOneUser($id_sender);
+	        $usernameSender = $username->username;
+	        $title_message = $message->title_message;
+	        $content_message = $message->content_message;
+	        $date = date("d-m-Y H:i:s", $message->date_message);
+	        $read = $message->read_message;
+	        
+	        $list['messages'][] =  array('sender' => $usernameSender, 'title_message' => $title_message, 'content_message' => $content_message, 'date' => $date, 'read' => $read);
+        }
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/message_index_content', $list, TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+        $data['script'] = $this->load->view('template/script/message_script', '', TRUE);
 
         $this->load->view('layout',$data);
     }
@@ -82,48 +96,76 @@ class c_message extends CI_Controller {
     	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/message_sendone_content','',TRUE);
         $data['script'] = $this->load->view('template/script/message_script', '', TRUE);
+        $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
             
         $this->load->view('layout',$data);
     }
     
     function sendOne(){
+    
     	$this->load->model('m_message');
-    	$this->load->library('form_validation');
     	$this->load->helper('date');
     	
     	$user_id = $this->session->userdata('id');
 
-        $this->form_validation->set_rules('username_receive', 'Destinataire du message', 'required|callback_checkUsername');
-        $this->form_validation->set_rules('title_message', 'Titre du message', 'required');
-        $this->form_validation->set_rules('message', 'Message', 'required');
-
-        if ($this->form_validation->run() == FALSE){
-
-            $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-            $data['content'] = $this->load->view('template/content/message_sendone_content','',TRUE);
-            
-            $this->load->view('layout',$data);
-        }
-        else{
-
-            $username_receive = $this->input->post('username_receive');
-            $title_message = $this->input->post('title_message');
-            $message = $this->input->post('message');
-			
+        $username_receive = $_GET['Iusername_receive'];
+        $title_message = $_GET['Ititle_message'];
+        $message = $_GET['Icontent_message'];
+        
+        
+        if(!empty($username_receive)){
+	        $username_receiveStatus = 'ok';
+	    }
+	    else{
+		    $username_receiveStatus = 'empty';
+	    }
+	    
+	    if(!empty($title_message)){
+	        $title_messageStatus = 'ok';
+	    }
+	    else{
+		    $title_messageStatus = 'empty';
+	    }
+	    
+	    if(!empty($message)){
+	        $messageStatus = 'ok';
+	    }
+	    else{
+		    $messageStatus = 'empty';
+	    }
+	    
+	    
+	    
+	    
+	    if( ($username_receiveStatus == "ok") AND ($title_messageStatus == "ok") AND ($messageStatus == "ok") ){
+			$status = 'ok';
+	    }
+	    else{
+		    $status = 'fail';
+	    }
+	    
+	    
+	    
+	    
+		if($status =='ok'){
+		
 			$id_user_receive = $this->m_message->getID($username_receive);
 			
-            $data = array(
-                'id_user_receive' => $id_user_receive->id,
-                'id_user_send' => $user_id,
-                'title_message' => $title_message,
-                'content_message' => $message,
-                'date_message' => now()
-            );
-
-            $this->m_message->sendMessage($data);
 			
-			redirect('c_message/index');
+	        $datas = array(
+	            'id_user_receive' => $id_user_receive->id,
+	            'id_user_send' => $user_id,
+	            'title_message' => $title_message,
+	            'content_message' => $message,
+	            'date_message' => now()
+	        );
+	
+	        $this->m_message->sendMessage($datas);
         }
+		
+		$data = array('status'=>$status, 'username_receive'=>$username_receiveStatus, 'title_message'=>$title_messageStatus, 'content_message'=>$messageStatus);
+		
+		echo json_encode($data);
     }
     
     function removeOne(){

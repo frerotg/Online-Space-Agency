@@ -38,7 +38,8 @@ $(function(){
     	
     	$('.success').hide();
 		$('.fail').hide();
-    
+		$('div.alert').hide();
+		
     	$.ajax({
 	      	type: "POST",
 	      	url: url_send,
@@ -47,10 +48,20 @@ $(function(){
 	        	if(responseData.status == 'error'){
 	        		source.find('.fail p').text(responseData.message);
 	        		source.find('.fail').fadeIn();
+	        		source.find('.fail').parent().fadeIn();
 	        	}
 	        	else{
+	        		source.find('span.display-info-building').css('top', '152px');
+	        		source.find('div.photo-building img').css('top', '80px');
 	        		source.find('.success').fadeIn()
 	        		source.find('.success p').text(responseData.message);
+	        		source.find('.success').parent().fadeIn();
+	        		
+	        		$('div.building').find('a.build').hide();
+	        		$('div.building').find('a.evolve').hide();
+	        		$('div.building').find('div.status-building').append('<p>Bâtiment déjà en construction</p>');
+	        		parent.find('p').hide();
+	        		
 	        		var time = responseData.time[0];
 	        		actual.hide();
 	        		parent.append('<p id="countdown" class="'+time+'"></p>');
@@ -67,10 +78,12 @@ $(function(){
     	var actual = $(this);
     	var id = $(this).attr('id');
     	var parent = $(this).parent();
+    	var source = $(this).parent().parent().parent().parent();
     	var url_send = $(this).attr('href');
     	
     	$('.success').hide();
 		$('.fail').hide();
+		$('div.alert').hide();
     
     	$.ajax({
 	      	type: "POST",
@@ -78,12 +91,23 @@ $(function(){
 	      	success: function(data){
 	        	var responseData = jQuery.parseJSON(data);
 	        	if(responseData.status == 'error'){
-	        		$('.fail p').text(responseData.message);
-	        		$('.fail').fadeIn();
+	        		source.find('.fail p').text(responseData.message);
+	        		source.find('.fail').fadeIn();
+	        		source.find('.fail').parent().fadeIn();
 	        	}
 	        	else{
-	        		$('.success').fadeIn()
-	        		$('.success ').text(responseData.message);
+	        		source.find('span.display-info-building').css('top', '152px');
+	        		source.find('div.photo-building img').css('top', '80px');
+	        		source.find('.success').fadeIn()
+	        		source.find('.success p').text(responseData.message);
+	        		source.find('.success').parent().fadeIn();
+	        		
+	        		$('div.building').find('a.build').hide();
+	        		$('div.building').find('a.evolve').hide();
+	        		$('div.building').find('div.status-building').append('<p>Bâtiment déjà en construction</p>');
+	        		parent.find('p').hide();
+
+	        		
 	        		var time = responseData.time[0];
 	        		actual.hide();
 	        		parent.append('<p id="countdown" class="'+time+'"></p>');

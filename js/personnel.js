@@ -54,6 +54,74 @@ $(function(){
   	
   	$( ".content-personnel" ).tabs();
 
+	
+	$('th.Maitrise').qtip({
+		content: 'Détermine le temps pour chaque action lors des missions',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Maitrise')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+	$('th.Reflexion').qtip({
+		content: 'Détermine le nombre de points d’action pour la mission',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Reflexion')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+	$('th.Sang-froid').qtip({
+		content: 'Réduit le risque d’échec lors du lancement de mission',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Sang-froid')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+	$('th.Rapidite').qtip({
+		content: 'Augmente la vitesse de voyage vers la destination lors de mission',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Rapidite')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+	$('th.Recherche').qtip({
+		content: 'Augmente l\'éfficatcité des recherche dans ce domaine',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Recherche')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+	$('th.Exploration').qtip({
+		content: 'Augmente l\'éfficatcité des recherche dans ce domaine',
+		position: {
+			my: 'top center', 
+			at: 'bottom center',
+			target: $('th.Exploration')
+		},
+		style: {
+			classes: 'qtip-style'
+		}
+	});
+
 	//$('table.table-personnel').hide();
 	
 

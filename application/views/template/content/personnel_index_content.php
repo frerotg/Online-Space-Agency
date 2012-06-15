@@ -1,13 +1,12 @@
 <div class="personnel_index">
+	<?php if($base > 0): ?>
 	<ul class="sub-menu">
-		<li>
-			<?= anchor('c_personnel/index', 'Mon personnel', array('title' => 'Accedez à la page de gestion de mon personnel', 'class' => '')); ?>
-		</li>
+
 		<li><?= anchor('c_personnel/listRecruitable', 'Acheter un personnel', array('title' => 'Accedez à la page d\'achat du personnel', 'class' => '')); ?>
 		</li>
 	</ul>
 	<p class="description">
-		Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+		Voici le personnel actuel de votre agence, le personnel est divisé en différents types et chaque type a une importance. Les pilotes et les spationautes sont vos représentants durant les missions, les scientifiques s'occupent de la recherche de nouvelles technologies et les Hors-la-loi/Gardes ne sont actuellement pas encore disponible.
 	</p>
 	<div class="alert">
 		<div class="success">
@@ -19,8 +18,8 @@
 	</div>
 	<div class="content-personnel">
 		<ul>
-			<li><a href="#table-personnel1">Pilote</a></li>
-			<li><a href="#table-personnel2">Spationaute</a></li>
+			<li><a href="#table-personnel1">Spationaute</a></li>
+			<li><a href="#table-personnel2">Pilote</a></li>
 			<li><a href="#table-personnel3">Scientifique</a></li>
 			<li><a href="#table-personnel4">Hors la loi</a></li>
 			<li><a href="#table-personnel5">Garde</a></li>
@@ -30,8 +29,8 @@
 			<thead>
 				<tr>
 	                 <th class="personnel-name">Nom</th>
-	                 <th class="personnel-skill1"><?= $type->skill1_type_personnel ?></th>
-	                 <th class="personnel-skill2"><?= $type->skill2_type_personnel ?></th>
+	                 <th class="personnel-skill1 <?= $type->skill1_type_personnel ?>"><?= $type->skill1_type_personnel ?></th>
+	                 <th class="personnel-skill2 <?= $type->skill2_type_personnel ?>"><?= $type->skill2_type_personnel ?></th>
 	                 <th class="personnel-salaire">Salaire</th>
 	                 <th class="personnel-valeur">Valeur</th>
 	                 <th class="personnel-action"></th>
@@ -39,7 +38,7 @@
              </thead>
              <tbody>
 	             <?php switch ($type->id_type_personnel){
-	             	case 1: ?>
+	             	case 2: ?>
 	             		<?php foreach($pilotes AS $pilote): ?>
 	             			<tr>
 				                <td class="personnel-name"><?= $pilote->name_personnel; ?></td>
@@ -59,7 +58,7 @@
 	             			<?php endfor;
 	             		endif;
 	             		break;
-	             	case 2: ?>
+	             	case 1: ?>
 	             		<?php foreach($spationautes AS $spationaute): ?>
 	             			<tr>
 				                <td class="personnel-name"><?= $spationaute->name_personnel; ?></td>
@@ -144,4 +143,7 @@
 		</table>
 		<?php endforeach; ?>
 	</div>
+	<?php else: ?>
+	<p class="nothing">Vous devez construire le "Centre de Commandement" afin de pouvoir recruter du personnel</p>
+	<?php endif; ?>
 </div>

@@ -7,9 +7,8 @@
 	--><li><span class="icon icon-argent">Argent</span><span class="ressource"><?= $resource->argent ?>€</span></li><!--
 --></ul><!--
 --><?php if($message !== 0){?>
-<?= anchor('c_message/index','<span class="icon icon-mail">'.$message.'</span>Message', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-message'));}
-	else{?><?= anchor('c_message/index','Message', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-message'));
+<?= anchor('c_message/index','<span class="icon icon-mail">'.$message.'</span>Message', array('title' => 'Lire ses messages', 'class' => 'link-topbar link-message'));}
+	else{?><?= anchor('c_message/index','Message', array('title' => 'Accès à sa boite mail', 'class' => 'link-topbar link-message'));
 	}?><!--
---><?= anchor('c_user/index', 'Gestion du compte', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-setting')); ?><!--
---><?= anchor('c_stat/index', 'Statistique', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-stat')); ?><!--
+--><?= anchor('c_user/index', 'Gestion du compte', array('title' => 'Accès a la gestion du compte', 'class' => 'link-topbar link-setting')); ?><!--
 --><?= anchor('c_user/disconnection', 'Deconnection', array('title' => 'Se deconnecter', 'class' => 'link-topbar link-logout')); ?>

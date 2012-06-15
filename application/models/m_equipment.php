@@ -22,6 +22,17 @@ class m_equipment extends CI_Model {
         return $result;
     }
     
+    function getType($type_id){
+        
+        $this->db->select('*');
+        $this->db->from('equipment_type');
+        $this->db->where('id_type_equipment', $type_id);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    
     function listUserEquipment($id,$type_id){
         
         $this->db->select('*');

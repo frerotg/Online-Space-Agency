@@ -22,6 +22,17 @@ class m_technology extends CI_Model {
         return $result;
     }
     
+    function getType($id){
+        
+        $this->db->select('*');
+        $this->db->from('technology_type');
+        $this->db->where('id_type_technology', $id);
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
+    
     function listUserTechnology($id,$type_id){
         
         $this->db->select('*');

@@ -40,7 +40,12 @@ class c_technology extends CI_Controller {
     function index(){
         
         $this->load->model('m_technology');
+         $this->load->model('m_building');
+         $user_id = $this->session->userdata('id');
+         
         $list['types'] = $this->m_technology->listType();
+        
+        $list['recherche'] = $this->m_building->haveBuilding($user_id, 17);
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/technology_index_content', $list, TRUE);
@@ -57,6 +62,17 @@ class c_technology extends CI_Controller {
         $this->load->model('m_technology');
         $list['users_technologys'] = $this->m_technology->listUserTechnology($user_id, $type_id);
         $list['technologys'] = $this->m_technology->listTechnology($type_id);
+        $list['type'] = $this->m_technology->getType($type_id);
+        
+        $underConstruction = $this->m_technology->checkUnderDevelop($user_id);
+        
+        
+        if(!empty($underConstruction)){
+        	$list['underConstruction'] = 1;
+        }
+        else{
+        	$list['underConstruction'] = 0;
+        }
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/technology_typeList_content', $list, TRUE);
@@ -87,21 +103,14 @@ class c_technology extends CI_Controller {
         $cout = $technologys->xpath('/technologys/technology[@id='.$technology_id.']/cout[@niveau="1"]');
         
         $ResearchTime = $cout[0]->time;
-        $reqPierre = $cout[0]->pierre;
-        $reqMetal = $cout[0]->metal;
-        $reqOxygene = $cout[0]->oxygene;
-        $reqCarburant = $cout[0]->carburant;
-        $reqArgent = $cout[0]->argent;
         
-        $this->load->model('m_user');
-        $resources = $this->m_user->getResources($user_id);
+        $status = 'success';
 
-        if($reqPierre<=$resources->pierre AND $reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
-            $this->m_technology->addTechnology($user_id,$technology_id,$ResearchTime);
-        }
-        else{
-            echo('Pas assez de ressources');
-        }
+        $this->m_technology->updateTechnology($user_id, $technology_id, 1, $ResearchTime);
+        
+        $data = array('status'=>$status, 'time'=>$ResearchTime, 'message'=>'Le developpement de la technologie commence');
+        
+        echo json_encode($data);
     }
     
     function improve(){
@@ -113,24 +122,17 @@ class c_technology extends CI_Controller {
         
         $xml = simplexml_load_file('xml/technology.xml');
         $technologys =  new SimpleXMLElement('xml/technology.xml', NULL, TRUE);
-        $cout = $technologys->xpath('/technologys/technology[@id='.$technology_id.']/cout[@niveau='.$technology.']');
+        $cout = $technologys->xpath('/technologys/technology[@id='.$technology_id.']/cout[@niveau='.$level.']');
         
-        $researchdTime = $cout[0]->time;
-        $reqPierre = $cout[0]->pierre;
-        $reqMetal = $cout[0]->metal;
-        $reqOxygene = $cout[0]->oxygene;
-        $reqCarburant = $cout[0]->carburant;
-        $reqArgent = $cout[0]->argent;
+        $ResearchTime = $cout[0]->time;
         
-        $this->load->model('m_user');
-        $resources = $this->m_user->getResources($user_id);
+        $status = 'success';
+
+        $this->m_technology->updateTechnology($user_id, $technology_id, $level, $ResearchTime);
         
-        if($reqPierre<=$resources->pierre AND $reqMetal<=$resources->metal AND $reqOxygene<=$resources->oxygene AND $reqCarburant<=$resources->carburant AND $reqArgent<=$resources->argent){
-            $this->m_technology->updateTechnology($user_id, $technology_id, $level, $ResearchTime);
-        }
-        else{
-            echo('Pas assez de ressources');
-        }
+        $data = array('status'=>$status, 'time'=>$ResearchTime, 'message'=>'Le developpement de la technologie commence');
+        
+        echo json_encode($data);
     }
 }
 

@@ -12,7 +12,7 @@
 			foreach($requiredsTechnology AS $id => $level){
 				if($user_technologys[$id] >= $level){}else{$ok = 0;}
 			}?>
-			<li>
+			<li <?php if($ok !== 1): ?>class="noEnable"<?php endif; ?>>
 				<div class="alert"><div class="success"><p></p></div><div class="fail"><p></p></div></div>
 				<div class="photo-building">
 					<img class="img-1" src="<?=base_url(); ?>/data/image-batiment/<?=$building->id_building ?>-mini.jpg" />
@@ -34,11 +34,11 @@
 					                	<?= anchor('c_building/build/'.$building->id_building,'Construire', array('title' => 'Construire le'.$building->name_building, 'class' => 'build', 'id' => $building->id_building)) ?>
 									<?php else: ?>
 										<span class="icon-lock"></span>
-					                	<p>Vous ne repondez pas au(x) critères</p>
+					                	<p>Vous ne répondez pas au(x) critère(s)</p>
 					                <?php endif; ?>
 								<?php else: ?>
 										<span class="icon-ok"></span>
-					               		<?= anchor('c_building/evolve/'.$building->id_building.'/'.(($building->level_building) +1),'Evoluer au niveau suivant', array('title' => 'Evoluer le batiment'.$building->name_building, 'class' => 'evolve'))?>
+					               		<?= anchor('c_building/evolve/'.$building->id_building.'/'.(($building->level_building) +1),'Evoluer au niveau suivant', array('title' => 'Evoluer le bâtiment'.$building->name_building, 'class' => 'evolve'))?>
 								<?php endif; ?>
 							<?php else: ?>
 								<span class="icon-lock"></span>

@@ -1,1 +1,0 @@
-<p>Votre mission est actuellement de retour sur Terre</p>

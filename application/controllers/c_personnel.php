@@ -71,6 +71,7 @@ class c_personnel extends CI_Controller {
         
         $this->load->model('m_personnel');
         $this->load->model('m_building');
+        $this->load->model('m_technology');
         $list = $this->m_personnel->getList(1,$user_id);
         $table['types'] = $this->m_personnel->getType();
         
@@ -80,8 +81,24 @@ class c_personnel extends CI_Controller {
         $table['horslalois'] = array();
         $table['securites'] = array();
         
+        $base = $this->m_building->haveBuilding($user_id, 15);
+        $technology = $this->m_technology->haveTechnology($user_id, 5);
+        
+        $table['base'] = $base->level_building;
+        
+        if($technology->level_technology == 0){
+	        $coefficient = 1;
+        }
+        else{
+	        $coefficient = 0.90;
+        }
+
         
         foreach($list as $personnel){
+        	
+        	$valeur = $personnel->valeur_personnel * $coefficient;
+        	$personnel->valeur_personnel = $valeur;
+        	
             if($personnel->id_type_personnel == 1){
                 $table['spationautes'][] = $personnel;
             }
@@ -98,9 +115,7 @@ class c_personnel extends CI_Controller {
                 $table['securites'][] = $personnel;
             }
         }
-        
-        $base = $this->m_building->haveBuilding($user_id, 15);
-        
+                
         switch($base->level_building){
             case 0:
         		$limit_spationaute = 2;
@@ -279,6 +294,8 @@ class c_personnel extends CI_Controller {
     function listRecruitable(){
         
         $this->load->model('m_personnel');
+        $this->load->model('m_technology');
+        $user_id = $this->session->userdata('id');        
         $list = $this->m_personnel->getList(0,'all');
         $table['types'] = $this->m_personnel->getType();
         
@@ -288,7 +305,20 @@ class c_personnel extends CI_Controller {
         $table['horslalois'] = array();
         $table['securites'] = array();
         
+        $technology = $this->m_technology->haveTechnology($user_id, 5);
+        
+        if($technology->level_technology == 0){
+	        $coefficient = 1;
+        }
+        else{
+	        $coefficient = 0.90;
+        }
+        
         foreach($list as $personnel){
+        
+        	$valeur = $personnel->valeur_personnel * $coefficient;
+        	$personnel->valeur_personnel = $valeur;
+        	
             if($personnel->id_type_personnel == 1){
                 $table['spationautes'][] = $personnel;
             }
@@ -323,11 +353,13 @@ class c_personnel extends CI_Controller {
         $resources = $this->m_user->getResources($user_id);
         
         $this->load->model('m_personnel');
+        $this->load->model('m_technology');
         $personnel = $this->m_personnel->getOnce($id);
         
         $id_type_personnel = $personnel->id_type_personnel;
         $mypersonnel = $this->m_personnel->getListbyType($id_type_personnel, $user_id);
         
+        $this->load->model('m_building');
         $base = $this->m_building->haveBuilding($user_id, 15);
         
         switch($base->level_building){
@@ -501,16 +533,27 @@ class c_personnel extends CI_Controller {
         }
         
         if(count($mypersonnel) < $limit){
-	        if($resources->argent >= $personnel->valeur_personnel){
+        
+        	$technology = $this->m_technology->haveTechnology($user_id, 5);
+	        
+	        if($technology->level_technology == 0){
+		        $coefficient = 1;
+	        }
+	        else{
+		        $coefficient = 0.90;
+	        }
+	        $valeur = $personnel->valeur_personnel * $coefficient;
+	        
+	        if($resources->argent >= $valeur){
 	            
-	            $argent = $resources->argent - $personnel->valeur_personnel;
+	            $argent = $resources->argent - $valeur;
 	            
 	            $this->m_user->updateResource($user_id, 'argent', $argent);
 	            $this->m_personnel->updateStatus($id, 1);
 	            $this->m_personnel->updateOwner($id, $user_id);
 	            
 	            $status = 'success';
-	            $message = 'Vous avez recruté '.$personnel->name_personnel.' pour '.$personnel->valeur_personnel;
+	            $message = 'Vous avez recruté '.$personnel->name_personnel.' pour '.$valeur;
 	        }
 	        else{
 	            $status = 'error';

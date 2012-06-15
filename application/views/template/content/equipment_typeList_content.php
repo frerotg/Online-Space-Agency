@@ -1,13 +1,21 @@
 <div class="equipment_list">
-	<div class="alert">
-		<div class="success">
-			<p></p>
+	<?php if($fabrique->level_building == 0): ?>
+		<p class="nothing">Vous devez construire la "Fabrique de <?= $type->name_type_equipment ?>"  afin de pouvoir construire cet équipement</p>
+	<?php else: ?>
+	<div class="description-type">
+		<div class="image-type">
+			<img src="<?=base_url(); ?>/data/image-equipment/<?=$type->id_type_equipment ?>-type.png" />
 		</div>
-		<div class="fail">
-			<p></p>
-		</div>
+		<h1><?=$type->name_type_equipment ?></h1>
+		<p>
+			<span><?=$type->skill1_type_equipment ?> : </span><?=$type->description_skill1_type_equipment ?>
+		</p>
+		<?php if(($type->id_type_equipment == 1) OR ($type->id_type_equipment == 3)): ?>
+			<p>
+				<span><?=$type->skill2_type_equipment ?> : </span><?=$type->description_skill2_type_equipment ?>
+			</p>
+		<?php endif; ?>
 	</div>
-	<h1>Equipement</h1>
 	<ul>
 		<?php foreach($equipments AS $equipment):
 			$requiredsBuilding = !empty($equipment->building_required)?unserialize($equipment->building_required):unserialize('a:0:{}');
@@ -20,7 +28,8 @@
 			foreach($requiredsTechnology AS $id => $level){
 				if($user_technologys[$id] >= $level){}else{$ok = 0;}
 			}?>
-			<li>
+			<li <?php if($ok !== 1): ?>class="noEnable"<?php endif; ?>>
+				<div class="alert"><div class="success"><p></p></div><div class="fail"><p></p></div></div>
 				<div class="photo-equipment">
 					<img class="img-1" src="<?=base_url(); ?>/data/image-equipment/<?=$equipment->id_equipment ?>-mini.jpg" />
 					<img class="img-2" src="<?=base_url(); ?>/data/image-equipment/<?=$equipment->id_equipment ?>-mini.jpg" />
@@ -29,9 +38,10 @@
 				<div class="equipment">
 				<div class="term-equipment">
 					<p class="name-equipment"><?= $equipment->name_equipment ?></p>
-					<p class="level-equipment"><?= $equipment->amount_equipment ?> exemplaire(s)</p>
+					<p class="level-equipment"><?= $equipment->amount_equipment ?> unités(s)</p>
 					<div class="status-equipment">
 						<?php if($equipment->status_equipment == 1):?>
+							<p id="countdown" class="<?php echo($equipment->date_end_equipment - now()) ?>"></p>
 						<?php else: ?>
 							<?php if($underConstruction !== 1): ?>
 					            	<?php if($ok == 1): ?>
@@ -52,16 +62,35 @@
 				<div class="info-equipment">
 					<div class="required-equipment">
 						<p class="time"><?= $equipment->time_equipment ?> sec.</p>
+						<?php if($equipment->id_type_equipment == 1): ?>
 						<p class="argent"><?= $equipment->argent_equipment ?></p>
-						<p class="pierre"><?= $equipment->oxygene_equipment ?></p>
 						<p class="metal"><?= $equipment->metal_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 2): ?>
+						<p class="metal"><?= $equipment->metal_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 3): ?>
+						<p class="argent"><?= $equipment->argent_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 4): ?>
+						<p class="argent"><?= $equipment->argent_equipment ?></p>
+						<p class="oxygene"><?= $equipment->oxygene_equipment ?></p>
+						<?php endif; ?>
 					</div>
 					<div class="description-equipment">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in porttitor massa. Aenean vestibulum suscipit arcu, vitae convallis felis interdum congue. Suspendisse ultricies congue sodales.</p>
+						<?php if($equipment->id_type_equipment == 1): ?>
+							<p><span>Vitesse : </span> <?= $equipment->skill1_equipment ?></p>
+							<p><span>Consommation : </span> <?= $equipment->skill2_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 2): ?>
+							<p><span>Résistance : </span> <?= $equipment->skill1_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 3): ?>
+							<p><span>Autonomie : </span> <?= $equipment->skill1_equipment ?></p>
+							<p><span>Communication : </span> <?= $equipment->skill2_equipment ?></p>
+						<?php elseif($equipment->id_type_equipment == 4): ?>
+							<p><span>Facilité : </span> <?= $equipment->skill1_equipment ?></p>
+						<?php endif; ?>
 					</div>
 				</div>
 				</div>
 			</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 </div>

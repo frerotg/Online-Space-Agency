@@ -46,7 +46,7 @@ class m_know extends CI_Model {
     	$this->db->where('date_know_date', $date);
     	$query = $this->db->get();
         
-        $result = $query->result();
+        $result = $query->result_array();
         return $result;
     }
 }

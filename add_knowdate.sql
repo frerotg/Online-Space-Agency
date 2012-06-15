@@ -1,0 +1,35 @@
+INSERT INTO know_date (`date_know_date`,`description_know_date`) VALUES ("4","4 octobre 1957 - Le petit satellite soviétique Spoutnik 1 devient le premier objet satellisé par l Homme.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("3","3 novembre 1957 - La chienne russe Laïka premier animal vivant à être envoyé dans l'espace, qui meurt au bout de quelques heures à bord de Spoutnik-2.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("1","1er octobre 1958 - Création de la NASA, l'agence spatiale des États-Unis");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("4","4 janvier 1959 - La sonde soviétique Luna-1 effectue le premier survol de la Lune et devient la première « planète » artificielle");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("12","12 avril 1961 - Premier Humain envoyé dans l'espace pour un vol orbital, le russe Youri Gagarine.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("14","14 décembre 1962 - Premier survol d'une autre planète, Vénus, par la sonde américaine Mariner-2.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("16","16 juin 1963 - Première femme dans l'espace, Valentina Terechkova");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("15","15 décembre 1964 - L'Italie lance son premier satellite, San Marco 1, à l'aide d'un lanceur Scout américain ; elle devient ainsi la troisième nation, après l'URSS et les États-Unis, à avoir mis sur orbite un satellite.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("18","18 mars 1965 - Première sortie dans l'espace par le soviétique Alexei Leonov à bord de la capsule Voskhod 2.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("26","26 novembre 1965 - La France lance son premier satellite Astérix à partir d'une fusée Diamant.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("3","3 février 1966 - La sonde soviétique Luna 9 se pose en douceur sur le sol de la Lune.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("29","29 novembre 1967 - L'Australie lance son premier satellite WRESAT-1 à partir de Woomera Rocket Range.	");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("21","21 juillet 1969 - Premiers pas de l'Homme sur la Lune lors de la mission Apollo 11, effectués par Neil Armstrong et Buzz Aldrin.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("19","19 avril 1971 - Lancement de la première station spatiale habitée, Saliout-1 par l'Union soviétique.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("13","13 novembre 1971 - Première mise en orbite autour d'une autre planète, Mars, de la sonde Mariner-9.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("7","7 décembre / 19 décembre 1972 - Apollo 17, dernière mission lunaire dans le cadre du programme Apollo.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("19","7 décembre / 19 décembre 1972 - Apollo 17, dernière mission lunaire dans le cadre du programme Apollo.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("31","31 mai 1975 - Création de l'ESA, l'agence spatiale européenne.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("22","22 octobre 1975 - La sonde soviétique Venera 9 retransmet les premières photographies prises depuis la surface d'une autre planète (Vénus).");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("20","20 juillet 1976 - La sonde américaine Viking-1 réussit le premier atterrissage opérationnel sur Mars.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("12","12 avril 1981 - Premier décollage de la navette spatiale Columbia.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("24","24 juin 1982 - Deuxième Européen (après l'Allemand Sigmund Jähn, 1978) et premier Français dans l'espace, Jean-Loup Chrétien.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("20","20 février 1986 - Mise en orbite du premier élément de la station orbitale russe Mir.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("6","6 mars 1986 - La sonde internationale Vega 1 survole la comète de Halley");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("25","25 avril 1990 - Lancement du télescope spatial Hubble.");
+
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("4","4 juillet 1997 - La sonde Mars Pathfinder se pose sur Mars, libérant le robot mobile Sojourner.");
+
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("20","20 novembre 1998 - Le premier module de la station spatiale internationale (ISS) est mis en place.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("19","19 février 2001 - Destruction volontaire de la station Mir, qui est précipitée dans l'atmosphère et s'y consume.	");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("28","28 avril 2001 - Dennis Tito premier touriste de l'espace.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("15","15 octobre 2003 - Premier vol habité dans l'espace de la Chine par Yang Liwei avec la capsule Shenzhou 5");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("21","21 juin 2004 - Premier vol suborbital habité non gouvernemental dans le cadre de l'Ansari X Prize avec le SpaceShipOne. Ce dernier est remporté le 4 octobre 2004 lors du second vol 2.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("14","14 janvier 2005 - La sonde européenne Huygens se pose sur Titan.");
+INSERT INTO know_date(`date_know_date`,`description_know_date`) VALUES ("8","8 juillet 2011 - Dernier décollage de la navette spatiale Atlantis, ce qui met fin au programme des navettes spatiales américaines.");

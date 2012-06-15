@@ -270,5 +270,15 @@ class m_user extends CI_Model {
         $result = $query->row();
         return $result;
     }
+    
+    function getOneUser($id_user){
+        $this->db->select('username');
+        $this->db->from('users');
+        $this->db->where(array('id' => $id_user));
+        $query = $this->db->get();
+        
+        $result = $query->row();
+        return $result;
+    }
 }
 ?>

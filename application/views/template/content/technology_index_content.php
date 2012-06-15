@@ -1,6 +1,9 @@
 <div class="technology_index">
+	<?php if($recherche->level_building == 0): ?>
+		<p class="nothing">Vous devez construire le "Centre de Recherche"  afin de pouvoir developper de nouvelles technologies</p>
+	<?php else: ?>
 	<hr />
-	<p class="label-technology">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non orci nisi. Maecenas commodo molestie sapien a scelerisque. Cras ultricies, erat id semper volutpat, velit urna semper orci, in fringilla purus quam non lorem. Etiam at leo sit amet erat varius tempus vitae sed nibh. Aliquam erat volutpat. Phasellus tincidunt molestie lectus </p>
+	<p class="label-technology">Les technologies vous permettent d'améliorer le fonctionnement de votre agence. Chaque technologie est présente dans un arbre. Pour débloquer les technologies inférieures, débloquez tout d'abord les technologies supérieures.</p>
 	<hr />
 	<ul>
 		<?php foreach ($types as $type): ?>
@@ -11,8 +14,9 @@
 					</div>
 				</a>
 				<span class="info-technology"></span>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non orci nisi. Maecenas commodo molestie sapien a scelerisque. Cras ultricies, erat id semper volutpat, velit urna semper orci, in fringilla purus quam non lorem. Etiam at leo sit amet erat varius tempus vitae sed nibh. Aliquam erat volutpat. Phasellus tincidunt molestie lectus </p>
+				<p><?= $type->description_type_technology ?></p>
 			</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 </div>

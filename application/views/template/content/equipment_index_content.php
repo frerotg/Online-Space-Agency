@@ -8,7 +8,7 @@
 	</div>
 	<span class="info-icon"></span>
 	<div class="description-equipment">
-		<p class="type-default display">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non orci nisi. Maecenas commodo molestie sapien a scelerisque. Cras ultricies, erat id semper volutpat, velit urna semper orci, in fringilla purus quam non lorem. Etiam at leo sit amet erat varius tempus vitae sed nibh. Aliquam erat volutpat. Phasellus tincidunt molestie lectus lobortis egestas. Maecenas venenatis rutrum nibh, id cursus ligula molestie in</p>
+		<p class="type-default display">Les équipements sont les outils pour une mission satisfaisante. Il existe quatre types d’équipements : les lanceurs, les coques, les combinaisons et les modules de commande. </p>
 		<?php foreach ($types as $type): ?>
 			<p class="type-<?= $type->id_type_equipment ?>"><?= $type->name_type_equipment ?></p>
 		<?php endforeach; ?>

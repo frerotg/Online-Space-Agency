@@ -54,9 +54,25 @@ class c_equipment extends CI_Controller {
         $type_id = $this->uri->segment(3);
         
         $this->load->model('m_equipment');
+        $this->load->model('m_building');
         $list['equipments'] = $this->m_equipment->listUserEquipment($user_id, $type_id);
         $user_buildings = $this->m_equipment->listUserBuildingAll($user_id);
         $user_technologys = $this->m_equipment->listUserTechnologyAll($user_id);
+        $list['type'] = $this->m_equipment->getType($type_id);
+        
+        switch($list['type']->id_type_equipment){
+        	case 1: $list['fabrique'] = $this->m_building->haveBuilding($user_id, 10);
+        	break;
+        	case 2: $list['fabrique'] = $this->m_building->haveBuilding($user_id, 11);
+        	break;
+        	case 3: $list['fabrique'] = $this->m_building->haveBuilding($user_id, 12);
+        	break;
+        	case 4: $list['fabrique'] = $this->m_building->haveBuilding($user_id, 13);
+        	break;
+        
+        }
+        
+        
         
         foreach($user_buildings AS $user_building){
         	$list['user_buildings'][$user_building->id_building] = $user_building->level_building;

@@ -159,279 +159,242 @@ class c_user extends CI_Controller {
         $this->session->set_userdata('is_connect', FALSE);
         redirect('c_main/index');
     }
+     
     
-    function registerStart(){
-        
-        $data['header'] = $this->load->view('template/header/register_step1_header', '', TRUE);
-        $data['content'] = $this->load->view('template/element/form/register/registerStep1','',TRUE);
-        $data['footer'] = $this->load->view('template/footer/main_footer', '', TRUE);
-        $data['script'] = $this->load->view('template/script/register_script', '', TRUE);
-        
-        $this->load->view('layout',$data);
-    }    
-    function registerEnd(){
-        $this->load->model('m_user');
-        $this->load->library('form_validation');
-              
-        $step = $this->input->post('step');
-        switch ($step) {
-            case 1:
+    function register(){
+    	$this->load->model('m_user');
+    	
+	    if($_GET['step'] == 1){
+	    	$this->load->helper('email');
+	    	
+	    	$username = $_GET['inputUsername'];
+	    	$password = $_GET['inputPassword'];
+	    	$email = $_GET['inputEmail'];
+	    	
+	    	if(!empty($username)){
+			    if ($this->m_user->checkRegisterUsername($username))
+			    {
+				    $usernameStatus = 'fail';
+			    }
+			    else{
+				    $usernameStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $usernameStatus = 'empty';
+		    }
+		    
+		    if(empty($password)){
+			    $passwordStatus = 'empty';
+		    }
+		    else{
+			    $passwordStatus = 'ok';
+		    }
+		    
+		    if(!empty($email)){
+			    if(valid_email($email))
+			    {
+			    	$emailvalidStatus = 'ok';
+			    	if ($this->m_user->checkRegisterEmail($email))
+			    	{
+				    	$emailStatus = 'fail';
+			    	}
+			    	else{
+				    	$emailStatus = 'ok';
+			    	}
+			    }
+			    else{
+				    $emailvalidStatus = 'fail';
+				    $emailStatus = 'dontknow';
+				    
+			    }
+			}
+			else{
+				$emailvalidStatus = 'dontknow';
+				$emailStatus = 'empty';
+			}
+		    
+		    if(($usernameStatus == 'ok') AND ($emailvalidStatus == 'ok') AND ($emailStatus == 'ok') AND ($emailStatus == 'ok')){
+			    $status = 'ok';
+		    }
+		    else{
+			    $status = 'fail';
+		    }
+		    
+		    $data = array('status'=>$status, 'username'=>$usernameStatus, 'password'=>$passwordStatus ,'validemail'=>$emailvalidStatus, 'email'=>$emailStatus);
+	    }
+	    elseif($_GET['step'] == 2){
+		    $country_name = $_GET['inputCountryName'];
+	    	$country_capital = $_GET['inputCountryCapital'];
+	    	
+	    	if(!empty($country_name)){
+			    if ($this->m_user->checkRegisterCountry_name($country_name))
+			    {
+				    $countrynameStatus = 'fail';
+			    }
+			    else{
+				    $countrynameStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $countrynameStatus = 'empty';
+		    }
+		    
+		    
+		    if(!empty($country_capital)){
+		    	if ($this->m_user->checkRegisterCountry_capital($country_capital))
+		    	{
+			    	$countrycapitalStatus = 'fail';
+		    	}
+		    	else{
+			    	$countrycapitalStatus = 'ok';
+		    	}
+			}
+			else{
+				$countrycapitalStatus = 'empty';
+			}
+		    
+		    
+		    if(($countrynameStatus == 'ok') AND ($countrycapitalStatus == 'ok')){
+			    $status = 'ok';
+		    }
+		    else{
+			    $status = 'fail';
+		    }
+		    
+		    $data = array('status'=>$status, 'country_name'=>$countrynameStatus, 'country_capital'=>$countrycapitalStatus);
+	    }
+	    elseif($_GET['step'] == 3){
+	    	
+	    	$username = $_GET['inputUsername'];
+	    	$password = $_GET['inputPassword'];
+	    	$email = $_GET['inputEmail'];
+	    
+	    	$country_name = $_GET['inputCountryName'];
+	    	$country_continent = $_GET['inputCountryContinent'];
+	    	$country_capital = $_GET['inputCountryCapital'];
+	    
+		    $agency_name = $_GET['inputAgencyName'];
+		    $agency_initial = $_GET['inputAgencyInitial'];
+		    $director_first_name = $_GET['inputDirectorFirst'];
+		    $director_last_name = $_GET['inputDirectorLast'];
+	    	
+	    	if(!empty($agency_name)){
+			    if ($this->m_user->checkRegisterAgency_name($agency_name))
+			    {
+				    $agencyNameStatus = 'fail';
+			    }
+			    else{
+				    $agencyNameStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $agencyNameStatus = 'empty';
+		    }
+		    
+		    if(!empty($agency_initial)){
+			    if ($this->m_user->checkRegisterAgency_initial($agency_initial))
+			    {
+				    $agencyInitialStatus = 'fail';
+			    }
+			    else{
+				    $agencyInitialStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $agencyInitialStatus = 'empty';
+		    }
+		    
+		    if(!empty($director_first_name)){
+			    if ($this->m_user->checkRegisterDirector_first_name($director_first_name))
+			    {
+				    $directorFirstStatus = 'fail';
+			    }
+			    else{
+				    $directorFirstStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $directorFirstStatus = 'empty';
+		    }
+		    
+		    if(!empty($director_last_name)){
+			    if ($this->m_user->checkRegisterDirector_last_name($director_last_name))
+			    {
+				    $directorLastStatus = 'fail';
+			    }
+			    else{
+				    $directorLastStatus = 'ok';
+			    }
+		    }
+		    else{
+			    $directorLastStatus = 'empty';
+		    }
+		   	
+		   	if(($agencyNameStatus == 'ok') AND ($agencyInitialStatus == 'ok') AND ($directorFirstStatus == 'ok') AND ($directorLastStatus == 'ok')){
+			    $status = 'ok';
+		    }
+		    else{
+			    $status = 'fail';
+		    }
+		    
+		    if($status = 'ok'){
+		    
+			    $data = array(
+                    'username' => $username,
+                    'password' => sha1($password),
+                    'email' => $email,
+                    'country_name' => $country_name,
+                    'country_continent' => $country_continent,
+                    'country_capital' => $country_capital,
+                    'agency_name' => $agency_name,
+                    'agency_initial' => $agency_initial,
+                    'director_first_name' => $director_first_name,
+                    'director_last_name' => $director_last_name,
+                    'pierre' => '50000',
+                    'metal' => '50000',
+                    'oxygene' => '10000',
+                    'carburant' => '25000',
+                    'argent' => '50000',
+                    'first_time' => '0'
+                );
                 
-                $this->form_validation->set_rules('username', 'Username', 'trim|required|callback_checkRegisterUsername');
-                $this->form_validation->set_rules('password', 'Password', 'trim|required');
-                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_checkRegisterEmail');
-                $this->form_validation->set_rules('rules', 'Règles', 'required');
+                $this->m_user->addOnce($data);
                 
-                if ($this->form_validation->run() == FALSE){
+                $this->load->library('email');
 
-                    $data['header'] = $this->load->view('template/header/register_step1_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/registerStep1','', TRUE);
-                }
-                else{
-                    
-                    $form_data['username'] = $this->input->post('username');
-                    $form_data['password'] = sha1($this->input->post('password'));
-                    $form_data['email'] = $this->input->post('email');
-                    
-                    $data['header'] = $this->load->view('template/header/register_step2_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/registerStep2', $form_data, TRUE);
-                }
-                
-                break;
-            case 2:
-
-                $this->form_validation->set_rules('country_name', 'Pays', 'trim|required|callback_checkRegisterCountry_name');
-                $this->form_validation->set_rules('country_capital', 'Capitale', 'trim|required|callback_checkRegisterCountry_capital');
-
-                $form_data['username'] = $this->input->post('username');
-                $form_data['password'] = $this->input->post('password');
-                $form_data['email'] = $this->input->post('email');
-                
-                if ($this->form_validation->run() == FALSE){
-
-                    $data['header'] = $this->load->view('template/header/register_step2_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/registerStep2', $form_data, TRUE);
-                }
-                else{
-                    
-                    $form_data['country_name'] = $this->input->post('country_name');
-                    $form_data['country_continent'] = $this->input->post('country_continent');
-                    $form_data['country_capital'] = $this->input->post('country_capital');
-                    $form_data['country_government'] = $this->input->post('country_government');
-                    
-                    $experiences = $this->m_user->getExperiences();
-                    foreach($experiences AS $experience){
-                    	$form_data['listExperiences'][$experience->id_type_personnel] = $experience->name_type_personnel;
-                    }
-
-                    $data['header'] = $this->load->view('template/header/register_step3_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/registerStep3',$form_data, TRUE);
-                }
-                
-                break;
-            
-            case 'end':
-
-                $this->form_validation->set_rules('agency_name', 'Nom de l\'agence', 'trim|required|callback_checkRegisterAgency_name');
-                $this->form_validation->set_rules('agency_initial', 'Initiale de l\'agence', 'trim|required|callback_checkRegisterAgency_initial');
-                $this->form_validation->set_rules('director_first_name', 'Nom du directeur', 'trim|required|callback_checkRegisterDirector_first_name');
-                $this->form_validation->set_rules('director_last_name', 'Prénom du directeur', 'trim|required|callback_checkRegisterDirector_last_name');
-
-                $form_data['username'] = $this->input->post('username');
-                $form_data['password'] = $this->input->post('password');
-                $form_data['email'] = $this->input->post('email');                   
-                $form_data['country_name'] = $this->input->post('country_name');
-                $form_data['country_continent'] = $this->input->post('country_continent');
-                $form_data['country_capital'] = $this->input->post('country_capital');
-                $form_data['country_government'] = $this->input->post('country_government');
-
-                if ($this->form_validation->run() == FALSE){
-                    
-                    $data['header'] = $this->load->view('template/header/register_step3_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/registerStep3',$form_data, TRUE);
-                }
-                else{
-
-                    $agency_name = $this->input->post('agency_name');
-                    $agency_initial = $this->input->post('agency_initial');
-                    $director_first_name = $this->input->post('director_first_name');
-                    $director_last_name = $this->input->post('director_last_name');
-                    $director_experience = $this->input->post('director_experience');
-                    $director_conviction = $this->input->post('director_conviction');
-
-                    $data = array(
-                        'username' => $form_data['username'],
-                        'password' => $form_data['password'],
-                        'email' => $form_data['email'],
-                        'country_name' => $form_data['country_name'],
-                        'country_continent' => $form_data['country_continent'],
-                        'country_capital' => $form_data['country_capital'],
-                        'country_government' => $form_data['country_government'],
-                        'agency_name' => $agency_name,
-                        'agency_initial' => $agency_initial,
-                        'director_first_name' => $director_first_name,
-                        'director_last_name' => $director_last_name,
-                        'director_conviction' => $director_conviction,
-                        'director_experience' => $director_experience,
-                        'pierre' => '10000',
-                        'metal' => '10000',
-                        'oxygene' => '1000',
-                        'carburant' => '1000',
-                        'argent' => '100000',
-                        'xp_technology1' => '0',
-                        'point_technology1' => '0',
-                        'xp_technology2' => '0',
-                        'point_technology2' => '0',
-                        'first_time' => '0'
-                    );
-                    
-                    $this->m_user->addOnce($data);
-                    
-                    $this->load->library('email');
-
-					$this->email->from('noreply@online-space-agency.net', 'Online Space Agency');
-					$this->email->to($form_data['email']); 
-					
-					$this->email->subject('Inscription à Online Space Agency');
-					$this->email->message('Bonjour/Bonsoir '.$director_first_name.' '.$director_last_name.'.<br /> Votre agency à été créer !');	
-					
-					$this->email->send();
-
-                    $data['header'] = $this->load->view('template/header/register_success_header', '', TRUE);
-                    $data['content'] = $this->load->view('template/element/form/register/success', TRUE);
-                }
-                
-                break;
-        }
+				$this->email->from('noreply@online-space-agency.net', 'Online Space Agency');
+				$this->email->to($email); 
+				
+				$this->email->subject('Inscription à Online Space Agency');
+				$this->email->message('Bonjour/Bonsoir '.$director_first_name.' '.$director_last_name.'.<br /> Votre agency à été créer !');	
+				
+				$this->email->send();
+		    }
+		   	      
+		    $data = array('status'=>$status, 'agency_name'=>$agencyNameStatus, 'agency_initial'=>$agencyInitialStatus, 'director_first_name'=>$directorFirstStatus, 'director_last_name'=>$directorLastStatus);
+	    }
+        echo json_encode($data);
+	}
         
-        $data['footer'] = $this->load->view('template/footer/main_footer', '', TRUE);
-        $data['script'] = $this->load->view('template/script/register_script', '', TRUE);
-        
-        $this->load->view('layout',$data);
-    }
-    
-    function checkRegisterUsername($username){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterUsername($username))
-        {
-                $this->form_validation->set_message('checkRegisterUsername', 'Votre nom d\'utilisateur est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterEmail($email){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterEmail($email))
-        {
-                $this->form_validation->set_message('checkRegisterEmail', 'Votre émail est déja utilisé');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterCountry_name($country_name){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterCountry_name($country_name))
-        {
-                $this->form_validation->set_message('checkRegisterCountry_name', 'Le nom de votre pays est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterCountry_capital($country_capital){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterCountry_capital($country_capital))
-        {
-                $this->form_validation->set_message('checkRegisterCountry_capital', 'Le nom de votre capitale est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterAgency_name($agency_name){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterAgency_name($agency_name))
-        {
-                $this->form_validation->set_message('checkRegisterAgency_name', 'Le nom de votre agence est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterAgency_initial($agency_initial){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterAgency_initial($agency_initial))
-        {
-                $this->form_validation->set_message('checkRegisterAgency_initial', 'Les initiale de votre agence sont déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterDirector_first_name($director_first_name){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterDirector_first_name($director_first_name))
-        {
-                $this->form_validation->set_message('checkRegisterDirector_first_name', 'Le nom de votre personnage est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    function checkRegisterDirector_last_name($director_last_name){
-        $this->load->model('m_user');
-        
-        if ($this->m_user->checkRegisterDirector_last_name($director_last_name))
-        {
-                $this->form_validation->set_message('checkRegisterDirector_last_name', 'Le prénom de votre personnage est déja prit');
-                return FALSE;
-        }
-        else
-        {
-                return TRUE;
-        }
-    }
-    
     function user_interface() { 
                 
         $id_user = $this->session->userdata('id');
         $this->load->model('m_user');
         $this->load->model('m_mission');
+        $this->load->model('m_building');
         $this->load->model('m_know');
         $this->load->helper('date');
-                
+        $this->load->helper('array');
+      
         $foo['missions'] = $this->m_mission->listUserMission($id_user);
         $foo['building'] = $this->m_user->checkBuildingUnderConstruction($id_user);
         $foo['technology'] = $this->m_user->checkUnderDevelop($id_user);
         $foo['equipment'] = $this->m_user->checkEquipmentUnderConstruction($id_user);
         
-        $format = 'DATE_RFC822';
-		$time = time();
-		$date = standard_date($format, $time);
-		$foo['know_date'] = $this->m_know->historicDate($date);
+        $date = date("j",time());
+		$know_date = $this->m_know->historicDate($date);
+		$foo['know_date'] = random_element($know_date);
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/user_interface_content', $foo, TRUE);
@@ -445,6 +408,7 @@ class c_user extends CI_Controller {
                 
         $data['header'] = $this->load->view('template/header/first_time_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/first_time_content', '', TRUE);
+        $data['script'] = $this->load->view('template/script/first-time_script', '', TRUE);
         $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
         
         $this->load->view('layout',$data);
@@ -487,73 +451,84 @@ class c_user extends CI_Controller {
     	 $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
          $data['content'] = $this->load->view('template/content/user_index_content', $foo, TRUE);
          $data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
+         $data['script'] = $this->load->view('template/script/user_script', '', TRUE);
         
          $this->load->view('layout',$data);
     }
     
     function updateInfo(){
     	$this->load->model('m_user');
-        $this->load->library('form_validation');
+    	$this->load->helper('email');
         $id_user = $this->session->userdata('id');
+        $username = $this->session->userdata('username');
 		
-		$password_old = $this->input->post('password_old');
+		$password_old= $_GET['Ipassword_old'];
+		$password_new= $_GET['Ipassword_new'];
+		$password_new2= $_GET['Ipassword_new2'];
+		$email= $_GET['Iemail'];
 		
 		if(!empty($password_old)){
-			$this->form_validation->set_rules('password_old', 'Password actuelle', 'trim|required|callback_checkPassword');
-			$this->form_validation->set_rules('password_new', 'Nouveau password', 'trim|required|matches[password_new2]');
-			$this->form_validation->set_rules('password_new2', 'Confirmation password', 'trim|required');
+			if($this->m_user->checkUser($username, sha1($password_old))){
+				$password_oldS = 'ok';
+			}
+			else{
+				$password_oldS = 'fail';
+			}
 		}
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        
-        if ($this->form_validation->run() == FALSE){
-			$foo['email'] = $this->m_user->getEmail($id_user);
+		else{
+			$password_oldS = 'empty';
+		}
+				
+		if(!empty($password_new)){
+		
+			if(!empty($password_new2)){
+				$password_newS = 'ok';
+				$password_new2S = 'ok';
+			}
+			else{
+				$password_newS = 'ok';
+				$password_new2S = 'empty';
+			}
+		}
+		else{
+		
+			if(!empty($password_new2)){
+				$password_newS = 'empty';
+				$password_new2S = 'ok';
+			}
+			else{
+				$password_newS = 'empty';
+				$password_new2S = 'empty';
+			}
+		}
+		
+		if(!empty($email))
+		{
+		    if(valid_email($email))
+		    {
+				$emailS = 'ok';
+		    }
+		    else{
+			    $emails = 'notvalid'; 
+		    }
+		}
+		else{
+			$emailS = 'empty';
+		}
+		
+		if(($password_oldS == 'ok') AND ($password_new2S == 'ok') AND ($password_newS == 'ok') AND ($emailS == 'ok')){
+			$status = 'ok';
 			
-         	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-         	$data['content'] = $this->load->view('template/content/user_index_content', $foo, TRUE);
-         	$data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
-        }
-        else{
-            
-            $form_data['password_new'] = sha1($this->input->post('password'));
-            $form_data['email'] = $this->input->post('email');
-            
-            $data = array(
-                        'password' => $form_data['password_new'],
-                        'email' => $form_data['email'],
-                    );
-                    
+			$data = array('password' => sha1($password_new), 'email' => $email);
             $this->m_user->updateOnce($id_user, $data);
-
-            
-           	$data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
-         	$data['content'] = $this->load->view('template/content/success_updateInfo', '', TRUE);
-         	$data['footer'] = $this->load->view('template/footer/user_interface_footer', '', TRUE);
-        }
-        
-        $this->load->view('layout',$data);
-
+		}
+		else{
+			$status = 'fail';
+		}
+		
+		$array = array('status'=>$status, 'password_old'=>$password_oldS, 'password_new2'=>$password_new2S, 'password_new'=>$password_newS, 'email'=>$emailS);
+        echo json_encode($array);
     }
-    
-    function checkPassword($p){
-        $this->load->model('m_user');
-        $u = $this->session->userdata('username');
-        
-        $password = sha1($p);
-        
-        $resultat = $this->m_user->checkUser($u, $password);
-        
-        if($resultat == 1)
-        {
-                return TRUE;
-        }
-        else
-        {
-        		$this->form_validation->set_message('checkPassword', 'Mot de passe incorrect');
-                return FALSE;
-        }
-    }
-
-    
 }
 
 ?>

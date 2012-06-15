@@ -2,7 +2,7 @@
 	<?= anchor('c_personnel/index', '<span>Personnel</span>', array('title' => 'Accedez à la page de gestion du personnel', 'class' => 'link-personnel')); ?>
 </li><!--
 --><li>
-	<?= anchor('c_building/index', '<span>Batiment</span>', array('title' => 'Accedez à la page de gestion des batiments', 'class' => 'link-building')); ?>
+	<?= anchor('c_building/index', '<span>Bâtiment</span>', array('title' => 'Accedez à la page de gestion des batiments', 'class' => 'link-building')); ?>
 </li><!--
 --><li>
 	<?= anchor('c_technology/index', '<span>Technologie</span>', array('title' => 'Accedez à la page de gestion des technologies', 'class' => 'link-technology')); ?>

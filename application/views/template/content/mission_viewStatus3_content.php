@@ -1,1 +1,0 @@
-<p>Votre mission est actuellement en train d'attenidre sa cible</p>
