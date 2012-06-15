@@ -24,7 +24,7 @@
 		        ?>
 		        <label class="radio" id="<?=$object->distance_space_object ?>">
 		        <?= form_radio($data); ?>
-		        <img class="mini-img-spaceobject" src="<?=base_url(); ?>/data/image-equipment/<?=$object->id_space_object ?>-mini.jpg" width="90" height="90" />
+		        <img class="mini-img-spaceobject" src="<?=base_url(); ?>/data/image-astre/<?=$object->id_space_object ?>.jpg" width="90" height="90" />
 		        <span class="space-object-name"><?= $object->name_space_object ?></span>
 		        </label>
 		        <div class="container-detail-spaceobject">
