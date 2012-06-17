@@ -1,4 +1,3 @@
-<?= serialize(array(10 => 11)) ?>
 <div class="equipment_list">
 	<?php if($fabrique->level_building == 0): ?>
 		<p class="nothing">Vous devez construire la "Fabrique de <?= $type->name_type_equipment ?>"  afin de pouvoir construire cet équipement</p>

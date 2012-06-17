@@ -295,6 +295,7 @@ class c_personnel extends CI_Controller {
         
         $this->load->model('m_personnel');
         $this->load->model('m_technology');
+        $this->load->model('m_building');
         $user_id = $this->session->userdata('id');        
         $list = $this->m_personnel->getList(0,'all');
         $table['types'] = $this->m_personnel->getType();
@@ -304,6 +305,10 @@ class c_personnel extends CI_Controller {
         $table['scientifiques'] = array();
         $table['horslalois'] = array();
         $table['securites'] = array();
+        
+        $base = $this->m_building->haveBuilding($user_id, 15);
+        
+        $table['base'] = $base->level_building;
         
         $technology = $this->m_technology->haveTechnology($user_id, 5);
         

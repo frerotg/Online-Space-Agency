@@ -19,8 +19,16 @@
 				</div>
 			</div>
 			<?php if(($mission->id_status == 4) OR ($mission->id_status == 6)): ?>
-			<a href="<?=base_url(); ?>index.php/c_mission/viewMission/<?=$mission->id_mission ?>" title="Status de mla mission" class="status-mission">
+			<a href="<?=base_url(); ?>index.php/c_mission/viewMission/<?=$mission->id_mission ?>" title="Status de la mission" class="status-mission">
 				Voir l'etat de la mission
+			</a>
+			<?php elseif($mission->id_status == 10): ?>
+			<a href="<?=base_url(); ?>index.php/c_mission/cry/<?=$mission->id_mission ?>" title="Status de la mission" class="status-mission">
+				Supprimer la mission et pleurer les morts....
+			</a>
+			<?php elseif($mission->id_status == 8): ?>
+			<a href="<?=base_url(); ?>index.php/c_mission/delete/<?=$mission->id_mission ?>" title="Status de la mission" class="status-mission">
+				Supprimer la mission
 			</a>
 			<?php endif; ?>
 			<?php endforeach; ?>

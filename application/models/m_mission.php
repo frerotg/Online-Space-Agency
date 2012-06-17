@@ -24,6 +24,34 @@ class m_mission extends CI_Model {
         return $result;
     }
     
+    function deleteEquipment($user_id, $id_equipment){
+	        	$this->db->query('UPDATE user_equipment SET amount_equipment=amount_equipment -1 WHERE id_user='.$user_id.' AND id_equipment='.$id_equipment.' ');
+
+    }
+    
+    function deletePersonnel($id_personnel){
+    	$data = array(
+		               'owner_personnel' => NULL
+		            );
+		
+		$this->db->where('id_personnel', $id_personnel);
+		$this->db->update('personnel_list', $data);
+	    $this->db->delete('personnel_list', array('id_personnel' => $id_personnel));
+    }
+    
+    function listUserMissionActive($user_id){
+        
+        $this->db->select('*');
+        $this->db->from('user_mission');
+        $this->db->join('mission_status', 'user_mission.id_status = mission_status.id_status');
+        $this->db->join('space_object', 'user_mission.id_space_object = space_object.id_space_object');
+        $this->db->where('id_user', $user_id);
+        $this->db->where('user_mission.id_status !=', 11);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    
     function listZone($id){
         if($id !== 'all'){
             $this->db->select('*');

@@ -1286,7 +1286,9 @@ body {
 						list-style: none;
 						margin-bottom: 50px;
 						min-height: 250px;
-						
+						&.noEnable{
+								display: none;
+							}
 						div.photo-equipment{
 							display: inline;
 							width: 250px;
@@ -1405,7 +1407,6 @@ body {
 								cursor: pointer;
 							}
 							div.info-equipment{
-								display: none;
 								margin-top: 25px;
 								div.required-equipment{
 									display: inline-block;
@@ -1491,6 +1492,12 @@ body {
 			}
 			div.mission_index{
 				div.mission{
+					p.nothing{
+						font-family: 'LobsterTwoBold';
+						font-size: 20px;
+						color: @black;
+						text-align: center;
+					}
 					h1{
 						font-family: 'LobsterTwoBold';
 						font-size: 2.4em;
@@ -1518,15 +1525,15 @@ body {
 							line-height: 25px;
 							text-align: center;
 							margin: auto;
-							width: 200px;
+							width: 300px;
 							position: relative;
-							top: -50px;
+							top: -130px;
 						}
 					div.way{
 						width: 800px;
 						margin: auto;
 						position: relative;
-						margin-bottom: 60px;
+						margin-bottom: 100px;
 						div{
 							display: inline-block;
 							vertical-align: top;
@@ -2262,6 +2269,12 @@ body {
 			div.create_mission{
 				width: 880px;
 				padding: 0 40px;
+				p.nothing{
+						font-family: 'Futura', Arial, Helvetica, sans-serif;
+						color: @black;
+						text-transform: uppercase;
+						font-size: 20px;
+				}
 				div.title-form{
 					background: url("../img/layout/line-black.png") repeat-x bottom left;
 					margin-bottom: 20px;
@@ -2277,6 +2290,26 @@ body {
 						padding: 15px 0 30px 0;
 					}
 				}
+				div.success-mission{
+					display: none;
+					div.message-success-mission{
+						display: block;
+						width: 400px;
+						height: 210px;
+						background: @green;
+						margin: auto;
+						-webkit-box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.20);
+	           			box-shadow:  0px 1px 1px 1px rgba(0, 0, 0, 0.10) inset, 0px 1px 1px 1px rgba(255, 255, 255, 0.20);
+	           			padding-top: 100px;
+	           			margin-top: 0;
+						p{
+							font-family: 'LobsterTwoItalic';
+							font-size: 24px;
+							text-align: center;
+							color: #3a8b5a;
+						}
+					}
+				}
 				form{
 					h2{
 						font-family: 'Futura', Arial, Helvetica, sans-serif;
@@ -2286,7 +2319,40 @@ body {
 						&.error{
 							color: @red;
 							display: none;
+							font-size: 30px;
 						}
+					}
+					input[type=submit]{
+						display: block;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						background: @black;
+						text-decoration: none;
+						color: @white;
+						font-family: 'LobsterTwoRegular';
+						font-size:18px;
+						line-height: 45px;
+						text-align: center;
+						width: 880px;
+						margin: auto;
+						
+					}
+					a#calcul-total{
+						display: block;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						background: @darkwhite;
+						text-decoration: none;
+						color: @black;
+						font-family: 'LobsterTwoRegular';
+						font-size:18px;
+						line-height: 45px;
+						text-align: center;
+						width: 880px;
+						margin: auto;
+						margin: 10px 0 20px 0;
 					}
 					div.container{
 						position: relative;

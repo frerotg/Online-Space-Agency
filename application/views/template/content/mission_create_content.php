@@ -1,6 +1,6 @@
 <div class="create_mission">
 	<?php if(empty($coques) OR empty($lances) OR empty($modules) OR empty($combinaisons) OR empty($pilotes) OR (count($spationautes) < 2)): ?>
-	
+		<p class="nothing">Vous ne possedez pas toute les ressources nécéssaire à la réalisation d'une mission</p>
 	<?php else: ?>
 	<div class="title-form">
 		<h1><span class="little-h1">Crée ta propre mission !</span></h1>
@@ -245,7 +245,7 @@
 		    	<div class="spationaute solo">
 		            <?php
 		                $data = array(
-		                'name'        => 'spationaute',
+		                'name'        => 'spationaute1',
 		                'id'          => $spationaute->id_personnel,
 		                'value'       => $spationaute->id_personnel,
 		                'checked'     => FALSE);
@@ -271,7 +271,7 @@
 	       		<div class="spationaute solo">
 		            <?php
 		                $data = array(
-		                'name'        => 'spationaute',
+		                'name'        => 'spationaute2',
 		                'id'          => $spationaute->id_personnel,
 		                'value'       => $spationaute->id_personnel,
 		                'checked'     => FALSE);
@@ -290,22 +290,21 @@
 	    </div>
 	    
 	    <h2>4.Choisissez le nombre de phase de test avant le lancement de votre mission</h2>
-	    <div class="container-test container">
+	    <div class="container-test container" id="<?= $timeBytest ?>">
 	    <?= form_label('Nombre de phase de test :', 'phase_test'); ?>
 	    <?= form_input(array('name' => 'phase_test',
                              'id' => 'phase_test',
-                             'value' => set_value('phase_test'))); ?>
+                             'value' => '1')); ?>
 	    </div>
         
         <h2>5.Impacts de vos choix sur le coût et le temps.</h2>                     
         <div class="container-result">
 	        <div class="result">
-	        	<p class="vitesse">Durée du trajet : <span class="result-vitesse"></span></p>
+	        	<p class="vitesse">Durée du trajet : <span class="result-vitesse"></span> sec.</p>
 	        	<p class="carburant">Carburant consommé : <span class="result-carburant"></span></p>
-	        	<p class="echec">Réduction du taux d'échec : <span class="result-echec"></span></p>
-	        	<p class="pointaction">Nombre de point d'action : <span class="result-pointaction"></span></p>
-	        	<p class="coutaction">Réduction du coût des points d'action : <span class="result-coutaction"></span></p>
-	        	<p class="test">Temps de test : <span class="result-test"></span></p>
+	        	<p class="echec">Réduction du taux d'échec : - <span class="result-echec"></span> %</p>
+	        	<p class="coutaction">Réduction du coût des points d'action : - <span class="result-coutaction"></span> %</p>
+	        	<p class="test">Temps de test : <span class="result-test"></span> sec.</p>
 	        </div>
         </div>
         <a href="#" title="Calcul des impacts" id="calcul-total">Calcul</a>
@@ -313,5 +312,10 @@
 	        <?= form_submit(array('value' => 'Valider la mission', 'class' => 'btn primary register-btn')); ?>
         </div>
     <?= form_close(); ?>
+    <div class="success-mission">
+	    <div class="message-success-mission">
+			<p>Bravo !<br />Ta mission à été créée avec succès</p>
+		</div>
+    </div>
     <?php endif; ?>
 </div>

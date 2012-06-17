@@ -114,7 +114,7 @@ $(function(){
 	        		actual.hide();
 	        		parent.append('<p id="countdown" class="'+time+'"></p>');
 	        		number = $('#countdown').attr('class');
-	        		countdown();
+	        		//countdown();
 	        	}
 	      	}
     	});

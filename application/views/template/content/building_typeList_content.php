@@ -56,7 +56,7 @@
 						<p class="metal"><?= $cout_buildings[$building->id_building][0]->metal ?></p>
 					</div>
 					<div class="description-building">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in porttitor massa. Aenean vestibulum suscipit arcu, vitae convallis felis interdum congue. Suspendisse ultricies congue sodales.</p>
+						<p><?= $building->description_building ?></p>
 					</div>
 				</div>
 				</div>

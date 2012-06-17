@@ -109,7 +109,7 @@ class c_mission extends CI_Controller {
         $user_id = $this->session->userdata('id');
         
         $this->load->model('m_mission');
-        $foo['missions'] = $this->m_mission->listUserMission($user_id);
+        $foo['missions'] = $this->m_mission->listUserMissionActive($user_id);
         
         $data['header'] = $this->load->view('template/header/user_interface_header', '', TRUE);
         $data['content'] = $this->load->view('template/content/mission_list_content',$foo,TRUE);
@@ -151,64 +151,83 @@ class c_mission extends CI_Controller {
         
         $this->load->model('m_mission');
         $this->load->model('m_building');
+        $this->load->model('m_personnel');
         
         $user_id = $this->session->userdata('id');
 
 
-            $object = $this->input->post('object');
-            $coque = $this->input->post('coque');
-            $lance = $this->input->post('lance');
-            $module = $this->input->post('module');
-            $combinaison = $this->input->post('combinaison');
-            $pilote = $this->input->post('pilote');
-            $spationaute = $this->input->post('spationaute');
-            $spationaute2 = $this->input->post('spationaute2');
-            $date_start_start = now();
-            $phase_test = $this->input->post('phase_test');
-            
-            /*Calcul de la période Test-Lancement*/
-            $QG = $this->m_building->haveBuilding($user_id, 15);
-            $timeBytest = 150-(($QG->level_building-1)*5);
-            $date_test = now()+($phase_test*$timeBytest); 
-            
-            /*Calcul de la période Lancement-Arrivée*/
-            $space_object = $this->m_mission->getUserSpaceObject($user_id, $object);
-            $lanceur = $this->m_mission->getEquipment($lance);
-            $date_start_end = $date_test + (($space_object->distance_space_object / $lanceur->skill1_equipment)*20);
-         
-            /*Update des ressources*/
-            $carburant = $space_object->distance_space_object*((($lanceur->skill2_equipment * 2) + $lanceur->skill1_equipment)*5);
-            $resources = $this->m_user->getResources($user_id);
-            
-            /* Calcul des points d'action*/
-            $moduleDeCommande = $this->m_mission->getEquipment($module);
-            $point_action = $moduleDeCommande->skill1_equipment * 100;
-            
-            if($resources->carburant >= $carburant){
-            	$this->m_user->updateResource($user_id, 'carburant', $carburant);
-            	
-            	$data = array(
-                'id_user' => $user_id, 
-                'id_status' => 1,
-                'id_space_object' => $object,
-                'coque' => $coque,
-                'lance' => $lance,
-                'module' => $module,
-                'combinaison' => $combinaison,
-                'pilote' => $pilote,
-                'spationaute' => $spationaute,
-                'spationaute2' => $spationaute2,
-                'phase_test' => $phase_test,
-                'id_space_action' => NULL,
-                'date_start_start' => $date_start_start,
-                'date_test' => $date_test,
-				'date_start_end' => $date_start_end,
-				'point_action' => $point_action
-            	);
+        $object = $_GET['Iastre'];
+        $coque = $_GET['Icoque'];
+        $lance = $_GET['Ilanceur'];
+        $module = $_GET['Imodule'];
+        $combinaison = $_GET['Icombinaison'];
+        $pilote = $_GET['Ipilote'];
+        $spationaute = $_GET['Ispationaute1'];
+        $spationaute2 = $_GET['Ispationaute2'];
+        $date_start_start = now();
+        $phase_test = $_GET['Iphase_test'];
+        
+        /*Calcul de la période Test-Lancement*/
+        $QG = $this->m_building->haveBuilding($user_id, 15);
+        $timeBytest = 150-(($QG->level_building-1)*5);
+        $date_test = now()+($phase_test*$timeBytest); 
+        
+        /*Calcul de la période Lancement-Arrivée*/
+        $space_object = $this->m_mission->getUserSpaceObject($user_id, $object);
+        $lanceur = $this->m_mission->getEquipment($lance);
+        $date_start_end = $date_test + (($space_object->distance_space_object / $lanceur->skill1_equipment)*20);
+     
+        /*Update des ressources*/
+        $carburant = $space_object->distance_space_object*((($lanceur->skill2_equipment * 2) + $lanceur->skill1_equipment)*5);
+        $resources = $this->m_user->getResources($user_id);
+        
+        /* Calcul des points d'action*/
+        $moduleDeCommande = $this->m_mission->getEquipment($module);
+        $point_action = $moduleDeCommande->skill1_equipment * 100;
+        
+        if($resources->carburant >= $carburant){
+        
+        	$new_carbu = ($resources->carburant - $carburant);
+        	$this->m_user->updateResource($user_id, 'carburant', $new_carbu);
+        	
+        	$data = array(
+            'id_user' => $user_id, 
+            'id_status' => 1,
+            'id_space_object' => $object,
+            'coque' => $coque,
+            'lance' => $lance,
+            'module' => $module,
+            'combinaison' => $combinaison,
+            'pilote' => $pilote,
+            'spationaute' => $spationaute,
+            'spationaute2' => $spationaute2,
+            'phase_test' => $phase_test,
+            'id_space_action' => NULL,
+            'date_start_start' => $date_start_start,
+            'date_test' => $date_test,
+			'date_start_end' => $date_start_end,
+			'point_action' => $point_action
+        	);
 
-            	$this->m_mission->addMission($data);
-            	}
+        	$this->m_mission->addMission($data);
+        	
+        	$this->m_mission->deleteEquipment($user_id,$coque);
+        	$this->m_mission->deleteEquipment($user_id,$lance);
+        	$this->m_mission->deleteEquipment($user_id,$module);
+        	$this->m_mission->deleteEquipment($user_id,$combinaison);
+        	
+        	$this->m_personnel->updateStatus($pilote, 4);
+        	$this->m_personnel->updateStatus($spationaute, 4);
+        	$this->m_personnel->updateStatus($spationaute2, 4);
+        	
+        	$status='ok';
+        }
+        else{
+	        $status='fail';
+        }
+        $datas = array('status'=>$status);
 
+        echo json_encode($datas);
     }
     
     function viewMission(){
@@ -407,24 +426,54 @@ class c_mission extends CI_Controller {
 		$this->m_mission->comeBack($data, $user_id, $id_mission);
 		redirect('c_mission/listMission');
 
-    }
-    
-    function finish(){
+    }    
+    function delete(){
     	$this->load->model('m_mission');
+    	$this->load->model('m_personnel');
     	
         $user_id = $this->session->userdata('id');
         $id_mission = $this->uri->segment(3);
-
         $info = $this->m_mission->infoMission($user_id, $id_mission);
         
-		$data = array(
+				$data = array(
 					'date_start_start' => NULL,
 					'date_test' => NULL,
 	                'date_start_end' => NULL,
 	                'date_end_start' => NULL,
 	                'date_end_end' => NULL,
-	                'id_status' => 9
+	                'id_status' => 11
 	        );
+	        
+		$this->m_mission->comeBack($data, $user_id, $id_mission);
+		
+		$this->m_personnel->updateStatus($info->pilote, 4);
+        $this->m_personnel->updateStatus($info->spationaute, 4);
+        $this->m_personnel->updateStatus($info->spationaute2, 4);
+		
+		redirect('c_mission/listMission');
+    }
+    
+    function cry(){
+    	$this->load->model('m_mission');
+    	
+        $user_id = $this->session->userdata('id');
+        
+        $id_mission = $this->uri->segment(3);
+        
+        $info = $this->m_mission->infoMission($user_id, $id_mission);
+        
+				$data = array(
+					'date_start_start' => NULL,
+					'date_test' => NULL,
+	                'date_start_end' => NULL,
+	                'date_end_start' => NULL,
+	                'date_end_end' => NULL,
+	                'id_status' => 11
+	        );
+	        
+	    $this->m_mission->deletePersonnel($info->pilote);
+        $this->m_mission->deletePersonnel($info->spationaute);
+        $this->m_mission->deletePersonnel($info->spationaute2);    
 	        
 		$this->m_mission->comeBack($data, $user_id, $id_mission);
 		redirect('c_mission/listMission');

@@ -367,7 +367,7 @@ class c_user extends CI_Controller {
 				$this->email->to($email); 
 				
 				$this->email->subject('Inscription à Online Space Agency');
-				$this->email->message('Bonjour/Bonsoir '.$director_first_name.' '.$director_last_name.'.<br /> Votre agency à été créer !');	
+				$this->email->message('Bonjour '.$director_last_name.' '.$director_first_name.',  Votre agency à été créée !');	
 				
 				$this->email->send();
 		    }
@@ -378,7 +378,7 @@ class c_user extends CI_Controller {
 	}
         
     function user_interface() { 
-                
+        if($this->session->userdata('is_connect')){
         $id_user = $this->session->userdata('id');
         $this->load->model('m_user');
         $this->load->model('m_mission');
@@ -387,7 +387,7 @@ class c_user extends CI_Controller {
         $this->load->helper('date');
         $this->load->helper('array');
       
-        $foo['missions'] = $this->m_mission->listUserMission($id_user);
+        $foo['missions'] = $this->m_mission->listUserMissionActive($id_user);
         $foo['building'] = $this->m_user->checkBuildingUnderConstruction($id_user);
         $foo['technology'] = $this->m_user->checkUnderDevelop($id_user);
         $foo['equipment'] = $this->m_user->checkEquipmentUnderConstruction($id_user);
@@ -402,6 +402,10 @@ class c_user extends CI_Controller {
         $data['script'] = $this->load->view('template/script/user_script', '', TRUE);
         
         $this->load->view('layout',$data);
+        }
+        else{
+	        redirect('c_user/user_interface');
+        }
     }
     
     function first_time() { 

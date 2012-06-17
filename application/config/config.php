@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/~greenpix/Online-Space-Agency/';
+$config['base_url']	= 'http://www.online-space-agency.net/';
 
 /*
 |--------------------------------------------------------------------------

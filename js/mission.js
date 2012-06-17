@@ -102,8 +102,10 @@ $(function(){
 			
 			skill1_lanceur = parseInt($('.container-lance input:checked').parent().parent().find('.description-equipment p.1 span').attr('id'));
 			skill2_lanceur = parseInt($('.container-lance input:checked').parent().parent().find('.description-equipment p.2 span').attr('id'));
+			
 			skill1_module = parseInt($('.container-module input:checked').parent().parent().find('.description-equipment p.1 span').attr('id'));
 			skill2_module = parseInt($('.container-module input:checked').parent().parent().find('.description-equipment p.2 span').attr('id'));
+			
 			skill1_combinaison = parseInt($('div.container-combinaison input:checked').parent().next().find('.description-equipment p span').attr('id'));
 			
 			skill1_pilote = parseInt($('.container-pilote input:checked').parent().parent().find('p.skill1').attr('id'));
@@ -116,19 +118,26 @@ $(function(){
 			skill2_spationaute2 = parseInt($('.container-spationaute2 input:checked').parent().parent().find('p.skill2').attr('id'));
 			
 			phase_test = parseInt($('input#phase_test').attr('value'));
+			timebytest = parseInt($('.container-test').attr('id'));
 			
-			vitesse = ( distanceAstre / skill1_lanceur )*(30 - skill2_pilote);
-			carburant = distanceAstre * (((skill2_lanceur * 2) + skill1_lanceur));
-			echec = ((skill1_pilote + skill1_coque) / 3) + phase_test;
-			pointaction = (skill1_module + skill2_spationaute1 + skill2_spationaute2) * 30;
-			coutaction = 
+			vitesse = parseInt((distanceAstre / skill1_lanceur)*(30 - skill2_pilote));
+			carburant = parseInt(distanceAstre * (((skill2_lanceur * 2) + skill1_lanceur)*5));
+			echec = parseInt(((skill1_pilote + skill1_coque) / 3) + phase_test);
+			//pointaction = parseInt((skill1_module + skill2_spationaute1 + skill2_spationaute2) * 30);
+			coutaction = parseInt(skill1_combinaison);
+			test = parseInt(timebytest * phase_test);
 			
-			alert(echec);
+
+			$('span.result-vitesse').text(vitesse);
+			$('span.result-carburant').text(carburant);
+			$('span.result-echec').text(echec);
+			$('span.result-coutaction').text(coutaction);
+			$('span.result-test').text(test);
+			
 
 		}
 		
-		/*$('form.createMission').submit(function(){
-			alert('SALUT');
+		$('form.createMission').submit(function(){
 			$('h2.error').hide();
 			
 			url = $(this).attr('action');
@@ -141,67 +150,61 @@ $(function(){
 			combinaison = $('div.container-combinaison input:checked').attr('value');
 			
 			pilote = $('.container-pilote input:checked').attr('value');
-			spationaute1 = $('.container-spationaute1 input:checked').attr('value');
-			spationaute2 = $('.container-spationaute2 input:checked').attr('value');
+			spationaute1 = $('.container-spationaute1 .spationaute input:checked').attr('value');
+			spationaute2 = $('.container-spationaute2 .spationaute input:checked').attr('value');
 			
 			phase_test = $('input#phase_test').attr('value');
 			
-			if(astre !== 'undefined'){
-			
-				if((lanceur !== 'undefined') OR (coque !== 'undefined') OR (module !== 'undefined') OR (combinaison !== 'undefined')){
-				
-					if((pilote !== 'undefined') OR (spationaute1 !== 'undefined') OR (spationaute2 !== 'undefined')){
-					
-						if(phase_test !== 'undefined'){
-							status = 'ok';
-						}
-						else{status = 'fail'; message = 'Vous n\'avez pas effectuer l\'étape 4';}
-						
+			if(astre != undefined){
+				if(lanceur != undefined && coque != undefined && module != undefined && combinaison != undefined){
+					if(pilote != undefined && spationaute1 != undefined && spationaute2 != undefined){
+						status = 'ok';
 					}
-					else{status = 'fail'; message = 'Vous n\'avez pas effectuer l\'étape 3';}
-					
+					else{
+						status = 'fail';
+						message= 'Et votre vaisseau il va se piloter tous seul ? Et qui va réaliser vos actions ?(étape 3)';
+					}
 				}
-				else{status = 'fail'; message = 'Vous n\'avez pas effectuer l\'étape 2';}
+				else{
+					status = 'fail';
+					message= 'C\est bien beau de vouloir explorer des planètes ! Mais avec un vaisseau entier c\'est mieux ! (étape 2)';
+				}
 			}
-			else{status = 'fail'; message = 'Vous n\'avez pas effectuer l\'étape 1';}
+			else{
+				status = 'fail';
+				message= 'Qu\'allez vous explorer ? Vous n\'avez choisi aucune destination !(étape 1)';
+				
+			}
 			
+			if(phase_test == ''){
+				phase_test = '1';
+			}
 			
-			if(status == 'ok'){
-				/*$.ajax({
+			if(status == 'fail'){
+				$('h2.error').show().text(message);
+				$('body').scrollTop(0);
+
+			}
+			else{
+				$.ajax({
 			      	type: "GET",
 			      	url: url,
-			      	data: {Ititle_message: title_message, Icontent_message: content_message, Iusername_receive: username_receive},
+			      	data: {Iastre: astre, Ilanceur: lanceur, Icoque: coque, Imodule: module, Icombinaison: combinaison, Ipilote: pilote, Ispationaute1: spationaute1, Ispationaute2: spationaute2, Iphase_test: phase_test},
 			      	dataType: "json",
 			      	success: function(data){
 			        	if(data.status == "fail"){
-			        		if(data.title_message == 'empty'){
-				        		$('label[for="title_message"] span').text('    Le titre du message est vide');
-				        		$('label[for="title_message"]').css('color', '#f23d4c');
-			        		}
-			        		if(data.content_message == 'empty'){
-				        		$('label[for="message"] span').text('    Le message est vide');
-				        		$('label[for="message"]').css('color', '#f23d4c');
-			        		}
-			        		if(data.username_receive == 'empty'){
-				        		$('label[for="username_receive"] span').text('    Le nom du destinataire est vide');
-				        		$('label[for="username_receive"]').css('color', '#f23d4c');
-			        		}
+				        	$('h2.error').show().text('Vous n\'avez pas assez de ressources pour pouvoir lançé cette mission !');
+				        	$('body').scrollTop(0);
 			        	}
 			        	else{
-			        		$('div.message_send form').hide();
-			        		$('div.title-register').hide();
-			        		$('div.success-register').show();
+			        		$('form').hide();
+			        		$('div.success-mission').show();
 			        	}
 			      	}
 		    	});
-		    }
-		    alert(status);
-		    }
-		    else{
-			    $('h2.error').text(message).show();
-		    }
-		return false;
-		});*/
+			}
+			return false;
+		});
 		
 		
 });
